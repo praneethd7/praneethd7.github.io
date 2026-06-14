@@ -1,0 +1,297 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+// Dynamically import all images from src/assets/photography/
+const images = import.meta.glob<{ default: ImageMetadata }>('../assets/photography/*.{jpeg,jpg,png,gif,webp,AVIF,WebP}');
+
+const resolvedImages = await Promise.all(
+  Object.keys(images).map(async (path) => {
+    const module = await images[path]();
+    const filename = path.split('/').pop() || '';
+    
+    // Determine category based on filename
+    let category = 'Landscape';
+    if (filename.toLowerCase().includes('drone')) {
+      category = 'Aerial';
+    } else if (filename.toLowerCase().includes('camp') || filename.toLowerCase().includes('trek')) {
+      category = 'Adventure';
+    } else if (filename.toLowerCase().includes('cycle')) {
+      category = 'Sports';
+    } else if (filename.toLowerCase().startsWith('wildlife_')) {
+      category = 'Wildlife';
+    }
+
+    // Nice clean human-readable title from file name
+    let cleanName = filename.split('.')[0];
+    if (cleanName.toLowerCase().startsWith('wildlife_')) {
+      cleanName = cleanName.substring(9);
+    }
+    const title = cleanName
+      .replace(/[_-]/g, ' ')
+      .replace(/\b\w/g, c => c.toUpperCase());
+
+    return {
+      src: module.default,
+      filename,
+      title,
+      category
+    };
+  })
+);
+
+const categories = ['All', 'Aerial', 'Adventure', 'Landscape', 'Wildlife'];
+---
+
+<Layout title="Photography | Praneeth Devunuri" description="Praneeth Devunuri's photography showcase. Features professional high-resolution drone/aerial, landscape, and trekking photography with a responsive lightbox.">
+  <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    
+    <!-- Title Area -->
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <h1 class="font-outfit text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
+        Photography Gallery
+      </h1>
+      <p class="font-inter text-slate-400 mt-4 leading-relaxed">
+        Capturing landscapes, outdoor adventures, and aerial viewpoints.
+      </p>
+    </div>
+
+    <!-- Category Filter Tabs -->
+    <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
+      {categories.map((category) => (
+        <button
+          class={`photo-filter-btn font-outfit text-sm font-semibold px-4.5 py-2 rounded-xl transition-all duration-300 ${
+            category === 'All'
+              ? 'bg-brand-cyan text-slate-950 shadow-lg shadow-brand-cyan/20'
+              : 'bg-white/5 text-slate-400 hover:bg-white/10 hover:text-slate-200'
+          }`}
+          data-filter={category.toLowerCase()}
+        >
+          {category}
+        </button>
+      ))}
+    </div>
+
+    <!-- Photography Masonry Grid -->
+    <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+      {resolvedImages.map((img, index) => (
+        <div
+          class="photo-card break-inside-avoid relative group overflow-hidden rounded-2xl border border-white/10 bg-slate-900 shadow-xl cursor-pointer transition-all duration-500 hover:border-brand-cyan/40"
+          data-category={img.category.toLowerCase()}
+          data-index={index}
+        >
+          <Image
+            src={img.src}
+            alt={img.title}
+            width={800}
+            class="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-105"
+          />
+          
+          <!-- Overlay on hover -->
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+            <span class="text-xs font-semibold tracking-wider text-brand-cyan uppercase">
+              {img.category}
+            </span>
+            <h3 class="font-outfit text-lg font-bold text-white mt-1">
+              {img.title}
+            </h3>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Lightbox Modal (Hidden by Default) -->
+    <div
+      id="lightbox-modal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-950/95 backdrop-blur-md p-4 sm:p-10 select-none"
+    >
+      <!-- Close Button -->
+      <button
+        id="lightbox-close"
+        class="absolute top-6 right-6 z-50 text-slate-400 hover:text-white hover:scale-110 active:scale-95 transition-all"
+        aria-label="Close lightbox"
+      >
+        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <!-- Previous Button -->
+      <button
+        id="lightbox-prev"
+        class="absolute left-4 sm:left-6 z-50 text-slate-400 hover:text-white hover:scale-110 active:scale-95 transition-all p-2 rounded-full bg-white/5 hover:bg-white/10"
+        aria-label="Previous image"
+      >
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
+      <!-- Next Button -->
+      <button
+        id="lightbox-next"
+        class="absolute right-4 sm:right-6 z-50 text-slate-400 hover:text-white hover:scale-110 active:scale-95 transition-all p-2 rounded-full bg-white/5 hover:bg-white/10"
+        aria-label="Next image"
+      >
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+
+      <!-- Image Area -->
+      <div class="flex flex-col items-center max-w-5xl w-full h-full justify-center gap-4">
+        <div class="relative max-h-[75vh] flex items-center justify-center">
+          <img
+            id="lightbox-img"
+            class="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl border border-white/5 transition-transform duration-300"
+            src=""
+            alt=""
+          />
+        </div>
+        <!-- Caption -->
+        <div class="text-center">
+          <span id="lightbox-category" class="text-xs font-semibold tracking-widest text-brand-cyan uppercase"></span>
+          <h2 id="lightbox-caption" class="font-outfit text-xl font-bold text-white mt-1"></h2>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</Layout>
+
+<script define:vars={{ resolvedImages }}>
+  // Photography Filter Logic
+  function setupPhotoFilters() {
+    const buttons = document.querySelectorAll('.photo-filter-btn');
+    const cards = document.querySelectorAll('.photo-card');
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        buttons.forEach((b) => {
+          b.classList.remove('bg-brand-cyan', 'text-slate-950', 'shadow-lg', 'shadow-brand-cyan/20');
+          b.classList.add('bg-white/5', 'text-slate-400', 'hover:bg-white/10', 'hover:text-slate-200');
+        });
+        btn.classList.remove('bg-white/5', 'text-slate-400', 'hover:bg-white/10', 'hover:text-slate-200');
+        btn.classList.add('bg-brand-cyan', 'text-slate-950', 'shadow-lg', 'shadow-brand-cyan/20');
+
+        const filter = btn.getAttribute('data-filter');
+
+        cards.forEach((card) => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  }
+
+  // Lightbox Modal Logic
+  function setupLightbox() {
+    const cards = document.querySelectorAll('.photo-card');
+    const modal = document.getElementById('lightbox-modal');
+    const modalImg = document.getElementById('lightbox-img');
+    const modalCaption = document.getElementById('lightbox-caption');
+    const modalCategory = document.getElementById('lightbox-category');
+    
+    const closeBtn = document.getElementById('lightbox-close');
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
+
+    let currentIndex = 0;
+    // Keep track of currently visible images based on filter
+    let visibleCards = Array.from(cards);
+
+    function updateVisibleCards() {
+      visibleCards = Array.from(cards).filter(card => !card.classList.contains('hidden'));
+    }
+
+    function showImage(card) {
+      if (!card) return;
+      const index = parseInt(card.getAttribute('data-index') || '0', 10);
+      const imgData = resolvedImages[index];
+      
+      if (imgData && modalImg && modalCaption && modalCategory) {
+        currentIndex = visibleCards.indexOf(card);
+        // We can fetch the rendered src from the nested img inside the card
+        const cardImg = card.querySelector('img');
+        if (cardImg) {
+          modalImg.src = cardImg.currentSrc || cardImg.src;
+        }
+        modalImg.alt = imgData.title;
+        modalCategory.textContent = imgData.category;
+        modalCaption.textContent = imgData.title;
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeLightbox() {
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function showPrev() {
+      updateVisibleCards();
+      if (visibleCards.length <= 1) return;
+      let prevIdx = currentIndex - 1;
+      if (prevIdx < 0) prevIdx = visibleCards.length - 1;
+      showImage(visibleCards[prevIdx]);
+    }
+
+    function showNext() {
+      updateVisibleCards();
+      if (visibleCards.length <= 1) return;
+      let nextIdx = currentIndex + 1;
+      if (nextIdx >= visibleCards.length) nextIdx = 0;
+      showImage(visibleCards[nextIdx]);
+    }
+
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        updateVisibleCards();
+        showImage(card);
+      });
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+    if (prevBtn) prevBtn.addEventListener('click', showPrev);
+    if (nextBtn) nextBtn.addEventListener('click', showNext);
+
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeLightbox();
+      });
+    }
+
+    // Keyboard controls
+    const handleKeydown = (e) => {
+      if (modal && !modal.classList.contains('hidden')) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') showPrev();
+        if (e.key === 'ArrowRight') showNext();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeydown);
+
+    // Clean up keydowns on transition
+    document.addEventListener('astro:before-swap', () => {
+      window.removeEventListener('keydown', handleKeydown);
+    });
+  }
+
+  // Initial runs
+  setupPhotoFilters();
+  setupLightbox();
+
+  // Run on page swapping (for Astro transitions compatibility)
+  document.addEventListener('astro:after-swap', () => {
+    setupPhotoFilters();
+    setupLightbox();
+  });
+</script>

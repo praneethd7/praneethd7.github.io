@@ -1,0 +1,312 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const featuredProjects = await getCollection('projects', ({ data }) => data.featured);
+featuredProjects.sort((a, b) => a.data.order - b.data.order);
+
+const skills = [
+  {
+    category: 'Generative AI & LLMs',
+    icon: `<svg class="h-6 w-6 text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>`,
+    items: ['Agentic Workflows (crewAI, LangGraph)', 'Hybrid RAG & Semantic Search', 'LLM Fine-tuning (LoRA, PEFT)', 'Inference Optimization (vLLM)']
+  },
+  {
+    category: 'Reinforcement Learning',
+    icon: `<svg class="h-6 w-6 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`,
+    items: ['Q-Learning & Policy Gradients', 'Autonomous Control Algorithms', 'Simulation Modeling (SUMO, VISSIM)', 'Decision Processes (MDPs)']
+  },
+  {
+    category: 'Computer Vision',
+    icon: `<svg class="h-6 w-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>`,
+    items: ['Object Detection & Tracking (YOLO)', 'Image Processing (OpenCV)', 'Spatial-CNN (Lane Line Prediction)', 'Sensor Fusion (Drones & Vehicles)']
+  }
+];
+
+const timeline = [
+  {
+    period: '2025 - Present',
+    title: 'Senior AI Scientist',
+    institution: 'Optym',
+    description: 'Developing and deploying state-of-the-art machine learning models, optimization algorithms, and Generative AI (LLM) workflows to solve complex logistics and transportation scheduling challenges.',
+    logo: '/assets/logo_optym.png'
+  },
+  {
+    period: '2020 - 2025',
+    title: 'Ph.D. Researcher & Doctoral Student',
+    institution: 'University of Illinois Urbana-Champaign',
+    description: 'Researched intelligent transportation systems, reinforcement learning for signal controls, and Large Language Model (LLM) frameworks for transit data under Dr. Lewis Lehe. Graduated in 2025.',
+    logo: '/assets/logo_uiuc.svg'
+  },
+  {
+    period: '2018 - 2020',
+    title: 'Graduate Assistant Researcher',
+    institution: 'Texas A&M University',
+    description: 'Built autonomous ride-sharing simulations, modeled pricing schemes for Mobility-as-a-Service, and performed emergency vehicle response experiments.',
+    logo: '/assets/logo_tamu.svg'
+  },
+  {
+    period: '2013 - 2017',
+    title: 'Bachelor of Technology',
+    institution: 'Indian Institute of Technology, Madras',
+    description: 'Developed image processing frameworks for traffic extraction, created glass fragmentation test prototypes, and served as Webops Head.',
+    logo: '/assets/logo_iitm.svg'
+  }
+];
+---
+
+<Layout title="Praneeth Devunuri | GenAI & Autonomous Systems Engineer">
+  <!-- Hero Section -->
+  <section class="relative mx-auto max-w-7xl px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Bio / Description (7 cols) -->
+      <div class="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 rounded-full border border-teal-500/20 bg-teal-500/5 px-3 py-1 text-xs font-semibold text-teal-400 backdrop-blur-sm mb-6 animate-pulse">
+          <span class="h-2 w-2 rounded-full bg-teal-400"></span>
+          Open to New Opportunities
+        </div>
+        
+        <h1 class="font-outfit text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+          Hi, I'm <span class="bg-gradient-to-r from-teal-400 via-indigo-400 to-purple-500 bg-clip-text text-transparent">Praneeth Devunuri</span>
+        </h1>
+        
+        <p class="font-outfit text-xl sm:text-2xl font-medium text-slate-300 mt-4">
+          Senior AI Scientist @ Optym
+        </p>
+        
+        <p class="font-inter text-base text-slate-400 max-w-2xl mt-6 leading-relaxed">
+          I describe myself as the <span class="text-teal-400 font-mono">ε-guy</span>. In reinforcement learning, the epsilon value represents exploration vs exploitation. I embrace this policy by constantly learning and applying complex algorithmic models to automate and optimize the physical and digital worlds. Transitioned from PhD research in Connected and Autonomous Vehicles (UIUC) to driving next-generation AI and optimization systems at Optym.
+        </p>
+
+        <div class="flex flex-wrap gap-4 mt-8 justify-center lg:justify-start">
+          <a
+            href="/projects"
+            class="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-teal-500 to-indigo-600 px-6 py-3 font-outfit text-sm font-semibold text-white shadow-lg shadow-teal-500/15 hover:shadow-indigo-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+          >
+            Explore Projects
+          </a>
+          <a
+            href="/photography"
+            class="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-6 py-3 font-outfit text-sm font-semibold text-slate-200 hover:bg-white/10 hover:text-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+          >
+            View Photography
+          </a>
+        </div>
+      </div>
+
+      <!-- Profile Avatar (5 cols) -->
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="relative group">
+          <!-- Outer glowing rings -->
+          <div class="absolute -inset-0.5 rounded-full bg-gradient-to-r from-teal-400 to-indigo-500 opacity-30 blur-xl group-hover:opacity-60 transition duration-500"></div>
+          <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-purple-500 to-teal-400 opacity-20 blur-2xl group-hover:opacity-40 transition duration-500"></div>
+          
+          <!-- Image container -->
+          <div class="relative h-72 w-72 sm:h-80 sm:w-80 overflow-hidden rounded-full border-2 border-white/10 bg-slate-900 shadow-2xl">
+            <img
+              src="/assets/pro_pic_new.jpg"
+              alt="Praneeth Devunuri"
+              class="h-full w-full object-cover object-[center_25%] group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Affiliations Logo Bar -->
+  <div class="border-t border-b border-white/5 bg-slate-950/20 py-8">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="font-outfit text-center text-xs font-semibold uppercase tracking-wider text-slate-500 mb-6">
+        Professional & Academic Affiliations
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-10 md:gap-20">
+        <div class="flex items-center gap-3.5 group cursor-default">
+          <div class="h-12 w-12 flex items-center justify-center rounded-lg bg-white p-2 border border-white/10 group-hover:border-teal-500/30 group-hover:scale-105 transition-all duration-300">
+            <img 
+              src="/assets/logo_optym.png" 
+              alt="Optym" 
+              class="max-h-full max-w-full object-contain"
+            />
+          </div>
+          <span class="font-outfit text-sm font-semibold text-slate-300 group-hover:text-white transition-colors duration-300">Optym</span>
+        </div>
+
+        <div class="flex items-center gap-3.5 group cursor-default">
+          <div class="h-12 w-12 flex items-center justify-center rounded-lg bg-white p-2 border border-white/10 group-hover:border-teal-500/30 group-hover:scale-105 transition-all duration-300">
+            <img 
+              src="/assets/logo_uiuc.svg" 
+              alt="University of Illinois Urbana-Champaign" 
+              class="max-h-full max-w-full object-contain"
+            />
+          </div>
+          <span class="font-outfit text-sm font-semibold text-slate-300 group-hover:text-white transition-colors duration-300">UIUC</span>
+        </div>
+        
+        <div class="flex items-center gap-3.5 group cursor-default">
+          <div class="h-12 w-12 flex items-center justify-center rounded-lg bg-white p-2 border border-white/10 group-hover:border-teal-500/30 group-hover:scale-105 transition-all duration-300">
+            <img 
+              src="/assets/logo_tamu.svg" 
+              alt="Texas A&M University" 
+              class="max-h-full max-w-full object-contain"
+            />
+          </div>
+          <span class="font-outfit text-sm font-semibold text-slate-300 group-hover:text-white transition-colors duration-300">Texas A&M</span>
+        </div>
+        
+        <div class="flex items-center gap-3.5 group cursor-default">
+          <div class="h-12 w-12 flex items-center justify-center rounded-lg bg-white p-2 border border-white/10 group-hover:border-teal-500/30 group-hover:scale-105 transition-all duration-300">
+            <img 
+              src="/assets/logo_iitm.svg" 
+              alt="IIT Madras" 
+              class="max-h-full max-w-full object-contain"
+            />
+          </div>
+          <span class="font-outfit text-sm font-semibold text-slate-300 group-hover:text-white transition-colors duration-300">IIT Madras</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Core Expertise -->
+  <section class="border-t border-white/5 bg-slate-950/40 py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h2 class="font-outfit text-3xl sm:text-4xl font-bold tracking-tight text-white">
+          Technical Expertise & Core Focus
+        </h2>
+        <p class="font-inter text-slate-400 max-w-2xl mx-auto mt-4">
+          A unique synthesis of theoretical reinforcement learning, computer vision, and hands-on LLM engineering.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+        {skills.map((skill) => (
+          <div class="relative rounded-2xl border border-white/10 bg-slate-900/40 p-6 backdrop-blur-sm hover:border-teal-500/30 transition-colors duration-300">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 border border-white/10" set:html={skill.icon} />
+              <h3 class="font-outfit text-lg font-bold text-slate-200">{skill.category}</h3>
+            </div>
+            <ul class="space-y-3">
+              {skill.items.map((item) => (
+                <li class="flex items-start gap-2.5 text-sm text-slate-400">
+                  <svg class="h-5 w-5 text-teal-400/80 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured AI Projects -->
+  <section class="border-t border-white/5 py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-12">
+        <div>
+          <h2 class="font-outfit text-3xl font-bold tracking-tight text-white text-center sm:text-left">
+            Featured Generative AI Work
+          </h2>
+          <p class="font-inter text-slate-400 mt-2 text-center sm:text-left">
+            Showcasing current projects built in the LLM and multi-agent space.
+          </p>
+        </div>
+        <a
+          href="/projects"
+          class="inline-flex items-center gap-1.5 font-outfit text-sm font-semibold text-teal-400 hover:text-teal-300 transition-colors group"
+        >
+          View All Projects
+          <svg class="h-4 w-4 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {featuredProjects.map((project) => (
+          <div class="flex flex-col rounded-2xl border border-white/10 bg-slate-900/40 p-6 backdrop-blur-sm hover:border-indigo-500/30 transition-all duration-300 hover:scale-[1.01] hover:shadow-xl hover:shadow-indigo-500/5">
+            <span class="self-start rounded-full bg-teal-500/10 px-2.5 py-0.5 text-xs font-semibold text-teal-400 mb-4 border border-teal-500/20">
+              {project.data.category}
+            </span>
+            <h3 class="font-outfit text-xl font-bold text-slate-100">{project.data.title}</h3>
+            
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              {project.data.tags.map((tag) => (
+                <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-white/5 text-slate-400 border border-white/5">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <p class="font-inter text-sm text-slate-400 mt-4 flex-grow line-clamp-4 leading-relaxed">
+              {project.body.replace(/^---[\s\S]*?---/, '').trim().split('\n')[0]}
+            </p>
+            
+            <a
+              href="/projects"
+              class="inline-flex items-center gap-1 font-outfit text-xs font-semibold text-indigo-400 hover:text-indigo-300 mt-6 transition-colors"
+            >
+              Read full details
+              <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Career Journey / Timeline -->
+  <section class="border-t border-white/5 bg-slate-950/40 py-20">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="font-outfit text-3xl font-bold tracking-tight text-white">
+          Professional Journey
+        </h2>
+        <p class="font-inter text-slate-400 mt-4">
+          A timeline of my academic background and engineering transition.
+        </p>
+      </div>
+
+      <div class="relative border-l border-white/10 pl-6 ml-4 space-y-12">
+        {timeline.map((event) => (
+          <div class="relative">
+            <!-- Icon/Dot -->
+            <div class="absolute -left-[31px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full border border-teal-500/50 bg-slate-950">
+              <span class="h-1.5 w-1.5 rounded-full bg-teal-400"></span>
+            </div>
+            
+            <!-- Content card -->
+            <div class="group/card rounded-xl border border-white/5 bg-slate-900/20 p-5 backdrop-blur-sm hover:border-white/10 hover:bg-slate-900/30 transition-all duration-300">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <span class="font-mono text-xs font-semibold text-teal-400">{event.period}</span>
+                  <h3 class="font-outfit text-lg font-bold text-slate-200 mt-1">{event.title}</h3>
+                  <p class="font-outfit text-sm text-indigo-400">{event.institution}</p>
+                </div>
+                {event.logo && (
+                  <div class="flex-shrink-0 h-12 w-12 flex items-center justify-center rounded-lg bg-white p-2 border border-white/10 group-hover/card:border-teal-500/30 transition-all duration-300">
+                    <img 
+                      src={event.logo} 
+                      alt={event.institution} 
+                      class="max-h-full max-w-full object-contain"
+                    />
+                  </div>
+                )}
+              </div>
+              <p class="font-inter text-sm text-slate-400 mt-3 leading-relaxed">{event.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
