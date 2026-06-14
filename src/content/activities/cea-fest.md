@@ -2,7 +2,7 @@
 title: CEA Fest Creatives
 role: Design & Creatives
 type: design
-order: 4
+order: 6
 ---
 
 Custom poster design, branding, and graphical assets for CEA Fest at IIT Madras.

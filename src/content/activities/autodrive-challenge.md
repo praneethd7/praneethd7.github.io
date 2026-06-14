@@ -2,7 +2,7 @@
 title: Autodrive Challenge
 role: Perception Mentor
 type: competition
-order: 3
+order: 5
 ---
 
 - Worked towards Year 3 of the competition as a Perception Mentor (Guide - Dr. Alireza Talebpour).

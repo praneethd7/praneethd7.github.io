@@ -2,7 +2,7 @@
 title: Drawings & Sketches
 role: Google Keep & Adobe Sketch
 type: hobby
-order: 5
+order: 7
 ---
 
 Recreational sketches and digital paintings expressing creative themes and concepts.

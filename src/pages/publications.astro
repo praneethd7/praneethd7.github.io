@@ -9,31 +9,60 @@ const publications = [
     year: "2025",
     category: "Generative AI",
     tags: ["LLMs", "Generative AI", "GTFS", "NLP"],
-    citations: "15+",
     paperUrl: "https://arxiv.org/abs/2412.06831",
-    codeUrl: "https://github.com/UTEL-UIUC/TransitGPT"
+    codeUrl: "https://github.com/UTEL-UIUC/TransitGPT",
+    image: "/assets/pub_transitgpt.png",
+    bibtex: `@article{devunuri2025transitgpt,
+  title={TransitGPT: a generative AI-based framework for interacting with GTFS data using large language models},
+  author={Devunuri, Saipraneeth and Lehe, Lewis},
+  journal={Public Transport},
+  volume={17},
+  number={2},
+  pages={319--345},
+  year={2025},
+  publisher={Springer},
+  doi={10.1007/s12469-024-00366-6}
+}`
   },
   {
     title: "A Pipeline and NIR-Enhanced Dataset for Parking Lot Segmentation",
-    authors: "Saipraneeth Devunuri, et al.",
+    authors: "Shirin Qiam, Saipraneeth Devunuri, Lewis J. Lehe",
     venue: "IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)",
     year: "2025",
     category: "Computer Vision",
     tags: ["Computer Vision", "Deep Learning", "Segmentation"],
-    citations: "5+",
     paperUrl: "https://openaccess.thecvf.com/content/WACV2025/html/Devunuri_A_Pipeline_and_NIR-Enhanced_Dataset_for_Parking_Lot_Segmentation_WACV_2025_paper.html",
-    codeUrl: ""
+    codeUrl: "https://github.com/UTEL-UIUC/parking-lot-segmentation-tool",
+    image: "/assets/pub_parking_lot.png",
+    bibtex: `@inproceedings{qiam2025pipeline,
+  title={A Pipeline and NIR-Enhanced Dataset for Parking Lot Segmentation},
+  author={Qiam, Shirin and Devunuri, Saipraneeth and Lehe, Lewis J.},
+  booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+  pages={1227--1236},
+  year={2025}
+}`
   },
   {
     title: "ChatGPT for GTFS: Benchmarking LLMs on GTFS Semantics and Retrieval",
-    authors: "Saipraneeth Devunuri, Lewis Lehe",
+    authors: "Saipraneeth Devunuri, Shirin Qiam, Lewis J. Lehe",
     venue: "Public Transport (Journal)",
     year: "2024",
     category: "Generative AI",
     tags: ["LLMs", "Benchmarking", "GTFS", "Prompt Engineering"],
-    citations: "45+",
     paperUrl: "https://arxiv.org/abs/2308.02618",
-    codeUrl: ""
+    codeUrl: "",
+    image: "/assets/pub_chatgpt_gtfs.png",
+    bibtex: `@article{devunuri2024chatgpt,
+  title={ChatGPT for GTFS: benchmarking LLMs on GTFS semantics and retrieval},
+  author={Devunuri, Saipraneeth and Qiam, Shirin and Lehe, Lewis J.},
+  journal={Public Transport},
+  volume={16},
+  number={2},
+  pages={333--357},
+  year={2024},
+  publisher={Springer},
+  doi={10.1007/s12469-024-00354-x}
+}`
   },
   {
     title: "GTFS Segments: A Fast and Efficient Library to Generate Bus Stop Spacings",
@@ -42,20 +71,42 @@ const publications = [
     year: "2024",
     category: "Transportation Systems",
     tags: ["Software Library", "GTFS", "GIS", "Python"],
-    citations: "12+",
-    paperUrl: "https://doi.org/10.21105/joss.06014",
-    codeUrl: "https://github.com/saipraneethd/gtfs_segments"
+    paperUrl: "https://doi.org/10.21105/joss.06306",
+    codeUrl: "https://github.com/UTEL-UIUC/gtfs_segments",
+    image: "/assets/pub_gtfs_segments.png",
+    bibtex: `@article{Devunuri2024,
+  title={GTFS Segments: A Fast and Efficient Library to Generate Bus Stop Spacings},
+  author={Devunuri, Saipraneeth and Lehe, Lewis},
+  journal={Journal of Open Source Software},
+  volume={9},
+  number={95},
+  pages={6306},
+  year={2024},
+  publisher={The Open Journal},
+  doi={10.21105/joss.06306},
+  url={https://doi.org/10.21105/joss.06306}
+}`
   },
   {
     title: "Bus Stop Spacings Statistics: Theory and Evidence",
-    authors: "Lewis Lehe, Saipraneeth Devunuri",
+    authors: "Saipraneeth Devunuri, Lewis J. Lehe, Shirin Qiam, Ayush Pandey, Dana Monzer",
     venue: "Journal of Public Transportation",
     year: "2024",
     category: "Transportation Systems",
     tags: ["GTFS", "Public Transit", "Statistics"],
-    citations: "30+",
-    paperUrl: "https://arxiv.org/abs/2208.04394",
-    codeUrl: ""
+    paperUrl: "https://doi.org/10.1016/j.jpubtr.2024.100083",
+    codeUrl: "",
+    image: "/assets/pub_stop_spacings.png",
+    bibtex: `@article{devunuri2024bus,
+  title={Bus Stop Spacings: Statistics, Theory and Evidence},
+  author={Devunuri, Saipraneeth and Lehe, Lewis J. and Qiam, Shirin and Pandey, Ayush and Monzer, Dana},
+  journal={Journal of Public Transportation},
+  volume={26},
+  pages={100085},
+  year={2024},
+  publisher={Elsevier},
+  doi={10.1016/j.jpt.2024.100085}
+}`
   },
   {
     title: "A Survey of Errors in GTFS Static Feeds from the United States",
@@ -64,24 +115,106 @@ const publications = [
     year: "2024",
     category: "Transportation Systems",
     tags: ["Data Quality", "GTFS", "Public Transit"],
-    citations: "8+",
-    paperUrl: "https://doi.org/10.32866/001c.116805",
-    codeUrl: ""
+    paperUrl: "https://doi.org/10.32866/001c.116694",
+    codeUrl: "",
+    image: "/assets/pub_gtfs_errors.png",
+    bibtex: `@article{devunuri2024survey,
+  title={A Survey of Errors in GTFS Static Feeds from the United States},
+  author={Devunuri, Saipraneeth and Lehe, Lewis},
+  journal={Findings},
+  year={2024},
+  doi={10.32866/001c.116694},
+  url={https://doi.org/10.32866/001c.116694}
+}`
   },
   {
     title: "Scale Effects in Ridesplitting: A Case Study of the City of Chicago",
-    authors: "Saipraneeth Devunuri, Alireza Talebpour",
+    authors: "Hao Liu, Saipraneeth Devunuri, Lewis Lehe, Vikash V. Gayah",
     venue: "Transportation Research Part A: Policy and Practice",
     year: "2023",
     category: "Transportation Systems",
     tags: ["Ridesharing", "Economics", "Simulation"],
-    citations: "55+",
-    paperUrl: "https://arxiv.org/abs/2209.04944",
-    codeUrl: ""
+    paperUrl: "https://doi.org/10.1016/j.tra.2023.103690",
+    codeUrl: "",
+    image: "/assets/pub_ridesplitting.png",
+    bibtex: `@article{Liu2023ScaleEffects,
+  title={Scale effects in ridesplitting: A case study of the City of Chicago},
+  author={Liu, Hao and Devunuri, Saipraneeth and Lehe, Lewis and Gayah, Vikash V.},
+  journal={Transportation Research Part A: Policy and Practice},
+  volume={173},
+  year={2023},
+  doi={10.1016/j.tra.2023.103690},
+  url={https://doi.org/10.1016/j.tra.2023.103690}
+}`
+  },
+  {
+    title: "An unsupervised learning framework for detecting adaptive cruise control operated vehicles in a vehicle trajectory data",
+    authors: "Mohammadreza Khajeh Hosseini, Alireza Talebpour, Saipraneeth Devunuri, Samer H. Hamdar",
+    venue: "Expert Systems with Applications",
+    year: "2022",
+    category: "Transportation Systems",
+    tags: ["Unsupervised Learning", "Machine Learning", "ACC", "Trajectory Data"],
+    paperUrl: "https://doi.org/10.1016/j.eswa.2022.118060",
+    codeUrl: "",
+    image: "/assets/pub_acc_detection.png",
+    bibtex: `@article{hosseini2022unsupervised,
+  title={An unsupervised learning framework for detecting adaptive cruise control operated vehicles in a vehicle trajectory data},
+  author={Khajeh Hosseini, Mohammadreza and Talebpour, Alireza and Devunuri, Saipraneeth and Hamdar, Samer H.},
+  journal={Expert Systems with Applications},
+  volume={208},
+  pages={118060},
+  year={2022},
+  publisher={Elsevier},
+  doi={10.1016/j.eswa.2022.118060}
+}`
+  },
+  {
+    title: "Large elasticity at introduction",
+    authors: "Lewis J. Lehe, Saipraneeth Devunuri",
+    venue: "Research in Transportation Economics",
+    year: "2022",
+    category: "Transportation Systems",
+    tags: ["Transportation Economics", "Congestion Pricing", "Elasticity", "Urban Planning"],
+    paperUrl: "https://doi.org/10.1016/j.retrec.2022.101183",
+    codeUrl: "",
+    image: "/assets/pub_elasticity.png",
+    bibtex: `@article{lehe2022large,
+  title={Large elasticity at introduction},
+  author={Lehe, Lewis and Devunuri, Saipraneeth},
+  journal={Research in Transportation Economics},
+  volume={94},
+  pages={101183},
+  year={2022},
+  publisher={Elsevier},
+  doi={10.1016/j.retrec.2022.101183}
+}`
+  },
+  {
+    title: "CrackSeg9k: A Collection and Benchmark for Crack Segmentation Datasets and Frameworks",
+    authors: "Shreyas Kulkarni, Shreyas Singh, Dhananjay Balakrishnan, Siddharth Sharma, Saipraneeth Devunuri, Sai Chowdeswara Rao Korlapati",
+    venue: "European Conference on Computer Vision (ECCV) Workshops",
+    year: "2022",
+    category: "Computer Vision",
+    tags: ["Computer Vision", "Deep Learning", "Segmentation", "Infrastructure"],
+    paperUrl: "https://arxiv.org/abs/2208.13054",
+    codeUrl: "https://github.com/Dhananjay42/crackseg9k",
+    image: "/assets/pub_crackseg9k.png",
+    bibtex: `@inproceedings{kulkarni2022crackseg9k,
+  title={CrackSeg9k: a collection and benchmark for crack segmentation datasets and frameworks},
+  author={Kulkarni, Shreyas and Singh, Shreyas and Balakrishnan, Dhananjay and Sharma, Siddharth and Devunuri, Saipraneeth and Korlapati, Sai Chowdeswara Rao},
+  booktitle={European Conference on Computer Vision},
+  pages={179--195},
+  year={2022},
+  organization={Springer}
+}`
   }
 ];
 
 const categories = ['All', 'Generative AI', 'Transportation Systems', 'Computer Vision'];
+
+function boldAuthor(authorsStr: string) {
+  return authorsStr.replace(/(Saipraneeth Devunuri)/g, "<strong>$1</strong>");
+}
 ---
 
 <Layout title="Publications | Saipraneeth Devunuri" description="Peer-reviewed journal articles, conference papers, and academic publications by Saipraneeth Devunuri in Generative AI, Intelligent Transportation Systems, and Computer Vision.">
@@ -93,7 +226,7 @@ const categories = ['All', 'Generative AI', 'Transportation Systems', 'Computer 
         Academic Publications
       </h1>
       <p class="font-inter text-slate-400 mt-4 leading-relaxed">
-        Research at the intersection of machine learning, public transit economics, and generative models. Follow links below to read preprint PDFs or access open-source code repositories.
+        Research at the intersection of machine learning, public transit economics, and generative models. Follow links below to read preprint PDFs, access open-source code repositories, or copy BibTeX citations.
       </p>
     </div>
 
@@ -151,65 +284,103 @@ const categories = ['All', 'Generative AI', 'Transportation Systems', 'Computer 
 
     <!-- Publications List -->
     <div class="space-y-6">
-      {publications.map((pub) => (
+      {publications.map((pub, index) => (
         <div
-          class="pub-card flex flex-col md:flex-row gap-6 items-start rounded-2xl border border-white/10 bg-slate-900/20 p-6 backdrop-blur-sm hover:border-slate-800 transition-all duration-300"
+          class="pub-card flex flex-col gap-5 rounded-2xl border border-white/10 bg-slate-900/20 p-6 backdrop-blur-sm hover:border-slate-800 transition-all duration-300"
           data-category={pub.category.toLowerCase()}
           data-title={pub.title.toLowerCase()}
           data-tags={pub.tags.join(' ').toLowerCase()}
         >
-          <!-- Citations / Year Badge -->
-          <div class="flex md:flex-col items-center justify-center shrink-0 w-full md:w-24 gap-2 border-b md:border-b-0 md:border-r border-white/5 pb-4 md:pb-0 md:pr-6 text-center">
-            <span class="font-outfit text-2xl font-black text-slate-100">{pub.year}</span>
-            <div class="rounded-lg bg-teal-500/5 border border-teal-500/20 px-2.5 py-1 text-[10px] font-bold text-teal-400 uppercase tracking-widest">
-              Cites: {pub.citations}
-            </div>
-          </div>
+          <!-- Main Details -->
+          <div class="flex flex-col md:flex-row gap-6 items-start w-full">
+            <!-- Publication Image -->
+            {pub.image && (
+              <div class="w-full md:w-44 h-32 rounded-xl overflow-hidden border border-white/10 shrink-0">
+                <img 
+                  src={pub.image} 
+                  alt={pub.title}
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            )}
 
-          <!-- Publication Information -->
-          <div class="flex-grow">
-            <span class="inline-flex rounded-full bg-indigo-500/10 px-2.5 py-0.5 text-[10px] font-semibold text-indigo-400 border border-indigo-500/20 mb-3 uppercase tracking-wider">
-              {pub.category}
-            </span>
-            <h2 class="font-outfit text-lg sm:text-xl font-bold text-white leading-snug">{pub.title}</h2>
-            <p class="font-inter text-sm text-slate-300 mt-2">{pub.authors}</p>
-            <p class="font-inter text-xs text-slate-500 italic mt-1">{pub.venue}</p>
-
-            <!-- Tags -->
-            <div class="flex flex-wrap gap-1.5 mt-4">
-              {pub.tags.map((tag) => (
-                <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-white/5 text-slate-400 border border-white/5">
-                  {tag}
+            <!-- Publication Information -->
+            <div class="flex-grow">
+              <div class="flex flex-wrap items-center gap-2 mb-3">
+                <span class="inline-flex rounded-full bg-indigo-500/10 px-2.5 py-0.5 text-[10px] font-semibold text-indigo-400 border border-indigo-500/20 uppercase tracking-wider">
+                  {pub.category}
                 </span>
-              ))}
+                <span class="inline-flex rounded-full bg-teal-500/10 px-2.5 py-0.5 text-[10px] font-semibold text-teal-400 border border-teal-500/20 uppercase tracking-wider">
+                  {pub.year}
+                </span>
+              </div>
+              <h2 class="font-outfit text-lg sm:text-xl font-bold text-white leading-snug">{pub.title}</h2>
+              <p class="font-inter text-sm text-slate-300 mt-2" set:html={boldAuthor(pub.authors)}></p>
+              <p class="font-inter text-xs text-slate-500 italic mt-1">{pub.venue}</p>
+
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-1.5 mt-4">
+                {pub.tags.map((tag) => (
+                  <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-white/5 text-slate-400 border border-white/5">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <!-- Links -->
+            <div class="flex sm:flex-col gap-3 shrink-0 w-full sm:w-auto mt-4 sm:mt-0 pt-4 sm:pt-0 border-t sm:border-t-0 border-white/5">
+              {pub.paperUrl && (
+                <a
+                  href={pub.paperUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-4 py-2 font-outfit text-xs font-semibold text-slate-200 hover:bg-white/10 hover:text-white transition-all w-full sm:w-28 text-center"
+                >
+                  <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                  PDF
+                </a>
+              )}
+              {pub.codeUrl && (
+                <a
+                  href={pub.codeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center justify-center gap-1.5 rounded-lg bg-teal-500/10 border border-teal-500/20 px-4 py-2 font-outfit text-xs font-semibold text-teal-400 hover:bg-teal-500/20 transition-all w-full sm:w-28 text-center"
+                >
+                  <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.193 22 16.44 22 12.017 22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+                  Code
+                </a>
+              )}
+              {pub.bibtex && (
+                <button
+                  class="cite-trigger-btn flex items-center justify-center gap-1.5 rounded-lg border border-purple-500/20 bg-purple-500/5 px-4 py-2 font-outfit text-xs font-semibold text-purple-400 hover:bg-purple-500/15 hover:border-purple-500/30 transition-all w-full sm:w-28 text-center cursor-pointer"
+                  data-target={`bibtex-${index}`}
+                >
+                  <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+                  </svg>
+                  Cite
+                </button>
+              )}
             </div>
           </div>
 
-          <!-- Links -->
-          <div class="flex sm:flex-col gap-3 shrink-0 w-full sm:w-auto mt-4 sm:mt-0 pt-4 sm:pt-0 border-t sm:border-t-0 border-white/5">
-            {pub.paperUrl && (
-              <a
-                href={pub.paperUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-4 py-2 font-outfit text-xs font-semibold text-slate-200 hover:bg-white/10 hover:text-white transition-all w-full sm:w-28 text-center"
+          <!-- BibTeX collapsible section -->
+          {pub.bibtex && (
+            <div id={`bibtex-${index}`} class="bibtex-drawer hidden w-full p-4 rounded-xl border border-white/10 bg-slate-950/80 font-mono text-[11px] text-slate-300 relative mt-2 animate-[fadeIn_0.2s_ease-out]">
+              <button
+                class="copy-bibtex-btn absolute right-3 top-3 px-2.5 py-1 rounded bg-white/5 hover:bg-white/10 text-slate-400 hover:text-slate-200 border border-white/5 transition-colors text-[10px] font-sans font-semibold flex items-center gap-1 cursor-pointer"
+                data-bibtex={pub.bibtex}
               >
-                <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                PDF
-              </a>
-            )}
-            {pub.codeUrl && (
-              <a
-                href={pub.codeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex items-center justify-center gap-1.5 rounded-lg bg-teal-500/10 border border-teal-500/20 px-4 py-2 font-outfit text-xs font-semibold text-teal-400 hover:bg-teal-500/20 transition-all w-full sm:w-28 text-center"
-              >
-                <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.193 22 16.44 22 12.017 22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
-                Code
-              </a>
-            )}
-          </div>
+                <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                </svg>
+                <span>Copy</span>
+              </button>
+              <pre class="overflow-x-auto whitespace-pre pr-16">{pub.bibtex}</pre>
+            </div>
+          )}
         </div>
       ))}
     </div>
@@ -263,9 +434,49 @@ const categories = ['All', 'Generative AI', 'Transportation Systems', 'Computer 
         filterPublications();
       });
     }
+
+    // Toggle BibTeX drawer
+    const citeButtons = document.querySelectorAll('.cite-trigger-btn');
+    citeButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-target');
+        if (targetId) {
+          const drawer = document.getElementById(targetId);
+          if (drawer) {
+            drawer.classList.toggle('hidden');
+          }
+        }
+      });
+    });
+
+    // Copy BibTeX functionality
+    const copyButtons = document.querySelectorAll('.copy-bibtex-btn');
+    copyButtons.forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const text = btn.getAttribute('data-bibtex');
+        if (text) {
+          try {
+            await navigator.clipboard.writeText(text);
+            const label = btn.querySelector('span');
+            if (label) {
+              const originalText = label.textContent;
+              label.textContent = 'Copied!';
+              btn.classList.add('bg-teal-500/20', 'text-teal-400');
+              setTimeout(() => {
+                label.textContent = originalText;
+                btn.classList.remove('bg-teal-500/20', 'text-teal-400');
+              }, 2000);
+            }
+          } catch (err) {
+            console.error('Failed to copy text: ', err);
+          }
+        }
+      });
+    });
   }
 
   // Initial setup and transitions compatibility
   setupPubFilters();
   document.addEventListener('astro:after-swap', setupPubFilters);
 </script>
+

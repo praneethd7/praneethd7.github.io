@@ -1,7 +1,7 @@
 ---
 title: Trekking & Camping
 type: hobby
-order: 8
+order: 10
 ---
 
 Backpacking and camping outdoors, exploring wilderness landscapes and scaling heights.

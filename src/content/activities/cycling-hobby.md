@@ -1,7 +1,7 @@
 ---
 title: Cycling
 type: hobby
-order: 7
+order: 9
 ---
 
 Exploring scenic trails and keeping active through long-distance cycling.

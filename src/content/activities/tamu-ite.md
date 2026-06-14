@@ -2,7 +2,7 @@
 title: TAMU Institute of Transportation Engineers Student Chapter (TamuITE)
 role: Webmaster & Publicist
 type: responsibility
-order: 1
+order: 3
 ---
 
 As part of the Texas A&M ITE student group, I managed the website of [TamuITE](http://texite.org/tamu/) alongside creating posters for technical workshops and general meetings. I also managed the Facebook and Twitter handles. The most challenging and exciting work was designing the Annual Report.
