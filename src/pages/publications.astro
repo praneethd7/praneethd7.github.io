@@ -25,6 +25,27 @@ const publications = [
 }`
   },
   {
+    title: "Taxation of ridehailing in the United States",
+    authors: "Lewis Lehe, Saipraneeth Devunuri, Javier Rondan, Ayush Pandey, Daniel Vignon",
+    venue: "Transport Policy (Journal)",
+    year: "2025",
+    category: "Transportation Systems",
+    tags: ["Ridehailing", "Taxation", "Transportation Economics", "Policy"],
+    paperUrl: "https://doi.org/10.1016/j.tranpol.2024.11.002",
+    codeUrl: "",
+    image: "/assets/pub_taxation_ridehailing.png",
+    bibtex: `@article{lehe2025taxation,
+  title={Taxation of ridehailing in the United States},
+  author={Lehe, Lewis and Devunuri, Saipraneeth and Rondan, Javier and Pandey, Ayush and Vignon, Daniel},
+  journal={Transport Policy},
+  volume={149},
+  pages={1--11},
+  year={2025},
+  publisher={Elsevier},
+  doi={10.1016/j.tranpol.2024.11.002}
+}`
+  },
+  {
     title: "A Pipeline and NIR-Enhanced Dataset for Parking Lot Segmentation",
     authors: "Shirin Qiam, Saipraneeth Devunuri, Lewis J. Lehe",
     venue: "IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)",
@@ -218,6 +239,28 @@ function boldAuthor(authorsStr: string) {
 ---
 
 <Layout title="Publications | Saipraneeth Devunuri" description="Peer-reviewed journal articles, conference papers, and academic publications by Saipraneeth Devunuri in Generative AI, Intelligent Transportation Systems, and Computer Vision.">
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": publications.map((pub, idx) => ({
+        "@type": "ScholarlyArticle",
+        "@id": `https://praneethd7.github.io/publications/#pub-${idx}`,
+        "name": pub.title,
+        "headline": pub.title,
+        "author": pub.authors.split(',').map(name => ({
+          "@type": "Person",
+          "name": name.trim()
+        })),
+        "datePublished": pub.year,
+        "publisher": {
+          "@type": "Organization",
+          "name": pub.venue
+        },
+        "url": pub.paperUrl || undefined,
+        "sameAs": pub.codeUrl || undefined
+      }))
+    })} />
+  </Fragment>
   <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
     
     <!-- Title Area -->
@@ -241,7 +284,7 @@ function boldAuthor(authorsStr: string) {
         <span class="block font-inter text-xs text-slate-400 mt-1 uppercase tracking-wider">h-index</span>
       </div>
       <div class="rounded-2xl border border-white/10 bg-slate-900/40 p-5 backdrop-blur-sm text-center">
-        <span class="block font-outfit text-3xl font-extrabold text-purple-400">7</span>
+        <span class="block font-outfit text-3xl font-extrabold text-purple-400">8</span>
         <span class="block font-inter text-xs text-slate-400 mt-1 uppercase tracking-wider">Core Papers</span>
       </div>
       <div class="rounded-2xl border border-white/10 bg-slate-900/40 p-5 backdrop-blur-sm text-center">

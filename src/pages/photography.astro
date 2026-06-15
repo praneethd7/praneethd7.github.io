@@ -44,6 +44,24 @@ const categories = ['All', 'Aerial', 'Adventure', 'Landscape', 'Wildlife'];
 ---
 
 <Layout title="Photography | Praneeth Devunuri" description="Praneeth Devunuri's photography showcase. Features professional high-resolution drone/aerial, landscape, and trekking photography with a responsive lightbox.">
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ImageGallery",
+      "name": "Praneeth Devunuri's Photography Gallery",
+      "description": "Landscape, Aerial, Adventure, and Sports photography by Praneeth Devunuri.",
+      "creator": {
+        "@id": "https://praneethd7.github.io/#person"
+      },
+      "image": resolvedImages.map((img) => ({
+        "@type": "ImageObject",
+        "name": img.title,
+        "caption": img.title,
+        "contentUrl": `https://praneethd7.github.io${img.src.src}`,
+        "genre": img.category
+      }))
+    })} />
+  </Fragment>
   <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
     
     <!-- Title Area -->

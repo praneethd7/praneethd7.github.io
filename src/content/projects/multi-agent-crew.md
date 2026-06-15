@@ -17,3 +17,8 @@ An autonomous agent workspace where a crew of specialized AI agents (Product Man
 ### Technology Stack
 - **Frameworks**: crewAI, LangGraph, Docker (sandboxing)
 - **Base Models**: Gemini 1.5 Flash, GPT-4o
+
+<div class="mt-6 flex justify-center">
+  <img class="rounded-xl border border-white/10 shadow-lg max-w-md w-full" src="/assets/multi_agent_crew.png" alt="Multi-Agent Software Engineering Workspace">
+</div>
+

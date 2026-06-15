@@ -37,6 +37,24 @@ const grouped = {
 ---
 
 <Layout title="Activities & Hobbies | Praneeth Devunuri" description="Praneeth Devunuri's leadership responsibilities, academic competitions, and creative design hobbies including drone flying, drawings, cycling, and trekking.">
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Praneeth Devunuri's Activities and Positions of Responsibility",
+      "description": "Leadership responsibilities, academic competitions, and creative design hobbies.",
+      "itemListElement": activities.map((act, idx) => ({
+        "@type": "ListItem",
+        "position": idx + 1,
+        "item": {
+          "@type": "CreativeWork",
+          "name": act.data.title,
+          "genre": act.data.type,
+          "roleName": act.data.role || undefined
+        }
+      }))
+    })} />
+  </Fragment>
   <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
     
     <!-- Title Area -->

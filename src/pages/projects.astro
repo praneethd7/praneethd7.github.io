@@ -19,10 +19,25 @@ const projectsWithContent = await Promise.all(
   })
 );
 
-const categories = ['All', 'Generative AI', 'Reinforcement Learning', 'Autonomous Vehicles', 'Computer Vision'];
+const categories = ['All', 'Generative AI', 'Reinforcement Learning', 'Autonomous Vehicles', 'Computer Vision', 'Other'];
 ---
 
 <Layout title="Projects | Praneeth Devunuri" description=" Praneeth Devunuri's engineering and research projects, spanning Generative AI, Reinforcement Learning, Autonomous Vehicles, and Computer Vision.">
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": projects.map((p) => ({
+        "@type": "CreativeWork",
+        "@id": `https://praneethd7.github.io/projects/#project-${p.id}`,
+        "name": p.data.title,
+        "keywords": p.data.tags.join(', '),
+        "genre": p.data.category,
+        "creator": {
+          "@id": "https://praneethd7.github.io/#person"
+        }
+      }))
+    })} />
+  </Fragment>
   <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
     
     <!-- Title Area -->

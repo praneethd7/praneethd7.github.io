@@ -1,0 +1,132 @@
+# Saipraneeth (Praneeth) Devunuri
+
+Senior AI Scientist at Optym and former Ph.D. Researcher at the University of Illinois Urbana-Champaign (UIUC). Specialized in Generative AI/LLMs, Reinforcement Learning, Autonomous Vehicles, and Computer Vision.
+
+## Contact & Profiles
+- Website: https://praneethd7.github.io
+- LinkedIn: https://linkedin.com/in/praneethd7
+- GitHub: https://github.com/praneethd7
+- Google Scholar: https://scholar.google.com/citations?user=z2Z271UAAAAJ&hl=en
+- Twitter/X: https://x.com/praneethDevunu1
+- Facebook: https://facebook.com/praneethDevunuri
+
+## About & Bio
+Saipraneeth describes himself as the "ε-guy" (representing the exploration vs exploitation value in reinforcement learning). He constantly explores and applies complex machine learning, optimization, and AI models to automate and optimize the physical and digital worlds. He transitioned from Ph.D. research in Connected and Autonomous Vehicles (UIUC) to driving next-generation AI and optimization systems at Optym.
+
+## Professional Experience
+- **Senior AI Scientist** | Optym (2025 - Present)
+  - Developing and deploying state-of-the-art machine learning models, optimization algorithms, and Generative AI (LLM) workflows to solve complex logistics and transportation scheduling challenges.
+- **Ph.D. Researcher & Doctoral Student** | University of Illinois Urbana-Champaign (2020 - 2025)
+  - Researched intelligent transportation systems, reinforcement learning for signal controls, and Large Language Model (LLM) frameworks for transit data under Dr. Lewis Lehe. Graduated in 2025.
+- **Graduate Assistant Researcher** | Texas A&M University (2018 - 2020)
+  - Built autonomous ride-sharing simulations, modeled pricing schemes for Mobility-as-a-Service, and performed emergency vehicle response experiments.
+- **Bachelor of Technology** | Indian Institute of Technology, Madras (2014 - 2018)
+  - Developed image processing frameworks for traffic extraction, created glass fragmentation test prototypes, and served as Webops Head.
+
+## Technical Skills
+- **Generative AI & LLMs**: Agentic Workflows (crewAI, LangGraph), Hybrid RAG & Semantic Search, LLM Fine-tuning (LoRA, PEFT), Inference Optimization (vLLM).
+- **Reinforcement Learning**: Q-Learning & Policy Gradients, Autonomous Control Algorithms, Simulation Modeling (SUMO, VISSIM), Decision Processes (MDPs).
+- **Computer Vision**: Object Detection & Tracking (YOLO), Image Processing (OpenCV), Spatial-CNN (Lane Line Prediction), Sensor Fusion.
+
+## Academic Publications
+1. **TransitGPT: A Generative AI-based framework for interacting with GTFS data using Large Language Models** (2025)
+   - Authors: Saipraneeth Devunuri, Lewis Lehe
+   - Journal: Public Transport
+   - DOI: 10.1007/s12469-024-00366-6
+   - Paper URL: https://arxiv.org/abs/2412.06831
+   - Code URL: https://github.com/UTEL-UIUC/TransitGPT
+2. **Taxation of ridehailing in the United States** (2025)
+   - Authors: Lewis Lehe, Saipraneeth Devunuri, Javier Rondan, Ayush Pandey, Daniel Vignon
+   - Journal: Transport Policy
+   - DOI: 10.1016/j.tranpol.2024.11.002
+   - Paper URL: https://doi.org/10.1016/j.tranpol.2024.11.002
+3. **A Pipeline and NIR-Enhanced Dataset for Parking Lot Segmentation** (2025)
+   - Authors: Shirin Qiam, Saipraneeth Devunuri, Lewis J. Lehe
+   - Booktitle: Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)
+   - Paper URL: https://openaccess.thecvf.com/content/WACV2025/html/Devunuri_A_Pipeline_and_NIR-Enhanced_Dataset_for_Parking_Lot_Segmentation_WACV_2025_paper.html
+   - Code URL: https://github.com/UTEL-UIUC/parking-lot-segmentation-tool
+4. **ChatGPT for GTFS: Benchmarking LLMs on GTFS Semantics and Retrieval** (2024)
+   - Authors: Saipraneeth Devunuri, Shirin Qiam, Lewis J. Lehe
+   - Journal: Public Transport
+   - DOI: 10.1007/s12469-024-00354-x
+   - Paper URL: https://arxiv.org/abs/2308.02618
+5. **GTFS Segments: A Fast and Efficient Library to Generate Bus Stop Spacings** (2024)
+   - Authors: Saipraneeth Devunuri, Lewis Lehe
+   - Journal: Journal of Open Source Software
+   - DOI: 10.21105/joss.06306
+   - Paper URL: https://doi.org/10.21105/joss.06306
+   - Code URL: https://github.com/UTEL-UIUC/gtfs_segments
+6. **Bus Stop Spacings Statistics: Theory and Evidence** (2024)
+   - Authors: Saipraneeth Devunuri, Lewis J. Lehe, Shirin Qiam, Ayush Pandey, Dana Monzer
+   - Journal: Journal of Public Transportation
+   - DOI: 10.1016/j.jpubtr.2024.100083
+   - Paper URL: https://doi.org/10.1016/j.jpubtr.2024.100083
+7. **A Survey of Errors in GTFS Static Feeds from the United States** (2024)
+   - Authors: Saipraneeth Devunuri, Lewis Lehe
+   - Journal: Findings
+   - DOI: 10.32866/001c.116694
+   - Paper URL: https://doi.org/10.32866/001c.116694
+8. **Scale Effects in Ridesplitting: A Case Study of the City of Chicago** (2023)
+   - Authors: Hao Liu, Saipraneeth Devunuri, Lewis Lehe, Vikash V. Gayah
+   - Journal: Transportation Research Part A: Policy and Practice
+   - DOI: 10.1016/j.tra.2023.103690
+   - Paper URL: https://doi.org/10.1016/j.tra.2023.103690
+9. **An unsupervised learning framework for detecting adaptive cruise control operated vehicles in a vehicle trajectory data** (2022)
+   - Authors: Mohammadreza Khajeh Hosseini, Alireza Talebpour, Saipraneeth Devunuri, Samer H. Hamdar
+   - Journal: Expert Systems with Applications
+   - DOI: 10.1016/j.eswa.2022.118060
+   - Paper URL: https://doi.org/10.1016/j.eswa.2022.118060
+10. **Large elasticity at introduction** (2022)
+    - Authors: Lewis J. Lehe, Saipraneeth Devunuri
+    - Journal: Research in Transportation Economics
+    - DOI: 10.1016/j.retrec.2022.101183
+    - Paper URL: https://doi.org/10.1016/j.retrec.2022.101183
+
+## Featured & Current Projects
+- **Agentic RAG System for Technical Documentation** (Generative AI)
+  - Description: Enterprise-grade RAG system engineered for QA over complex developer documentation. Employs sparse/dense hybrid search with cross-encoder reranking, and LLM-based query intent routing.
+  - Stack: LangChain, LlamaIndex, FastAPI, Gemini 1.5 Pro, Llama-3 (70B), Qdrant, Cohere Rerank, BGE-M3.
+- **Fine-Tuning Code Llama with PEFT/LoRA** (Generative AI)
+  - Description: Domain-specific code generation assistant trained using QLoRA on single GPU, improving completions by 35% and extending context to 16k tokens.
+  - Stack: HuggingFace PEFT, TRL, PyTorch, RunPod, vLLM.
+- **Multi-Agent Software Engineering Workspace** (Generative AI)
+  - Description: Workspace where a crew of specialized agents (PM, Coder, QA, Tech Writer) collaborate to plan, write, test, and document software features autonomously with auto-debugging loops.
+  - Stack: crewAI, LangGraph, Docker.
+
+## Selected Research & Previous Projects
+- **Traffic Signal Detection using YOLO** (Computer Vision)
+  - Description: Real-time traffic signal state detection and classification from vehicle dashboard camera feeds.
+- **Traffic Signal Control with Reinforcement Learning** (Reinforcement Learning)
+  - Description: Deep Q-Learning (DQN) implementation to optimize traffic signal timings in SUMO simulation environment.
+- **Automation of Glass Fragmentation Testing** (Computer Vision)
+  - Description: Image processing prototype using Raspberry Pi and camera modules to automate counting of shattered glass particles.
+- **Emergency Vehicle Preemption Routing** (Autonomous Vehicles)
+  - Description: Simulations analyzing green-wave preemptive signaling schemes for emergency vehicle transit response times.
+- **Mobility-as-a-Service Cost Modeling** (Autonomous Vehicles)
+  - Description: Economic simulations analyzing pricing tiers, operational costs, and fleet scaling of autonomous ride-sharing.
+- **Drone Routing for Emergency Medical Supplies** (Autonomous Vehicles)
+  - Description: Developed routing algorithms for delivery drone operations under varying battery life constraints and weather patterns.
+- **Aerial Trajectory Tracking** (Autonomous Vehicles)
+  - Description: Control algorithms for UAV flight paths and precision trajectory tracking.
+- **Wastewater Flow Prediction** (Other)
+  - Description: Machine learning models predicting urban wastewater inflow rates to optimize processing plant capacity.
+- **Vehicular Emissions Modeling** (Other)
+  - Description: Modeled localized emission maps based on vehicle trajectory and acceleration rates.
+- **Covid Testing Logistics Optimization** (Other)
+  - Description: Optimization models for scheduling and distributing covid-19 testing resources across a regional testing network.
+- **Semi-Automatic Data Annotation tool** (Computer Vision)
+  - Description: Image segmentation annotation tool utilizing thresholding and active contour models to accelerate labeling speed.
+- **Lane Line Extraction with Spatial-CNN** (Computer Vision)
+  - Description: Deployed Spatial-CNN models for detecting lane markers under occluded or night environments.
+- **Visual Traffic Density Extraction** (Computer Vision)
+  - Description: Extracting vehicle count, velocity, and density metrics from static CCTV surveillance cameras.
+- **Maze Solver with Q-Learning** (Reinforcement Learning)
+  - Description: Simple reinforcement learning agent solving a dynamic maze using custom Q-Learning algorithm.
+
+## Leadership & Activities
+- **Webops Head & Coordinator** | IIT Madras (2016 - 2018)
+  - Led the web development and operations team for CEA Fest, managing event portals and registration databases.
+- **Student Officer & Member** | TAMU and UIUC Student Chapters
+  - Actively represented the Institute of Transportation Engineers (ITE) student chapters, organizing local technical talks and research networking.
+- **Recreational Activities & Hobbies**
+  - Aerial Photography (Drone Flying), Graphic Sketching/Drawing, Cycling, and Wilderness Trekking/Camping.

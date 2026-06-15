@@ -13,6 +13,8 @@ const {
   title = "Praneeth Devunuri | GenAI Specialist & Research", 
   description = "Praneeth Devunuri's portfolio. Transitioning from PhD research in autonomous vehicles and reinforcement learning to professional Generative AI development."
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -28,6 +30,12 @@ const {
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- LLM text representation discovery -->
+    <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLM-friendly content summary" />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url} />
@@ -46,6 +54,9 @@ const {
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
     <ClientRouter />
+    
+    <!-- Page-specific structured metadata and head injections -->
+    <slot name="head" />
   </head>
   <body class="flex min-h-screen flex-col bg-slate-950 text-slate-100 selection:bg-teal-500/30 selection:text-teal-200 antialiased overflow-x-hidden font-inter">
     <!-- Glow Background Decorative Blobs -->
@@ -60,5 +71,97 @@ const {
       <slot />
     </main>
     <Footer />
+
+    <!-- Global Lightbox Modal (Hidden by Default) -->
+    <div
+      id="global-lightbox"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-950/95 backdrop-blur-md p-4 sm:p-10 select-none cursor-zoom-out"
+      aria-hidden="true"
+    >
+      <!-- Close Button -->
+      <button
+        id="global-lightbox-close"
+        class="absolute top-6 right-6 z-50 text-slate-400 hover:text-white hover:scale-110 active:scale-95 transition-all cursor-pointer"
+        aria-label="Close lightbox"
+      >
+        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <!-- Image and Caption Area -->
+      <div class="relative max-w-5xl max-h-[85vh] flex flex-col items-center justify-center cursor-default">
+        <img
+          id="global-lightbox-img"
+          class="max-w-full max-h-[78vh] object-contain rounded-xl shadow-2xl border border-white/10"
+          src=""
+          alt=""
+        />
+        <p id="global-lightbox-caption" class="font-outfit text-sm sm:text-base text-slate-300 mt-4 text-center px-4"></p>
+      </div>
+    </div>
+
+    <script>
+      function setupGlobalLightbox() {
+        const lightbox = document.getElementById('global-lightbox');
+        const lightboxImg = document.getElementById('global-lightbox-img');
+        const lightboxCaption = document.getElementById('global-lightbox-caption');
+        const closeBtn = document.getElementById('global-lightbox-close');
+
+        if (!lightbox || !lightboxImg) return;
+
+        // Find all images within prose/markdown articles
+        const images = document.querySelectorAll('article.prose img');
+
+        images.forEach((img) => {
+          // Add cursor style indicating zoomability
+          img.classList.add('cursor-zoom-in', 'transition-opacity', 'duration-300', 'hover:opacity-90');
+          
+          img.addEventListener('click', (e) => {
+            const targetImg = e.currentTarget;
+            lightboxImg.src = targetImg.currentSrc || targetImg.src;
+            lightboxImg.alt = targetImg.alt;
+            if (lightboxCaption) {
+              lightboxCaption.textContent = targetImg.alt || '';
+            }
+            lightbox.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+          });
+        });
+
+        const closeLightbox = () => {
+          lightbox.classList.add('hidden');
+          document.body.style.overflow = '';
+        };
+
+        if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+        
+        // Clicking outside the image or modal closes it
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) {
+            closeLightbox();
+          }
+        });
+
+        // Keyboard navigation (Escape key to close)
+        const handleKeyDown = (e) => {
+          if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+            closeLightbox();
+          }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+
+        // Cleanup keydown listener on Astro page transitions
+        document.addEventListener('astro:before-swap', () => {
+          window.removeEventListener('keydown', handleKeyDown);
+        }, { once: true });
+      }
+
+      // Initial setup
+      setupGlobalLightbox();
+      // Listen for page changes with Astro transitions
+      document.addEventListener('astro:after-swap', setupGlobalLightbox);
+    </script>
   </body>
 </html>

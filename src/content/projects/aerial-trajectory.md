@@ -1,5 +1,6 @@
 ---
 title: Vehicle Trajectory Data Collection Using Aerial Videography
+guide: Dr. Alireza Talebpour
 category: Computer Vision
 type: previous
 tags: [Drones, Traffic Analysis, Computer Vision, Datasets]

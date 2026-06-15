@@ -17,3 +17,8 @@ A specialized code-generation assistant developed by fine-tuning Code Llama (13B
 ### Technology Stack
 - **Tools**: HuggingFace PEFT, TRL (Transformer Reinforcement Learning), PyTorch
 - **Infrastructure**: RunPod A100 instances, vLLM for high-throughput inference
+
+<div class="mt-6 flex justify-center">
+  <img class="rounded-xl border border-white/10 shadow-lg max-w-md w-full" src="/assets/peft_code_llama.png" alt="Fine-Tuning Code Llama with PEFT/LoRA">
+</div>
+

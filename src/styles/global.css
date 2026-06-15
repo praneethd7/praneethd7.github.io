@@ -5,3 +5,30 @@
   --color-brand-indigo: #6366F1;
   --color-brand-gold: #FBBF24;
 }
+
+/* Align heights of side-by-side images in markdown prose content and keep a smaller max height */
+article.prose .grid img {
+  width: 100% !important;
+  height: 180px !important;
+  object-fit: contain !important;
+  background-color: rgba(15, 23, 42, 0.5) !important;
+}
+
+@media (min-width: 640px) {
+  article.prose .grid img {
+    height: 240px !important;
+  }
+}
+
+/* Modifier for portrait images side-by-side (e.g. mobile apps, drawings, posters) */
+article.prose .grid.grid-portrait img {
+  height: 280px !important;
+  object-fit: contain !important;
+  background-color: rgba(15, 23, 42, 0.5) !important;
+}
+
+@media (min-width: 640px) {
+  article.prose .grid.grid-portrait img {
+    height: 380px !important;
+  }
+}

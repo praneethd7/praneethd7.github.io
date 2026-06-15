@@ -19,3 +19,8 @@ An enterprise-grade Retrieval-Augmented Generation (RAG) system engineered for h
 - **LLMs**: Gemini 1.5 Pro, Llama-3 (70B)
 - **Vector DB**: Qdrant (self-hosted)
 - **Retrieval**: Cohere Rerank, BGE-M3 Embeddings
+
+<div class="mt-6 flex justify-center">
+  <img class="rounded-xl border border-white/10 shadow-lg max-w-md w-full" src="/assets/agentic_rag_project.png" alt="Agentic RAG System Architecture">
+</div>
+
