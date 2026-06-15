@@ -4,6 +4,8 @@ category: Other
 type: course
 tags: [Data Preprocessing, OLS Regression, Python, Data Analysis, Emissions]
 order: 18
+image: "/assets/vehicular_emissions.png"
+description: "Analyzed EPA light motor vehicle datasets and modeled emissions using Ordinary Least Squares (OLS) regression."
 ---
 
 - Explored the EPA Light Motor Vehicle (LMV) dataset consisting of over 250k vehicles with 55 variables describing vehicle properties, manufacturing processes, and testing procedures for emissions.

@@ -4,6 +4,8 @@ category: Computer Vision
 type: course
 tags: [Computer Vision, YOLO, CNN, Transfer Learning, Augmentation]
 order: 16
+image: "/assets/signal_0.png"
+description: "Detected traffic signals under low-light/noise conditions using background subtraction, color thresholding, and fine-tuned YOLO CNN models."
 ---
 
 - Detected traffic signal using background subtraction, color thresholding and shape filters.

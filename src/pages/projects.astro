@@ -19,10 +19,17 @@ const projectsWithContent = await Promise.all(
   })
 );
 
-const categories = ['All', 'Generative AI', 'Reinforcement Learning', 'Autonomous Vehicles', 'Computer Vision', 'Other'];
+const categories = [
+  { name: 'All', filter: 'all' },
+  { name: 'GenAI', filter: 'generative ai' },
+  { name: 'RL', filter: 'reinforcement learning' },
+  { name: 'AVs', filter: 'autonomous vehicles' },
+  { name: 'CV', filter: 'computer vision' },
+  { name: 'Other', filter: 'other' }
+];
 ---
 
-<Layout title="Projects | Praneeth Devunuri" description=" Praneeth Devunuri's engineering and research projects, spanning Generative AI, Reinforcement Learning, Autonomous Vehicles, and Computer Vision.">
+<Layout title="Projects | Saipraneeth Devunuri" description="Saipraneeth Devunuri's engineering and research projects, spanning Generative AI, Reinforcement Learning, Autonomous Vehicles, and Computer Vision.">
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify({
       "@context": "https://schema.org",
@@ -41,71 +48,146 @@ const categories = ['All', 'Generative AI', 'Reinforcement Learning', 'Autonomou
   <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
     
     <!-- Title Area -->
-    <div class="text-center max-w-3xl mx-auto mb-12">
+    <div class="text-center max-w-3xl mx-auto mb-16">
       <h1 class="font-outfit text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
         Projects & Research
       </h1>
       <p class="font-inter text-slate-400 mt-4 leading-relaxed">
-        A catalog of my professional work in Generative AI along with my previous PhD research and academic achievements. Use the filters below to browse by domain.
+        A catalog of my professional work in Generative AI along with my previous PhD research and academic achievements. Use the filters below or search to browse by domain or keyword.
       </p>
     </div>
 
-    <!-- Filter Buttons -->
-    <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
-      {categories.map((category) => (
-        <button
-          class={`filter-btn font-outfit text-sm font-semibold px-4.5 py-2 rounded-xl transition-all duration-300 ${
-            category === 'All'
-              ? 'bg-teal-500 text-white shadow-lg shadow-teal-500/10'
-              : 'bg-white/5 text-slate-400 hover:bg-white/10 hover:text-slate-200'
-          }`}
-          data-filter={category.toLowerCase()}
-        >
-          {category}
-        </button>
-      ))}
+    <!-- Search & Filters Container -->
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-6 mb-12">
+      <!-- Search Input -->
+      <div class="relative w-full lg:max-w-md">
+        <input
+          type="text"
+          id="proj-search"
+          placeholder="Search projects by title, description or tags..."
+          class="w-full rounded-xl border border-white/10 bg-slate-900/60 py-3 pl-11 pr-4 font-inter text-sm text-slate-100 placeholder-slate-500 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-all duration-300"
+        />
+        <svg class="absolute left-4 top-3.5 h-4.5 w-4.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </div>
+
+      <!-- Categories filters -->
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        {categories.map((category) => (
+          <button
+            class={`proj-filter-btn font-outfit text-xs sm:text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-300 ${
+              category.filter === 'all'
+                ? 'bg-teal-500 text-white shadow-lg shadow-teal-500/10'
+                : 'bg-white/5 text-slate-400 hover:bg-white/10 hover:text-slate-200'
+            }`}
+            data-filter={category.filter}
+          >
+            {category.name}
+          </button>
+        ))}
+      </div>
     </div>
 
-    <!-- Projects Grid -->
-    <div class="grid grid-cols-1 gap-10">
-      {projectsWithContent.map(({ project, Content }) => (
+    <!-- Projects List -->
+    <div class="space-y-6">
+      {projectsWithContent.map(({ project, Content }, index) => (
         <div
-          class="project-card flex flex-col rounded-2xl border border-white/10 bg-slate-900/40 p-6 sm:p-8 backdrop-blur-sm transition-all duration-500 hover:border-slate-700/50"
+          class="project-card flex flex-col gap-5 rounded-2xl border border-white/10 bg-slate-900/20 p-6 backdrop-blur-sm hover:border-slate-800 transition-all duration-300"
           data-category={project.data.category.toLowerCase()}
+          data-title={project.data.title.toLowerCase()}
+          data-desc={project.data.description?.toLowerCase() || ''}
+          data-tags={project.data.tags.join(' ').toLowerCase()}
         >
-          <!-- Header metadata -->
-          <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/5 pb-4 mb-6">
-            <div class="flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-teal-500/10 px-3 py-1 text-xs font-semibold text-teal-400 border border-teal-500/20">
-                {project.data.category}
-              </span>
-              {project.data.type === 'current' && (
-                <span class="rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-400 border border-indigo-500/20">
-                  Featured / Current
+          <!-- Main Details -->
+          <div class="flex flex-col md:flex-row gap-6 items-start w-full">
+            <!-- Project Image -->
+            {project.data.image && (
+              <div class="w-full md:w-44 h-32 rounded-xl overflow-hidden border border-white/10 shrink-0 bg-slate-950/40 flex items-center justify-center transition-all duration-500 hover:border-teal-500/40 cursor-pointer">
+                <img 
+                  src={project.data.image} 
+                  alt={project.data.title}
+                  class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                />
+              </div>
+            )}
+
+            <!-- Project Information -->
+            <div class="flex-grow">
+              <div class="flex flex-wrap items-center gap-2 mb-3">
+                <span class="inline-flex rounded-full bg-indigo-500/10 px-2.5 py-0.5 text-[10px] font-semibold text-indigo-400 border border-indigo-500/20 uppercase tracking-wider">
+                  {project.data.category}
                 </span>
+                <span class="inline-flex rounded-full bg-teal-500/10 px-2.5 py-0.5 text-[10px] font-semibold text-teal-400 border border-teal-500/20 uppercase tracking-wider">
+                  {project.data.type === 'current' ? 'Featured / Current' : project.data.type}
+                </span>
+              </div>
+              <h2 class="font-outfit text-lg sm:text-xl font-bold text-white leading-snug">{project.data.title}</h2>
+              {project.data.guide && (
+                <p class="font-inter text-xs text-slate-500 italic mt-1">Guide: {project.data.guide}</p>
+              )}
+              {project.data.description && (
+                <p class="font-inter text-sm text-slate-300 mt-2 leading-relaxed">{project.data.description}</p>
+              )}
+
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-1.5 mt-4">
+                {project.data.tags.map((tag) => (
+                  <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-white/5 text-slate-400 border border-white/5">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <!-- Links -->
+            <div class="flex sm:flex-col gap-3 shrink-0 w-full sm:w-auto mt-4 sm:mt-0 pt-4 sm:pt-0 border-t sm:border-t-0 border-white/5">
+              <button
+                class="details-trigger-btn flex items-center justify-center gap-1.5 rounded-lg border border-teal-500/20 bg-teal-500/5 px-4 py-2 font-outfit text-xs font-semibold text-teal-400 hover:bg-teal-500/15 hover:border-teal-500/30 transition-all w-full sm:w-28 text-center cursor-pointer"
+                data-target={`details-${index}`}
+              >
+                <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+                </svg>
+                Details
+              </button>
+              {project.data.githubUrl && (
+                <a
+                  href={project.data.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center justify-center gap-1.5 rounded-lg bg-teal-500/10 border border-teal-500/20 px-4 py-2 font-outfit text-xs font-semibold text-teal-400 hover:bg-teal-500/20 transition-all w-full sm:w-28 text-center"
+                >
+                  <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.193 22 16.44 22 12.017 22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+                  Code
+                </a>
+              )}
+              {project.data.demoUrl && (
+                <a
+                  href={project.data.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-4 py-2 font-outfit text-xs font-semibold text-slate-200 hover:bg-white/10 hover:text-white transition-all w-full sm:w-28 text-center"
+                >
+                  Demo
+                </a>
+              )}
+              {project.data.paperUrl && (
+                <a
+                  href={project.data.paperUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center justify-center gap-1.5 rounded-lg border border-purple-500/20 bg-purple-500/5 px-4 py-2 font-outfit text-xs font-semibold text-purple-400 hover:bg-purple-500/15 hover:border-purple-500/30 transition-all w-full sm:w-28 text-center"
+                >
+                  Paper
+                </a>
               )}
             </div>
-            {project.data.guide && (
-              <span class="font-inter text-xs text-slate-400 italic">
-                Guide: {project.data.guide}
-              </span>
-            )}
           </div>
 
-          <!-- Main Info -->
-          <div class="flex-grow">
-            <h2 class="font-outfit text-2xl font-bold text-white tracking-tight">{project.data.title}</h2>
-            
-            <!-- Tags -->
-            <div class="flex flex-wrap gap-2 mt-3 mb-6">
-              {project.data.tags.map((tag) => (
-                <span class="text-xs font-medium px-2.5 py-0.5 rounded bg-white/5 text-slate-300 border border-white/5">
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            <!-- Markdown Content Rendered -->
+          <!-- Details collapsible section -->
+          <div id={`details-${index}`} class="details-drawer hidden w-full p-6 rounded-xl border border-white/10 bg-slate-950/60 font-inter text-sm text-slate-300 relative mt-2 leading-relaxed animate-[fadeIn_0.2s_ease-out]">
+            <h4 class="font-outfit text-xs font-semibold uppercase tracking-wider text-teal-400 mb-4">Project Details</h4>
             <article class="prose prose-invert max-w-none text-slate-300 leading-relaxed text-sm sm:text-base space-y-4">
               <Content />
             </article>
@@ -114,17 +196,72 @@ const categories = ['All', 'Generative AI', 'Reinforcement Learning', 'Autonomou
       ))}
     </div>
 
+    <!-- Lightbox Modal (Hidden by Default) -->
+    <div
+      id="lightbox-modal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-950/95 backdrop-blur-md p-4 sm:p-10 select-none"
+    >
+      <!-- Close Button -->
+      <button
+        id="lightbox-close"
+        class="absolute top-6 right-6 z-50 text-slate-400 hover:text-white hover:scale-110 active:scale-95 transition-all cursor-pointer"
+        aria-label="Close lightbox"
+      >
+        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <!-- Image Area -->
+      <div class="flex flex-col items-center max-w-5xl w-full h-full justify-center gap-4">
+        <div class="relative max-h-[75vh] flex items-center justify-center">
+          <img
+            id="lightbox-img"
+            class="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl border border-white/5 transition-transform duration-300"
+            src=""
+            alt=""
+          />
+        </div>
+        <!-- Caption -->
+        <div class="text-center">
+          <span id="lightbox-category" class="text-xs font-semibold tracking-widest text-teal-400 uppercase"></span>
+          <h2 id="lightbox-caption" class="font-outfit text-xl font-bold text-white mt-1"></h2>
+        </div>
+      </div>
+    </div>
+
   </div>
 </Layout>
 
 <script>
-  function setupFilters() {
-    const buttons = document.querySelectorAll('.filter-btn');
+  function setupProjFilters() {
+    const buttons = document.querySelectorAll('.proj-filter-btn');
     const cards = document.querySelectorAll('.project-card');
+    const searchInput = document.getElementById('proj-search') as HTMLInputElement;
+
+    let activeFilter = 'all';
+    let searchQuery = '';
+
+    function filterProjects() {
+      cards.forEach((card) => {
+        const category = card.getAttribute('data-category') || '';
+        const title = card.getAttribute('data-title') || '';
+        const description = card.getAttribute('data-desc') || '';
+        const tags = card.getAttribute('data-tags') || '';
+
+        const matchesCategory = activeFilter === 'all' || category === activeFilter;
+        const matchesSearch = title.includes(searchQuery) || description.includes(searchQuery) || tags.includes(searchQuery);
+
+        if (matchesCategory && matchesSearch) {
+          (card as HTMLElement).style.display = 'flex';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    }
 
     buttons.forEach((btn) => {
       btn.addEventListener('click', () => {
-        // Toggle Active Button Styles
         buttons.forEach((b) => {
           b.classList.remove('bg-teal-500', 'text-white', 'shadow-lg', 'shadow-teal-500/10');
           b.classList.add('bg-white/5', 'text-slate-400', 'hover:bg-white/10', 'hover:text-slate-200');
@@ -132,29 +269,111 @@ const categories = ['All', 'Generative AI', 'Reinforcement Learning', 'Autonomou
         btn.classList.remove('bg-white/5', 'text-slate-400', 'hover:bg-white/10', 'hover:text-slate-200');
         btn.classList.add('bg-teal-500', 'text-white', 'shadow-lg', 'shadow-teal-500/10');
 
-        const filter = btn.getAttribute('data-filter');
+        activeFilter = btn.getAttribute('data-filter') || 'all';
+        filterProjects();
+      });
+    });
 
-        cards.forEach((card) => {
-          const category = card.getAttribute('data-category');
-          if (filter === 'all' || category === filter) {
-            card.classList.remove('hidden');
-            // Subtle fade-in animation
-            card.animate(
-              [
-                { opacity: 0, transform: 'translateY(10px)' },
-                { opacity: 1, transform: 'translateY(0)' }
-              ],
-              { duration: 300, easing: 'ease-out' }
-            );
-          } else {
-            card.classList.add('hidden');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = (e.target as HTMLInputElement).value.toLowerCase().trim();
+        filterProjects();
+      });
+    }
+
+    // Toggle details drawer
+    const detailsButtons = document.querySelectorAll('.details-trigger-btn');
+    detailsButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-target');
+        if (targetId) {
+          const drawer = document.getElementById(targetId);
+          if (drawer) {
+            drawer.classList.toggle('hidden');
           }
-        });
+        }
       });
     });
   }
 
+  function setupProjLightbox() {
+    const modal = document.getElementById('lightbox-modal');
+    const modalImg = document.getElementById('lightbox-img') as HTMLImageElement;
+    const modalCaption = document.getElementById('lightbox-caption');
+    const modalCategory = document.getElementById('lightbox-category');
+    const closeBtn = document.getElementById('lightbox-close');
+
+    if (!modal || !modalImg) return;
+
+    // Trigger on any image within project-card (including inside details content)
+    const images = document.querySelectorAll('.project-card img');
+    images.forEach((img) => {
+      (img as HTMLElement).style.cursor = 'pointer';
+      img.addEventListener('click', (e) => {
+        const targetImg = e.currentTarget as HTMLImageElement;
+        const src = targetImg.currentSrc || targetImg.src;
+        const alt = targetImg.alt || '';
+        
+        // Find category from card parent
+        const card = targetImg.closest('.project-card');
+        const category = card ? card.getAttribute('data-category') : '';
+
+        modalImg.src = src;
+        modalImg.alt = alt;
+        if (modalCaption) modalCaption.textContent = alt;
+        if (modalCategory && category) {
+          modalCategory.textContent = category.toUpperCase();
+        }
+
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeLightbox() {
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeLightbox();
+    });
+
+    modalImg.addEventListener('click', closeLightbox);
+
+    const handleKeydown = (e: KeyboardEvent) => {
+      if (modal && !modal.classList.contains('hidden')) {
+        if (e.key === 'Escape') closeLightbox();
+      }
+    };
+    window.addEventListener('keydown', handleKeydown);
+
+    // Clean up event listeners on transitions
+    document.addEventListener('astro:before-swap', () => {
+      window.removeEventListener('keydown', handleKeydown);
+    });
+  }
+
   // Setup on page load and swap
-  setupFilters();
-  document.addEventListener('astro:after-swap', setupFilters);
+  setupProjFilters();
+  setupProjLightbox();
+  document.addEventListener('astro:after-swap', () => {
+    setupProjFilters();
+    setupProjLightbox();
+  });
 </script>
+
+<style is:global>
+  /* Hover effects for inline images inside project detail drawers */
+  .details-drawer img {
+    transition: transform 0.7s ease, border-color 0.5s ease;
+    cursor: pointer;
+  }
+  .details-drawer img:hover {
+    transform: scale(1.02);
+    border-color: rgba(20, 184, 166, 0.4) !important;
+  }
+</style>

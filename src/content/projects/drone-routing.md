@@ -4,6 +4,8 @@ category: Autonomous Vehicles
 type: previous
 tags: [Stochastic Dynamic Programming, Simulation, Python, Graph Networks, Drones]
 order: 7
+image: "/assets/drone_routing_transit.png"
+description: "Formulated the drone routing problem as a Stochastic Dynamic Program on a graph network considering energy vs. time trade-offs."
 ---
 
 - Formulated the drone routing problem as a Stochastic Dynamic Program on a graph network considering energy vs. time trade-offs.

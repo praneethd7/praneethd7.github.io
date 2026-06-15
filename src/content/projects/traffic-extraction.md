@@ -5,6 +5,8 @@ category: Computer Vision
 type: previous
 tags: [Computer Vision, Image Processing, SVM, Traffic Analysis]
 order: 14
+image: "/assets/aerial_0.png"
+description: "Compared computer vision and image processing algorithms to extract traffic vehicle counts and classes from aerial drone videography."
 ---
 
 - Presented research paper at UMI Symposium – 2017, Hyderabad, India.

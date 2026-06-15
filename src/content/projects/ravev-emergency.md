@@ -5,6 +5,8 @@ category: Autonomous Vehicles
 type: previous
 tags: [ROS, Keras, Neural Networks, Controls, Robotics]
 order: 13
+image: "/assets/ravev_detection.png"
+description: "Developed detection and control algorithms in ROS to coordinate autonomous vehicle responses to emergency vehicles."
 ---
 
 - Prepared image and sound datasets for emergency vehicles, and trained a NN classifier using Keras.

@@ -5,6 +5,8 @@ category: Computer Vision
 type: previous
 tags: [Drones, Traffic Analysis, Computer Vision, Datasets]
 order: 11
+image: "/assets/data_equip1.jpg"
+description: "Proposed a novel architecture to collect vehicle trajectory data for an extended period on freeways and arterials using aerial videography."
 ---
 
 - Proposed a novel architecture to collect vehicle trajectory data for an extended period on freeways and arterials

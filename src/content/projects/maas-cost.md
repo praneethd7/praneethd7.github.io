@@ -5,6 +5,8 @@ category: Autonomous Vehicles
 type: previous
 tags: [Simulation, Ride-sharing, ArcGIS, Mobility-as-a-Service]
 order: 12
+image: "/assets/automation_effect.png"
+description: "Examined the cost aspects and operational plausibility of a Shared Autonomous Vehicle fleet as a Mobility-as-a-Service system in Austin."
 ---
 
 - Ride-sharing services are becoming increasingly popular, affecting people’s choice to use cars as a service rather than owning personal vehicles. The study focus is to see if such a system is plausible considering cost aspects.

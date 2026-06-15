@@ -4,6 +4,8 @@ category: Other
 type: previous
 tags: [MIP, Optimization, Genetic Algorithm, Sweep Algorithm, Python]
 order: 9
+image: "/assets/covid_test_optimization.png"
+description: "Devised an optimization model and genetic algorithm solver to minimize collection operations costs of Covid-19 test samples."
 ---
 
 - Devised an optimization model that encapsulates various testing, inventory, transportation, and operation costs.

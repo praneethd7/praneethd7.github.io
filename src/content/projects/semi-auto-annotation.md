@@ -5,6 +5,8 @@ category: Computer Vision
 type: previous
 tags: [Computer Vision, Deep Learning, Annotation, Spatial-CNN]
 order: 10
+image: "/assets/semi_auto_annotation.png"
+description: "Integrated Spatial-CNN with an image annotation tool to generate automatic lane line predictions and reduce manual work."
 ---
 
 - Integrated Spatial-CNN with image annotation tool to generate lane line predictions for all frames in video

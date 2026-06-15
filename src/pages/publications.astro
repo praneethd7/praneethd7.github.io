@@ -12,6 +12,7 @@ const publications = [
     paperUrl: "https://arxiv.org/abs/2412.06831",
     codeUrl: "https://github.com/UTEL-UIUC/TransitGPT",
     image: "/assets/pub_transitgpt.png",
+    abstract: "This paper introduces a framework that leverages Large Language Models (LLMs) to answer natural language queries about General Transit Feed Specification (GTFS) data. The framework is implemented in a chatbot called TransitGPT with open-source code. TransitGPT works by guiding LLMs to generate Python code that extracts and manipulates GTFS data relevant to a query, which is then executed on a server where the GTFS feed is stored. It can accomplish a wide range of tasks, including data retrieval, calculations, and interactive visualizations, without requiring users to have extensive knowledge of GTFS or programming. The LLMs that produce the code are guided entirely by prompts, without fine-tuning or access to the actual GTFS feeds. We evaluate TransitGPT using GPT-4o and Claude-3.5-Sonnet LLMs on a benchmark dataset of 100 tasks, to demonstrate its effectiveness and versatility. The results show that TransitGPT can significantly enhance the accessibility and usability of transit data.",
     bibtex: `@article{devunuri2025transitgpt,
   title={TransitGPT: a generative AI-based framework for interacting with GTFS data using large language models},
   author={Devunuri, Saipraneeth and Lehe, Lewis},
@@ -34,6 +35,7 @@ const publications = [
     paperUrl: "https://doi.org/10.1016/j.tranpol.2024.11.002",
     codeUrl: "",
     image: "/assets/pub_taxation_ridehailing.png",
+    abstract: "Since 2013, state and local governments across the United States have implemented a wide variety of approaches to tax ridehailing services. This paper reviews these experiences, examining the different tax designs, motivations, legal frameworks, and revenue outcomes. We categorize these taxes based on their structure (e.g. sales vs. excise, ad valorem vs. specific, flat vs. tiered). We divide the history of ridehailing taxation into two distinct eras defined by shifting motivations. In the first era, taxes were adopted alongside efforts to integrate ridehailing into existing regulatory structures. In the second era, taxes have increasingly been adopted with the specific goal of accounting for the various impacts associated with ridehailing. Finally, the paper provides a discussion on general observations regarding ridehailing taxes as a policy tool.",
     bibtex: `@article{lehe2025taxation,
   title={Taxation of ridehailing in the United States},
   author={Lehe, Lewis and Devunuri, Saipraneeth and Rondan, Javier and Pandey, Ayush and Vignon, Daniel},
@@ -55,6 +57,7 @@ const publications = [
     paperUrl: "https://openaccess.thecvf.com/content/WACV2025/html/Devunuri_A_Pipeline_and_NIR-Enhanced_Dataset_for_Parking_Lot_Segmentation_WACV_2025_paper.html",
     codeUrl: "https://github.com/UTEL-UIUC/parking-lot-segmentation-tool",
     image: "/assets/pub_parking_lot.png",
+    abstract: "Discussions of minimum parking requirement policies often include maps of parking lots, which are time-consuming to construct manually. Open-source datasets for such parking lots are scarce, particularly for US cities. This paper introduces the idea of using Near-Infrared (NIR) channels as input and several post-processing techniques to improve the prediction of off-street surface parking lots using satellite imagery. We constructed two datasets with 12,617 image-mask pairs each: one with 3 channels and one with 4 channels (including NIR).",
     bibtex: `@inproceedings{qiam2025pipeline,
   title={A Pipeline and NIR-Enhanced Dataset for Parking Lot Segmentation},
   author={Qiam, Shirin and Devunuri, Saipraneeth and Lehe, Lewis J.},
@@ -73,6 +76,7 @@ const publications = [
     paperUrl: "https://arxiv.org/abs/2308.02618",
     codeUrl: "",
     image: "/assets/pub_chatgpt_gtfs.png",
+    abstract: "The General Transit Feed Specification (GTFS) standard for publishing transit data is ubiquitous. GTFS being tabular data, with information spread across different files, necessitates specialized tools or packages to retrieve information. Concurrently, the use of Large Language Models(LLMs) for text and information retrieval is growing. The idea of this research is to see if the current widely adopted LLMs (ChatGPT) are able to understand GTFS and retrieve information from GTFS using natural language instructions without explicitly providing information. In this research, we benchmark OpenAI's GPT-3.5-Turbo and GPT-4 LLMs which are the backbone of ChatGPT. ChatGPT demonstrates a reasonable understanding of GTFS by answering 59.7% (GPT-3.5-Turbo) and 73.3% (GPT-4) of our multiple-choice questions (MCQ) correctly. Furthermore, we evaluated the LLMs on information extraction tasks using a filtered GTFS feed containing four routes. We found that program synthesis techniques outperformed zero-shot approaches, achieving up to 93% (90%) accuracy for simple queries and 61% (41%) for complex ones using GPT-4 (GPT-3.5-Turbo).",
     bibtex: `@article{devunuri2024chatgpt,
   title={ChatGPT for GTFS: benchmarking LLMs on GTFS semantics and retrieval},
   author={Devunuri, Saipraneeth and Qiam, Shirin and Lehe, Lewis J.},
@@ -95,6 +99,7 @@ const publications = [
     paperUrl: "https://doi.org/10.21105/joss.06306",
     codeUrl: "https://github.com/UTEL-UIUC/gtfs_segments",
     image: "/assets/pub_gtfs_segments.png",
+    abstract: "GTFS Segments is an open-source Python library designed to calculate bus stop spacing statistics from GTFS data. Stop spacing is a crucial metric for evaluating public transit network coverage, service speed, and passenger access. By segmenting bus routes into individual stop-to-stop links and computing geographic distances, the library enables transit planners and researchers to quickly process large-scale agency feeds and generate statistical profiles. The library simplifies transit data analysis, supporting geospatial mapping and urban transit planning workflows.",
     bibtex: `@article{Devunuri2024,
   title={GTFS Segments: A Fast and Efficient Library to Generate Bus Stop Spacings},
   author={Devunuri, Saipraneeth and Lehe, Lewis},
@@ -118,6 +123,7 @@ const publications = [
     paperUrl: "https://doi.org/10.1016/j.jpubtr.2024.100083",
     codeUrl: "",
     image: "/assets/pub_stop_spacings.png",
+    abstract: "Bus stop spacing affects travel times, operational costs, and accessibility. However, empirical stop spacing statistics across entire transit systems are rarely studied due to data processing hurdles. This paper introduces a systematic methodology to calculate and analyze stop spacing statistics using GTFS data across multiple U.S. transit agencies. Combining spatial queueing theory with empirical evidence, the authors analyze how stop spacings vary by route type, population density, and agency size, providing key insights for optimal transit network design and stop consolidation policies.",
     bibtex: `@article{devunuri2024bus,
   title={Bus Stop Spacings: Statistics, Theory and Evidence},
   author={Devunuri, Saipraneeth and Lehe, Lewis J. and Qiam, Shirin and Pandey, Ayush and Monzer, Dana},
@@ -139,6 +145,7 @@ const publications = [
     paperUrl: "https://doi.org/10.32866/001c.116694",
     codeUrl: "",
     image: "/assets/pub_gtfs_errors.png",
+    abstract: "General Transit Feed Specification (GTFS) data is crucial for trip planning and transit research, but public feeds often contain formatting, spatial, or logical errors. This study presents a comprehensive survey of errors in hundreds of static GTFS feeds published by agencies across the United States. Utilizing automated validation pipelines, the authors classify and quantify common issues, such as overlapping stops, missing schedule sequences, and speed anomalies. The findings outline major data quality gaps and suggest best practices for agencies to improve feed reliability.",
     bibtex: `@article{devunuri2024survey,
   title={A Survey of Errors in GTFS Static Feeds from the United States},
   author={Devunuri, Saipraneeth and Lehe, Lewis},
@@ -158,6 +165,7 @@ const publications = [
     paperUrl: "https://doi.org/10.1016/j.tra.2023.103690",
     codeUrl: "",
     image: "/assets/pub_ridesplitting.png",
+    abstract: "Ridesplitting services (like UberPool and Lyft Shared) rely on matching passengers with similar routes to reduce vehicle miles traveled (VMT) and fares. This study investigates the scale effects of ridesplitting using a massive dataset of trips in Chicago. By simulating matching rates under varying demand densities, the authors analyze the impact of scale on passenger wait times, travel time detours, and matching efficiency. The results show that higher demand density significantly improves matching rates and system efficiency, highlighting the policy levers needed to support high-occupancy shared rides.",
     bibtex: `@article{Liu2023ScaleEffects,
   title={Scale effects in ridesplitting: A case study of the City of Chicago},
   author={Liu, Hao and Devunuri, Saipraneeth and Lehe, Lewis and Gayah, Vikash V.},
@@ -178,6 +186,7 @@ const publications = [
     paperUrl: "https://doi.org/10.1016/j.eswa.2022.118060",
     codeUrl: "",
     image: "/assets/pub_acc_detection.png",
+    abstract: "Adaptive Cruise Control (ACC) is a key feature in modern driver-assistance systems, but its impact on traffic flow dynamics depends on driver usage and system tuning. This paper proposes an unsupervised learning framework to identify ACC-operated vehicles using high-resolution vehicle trajectory data. By extracting car-following features (e.g., headway variation and response latency) and applying clustering techniques, the framework distinguishes human-driven cars from ACC vehicles in mixed traffic. The proposed method provides a critical tool for traffic flow modeling and autonomous vehicle integration studies.",
     bibtex: `@article{hosseini2022unsupervised,
   title={An unsupervised learning framework for detecting adaptive cruise control operated vehicles in a vehicle trajectory data},
   author={Khajeh Hosseini, Mohammadreza and Talebpour, Alireza and Devunuri, Saipraneeth and Hamdar, Samer H.},
@@ -199,6 +208,7 @@ const publications = [
     paperUrl: "https://doi.org/10.1016/j.retrec.2022.101183",
     codeUrl: "",
     image: "/assets/pub_elasticity.png",
+    abstract: "Standard transport economics assumes that travel demand elasticity remains stable over time. This paper examines the demand response to transit fare changes and congestion pricing schemes, arguing that elasticity can be significantly larger during the initial introduction phase of a policy compared to long-term steady states. Using empirical case studies and consumer behavior modeling, the authors show how novelty, initial media coverage, and shock effects amplify short-term demand sensitivity, offering valuable guidance for transit pricing strategies and public communication.",
     bibtex: `@article{lehe2022large,
   title={Large elasticity at introduction},
   author={Lehe, Lewis and Devunuri, Saipraneeth},
@@ -220,6 +230,7 @@ const publications = [
     paperUrl: "https://arxiv.org/abs/2208.13054",
     codeUrl: "https://github.com/Dhananjay42/crackseg9k",
     image: "/assets/pub_crackseg9k.png",
+    abstract: "The detection of cracks is a crucial task in monitoring structural health and ensuring structural safety. The manual process of crack detection is time-consuming and subjective to the inspectors. Several researchers have tried tackling this problem using traditional Image Processing or learning-based techniques. However, their scope of work is limited to detecting cracks on a single type of surface (walls, pavements, glass, etc.). The metrics used to evaluate these methods are also varied across the literature, making it challenging to compare techniques. This paper addresses these problems by combining previously available datasets and unifying the annotations by tackling the inherent problems within each dataset, such as noise and distortions. We also present a pipeline that combines Image Processing and Deep Learning models. Finally, we benchmark the results of proposed models on these metrics on our new dataset and compare them with state-of-the-art models in the literature.",
     bibtex: `@inproceedings{kulkarni2022crackseg9k,
   title={CrackSeg9k: a collection and benchmark for crack segmentation datasets and frameworks},
   author={Kulkarni, Shreyas and Singh, Shreyas and Balakrishnan, Dhananjay and Sharma, Siddharth and Devunuri, Saipraneeth and Korlapati, Sai Chowdeswara Rao},
@@ -269,28 +280,8 @@ function boldAuthor(authorsStr: string) {
         Academic Publications
       </h1>
       <p class="font-inter text-slate-400 mt-4 leading-relaxed">
-        Research at the intersection of machine learning, public transit economics, and generative models. Follow links below to read preprint PDFs, access open-source code repositories, or copy BibTeX citations.
+        Research at the intersection of machine learning, public transit economics, and generative models, with over 280 citations across my publication history. Follow links below to read preprint PDFs, access open-source code repositories, or copy BibTeX citations.
       </p>
-    </div>
-
-    <!-- Overview Stats Grid -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-12">
-      <div class="rounded-2xl border border-white/10 bg-slate-900/40 p-5 backdrop-blur-sm text-center">
-        <span class="block font-outfit text-3xl font-extrabold text-teal-400">280+</span>
-        <span class="block font-inter text-xs text-slate-400 mt-1 uppercase tracking-wider">Total Citations</span>
-      </div>
-      <div class="rounded-2xl border border-white/10 bg-slate-900/40 p-5 backdrop-blur-sm text-center">
-        <span class="block font-outfit text-3xl font-extrabold text-indigo-400">8</span>
-        <span class="block font-inter text-xs text-slate-400 mt-1 uppercase tracking-wider">h-index</span>
-      </div>
-      <div class="rounded-2xl border border-white/10 bg-slate-900/40 p-5 backdrop-blur-sm text-center">
-        <span class="block font-outfit text-3xl font-extrabold text-purple-400">8</span>
-        <span class="block font-inter text-xs text-slate-400 mt-1 uppercase tracking-wider">Core Papers</span>
-      </div>
-      <div class="rounded-2xl border border-white/10 bg-slate-900/40 p-5 backdrop-blur-sm text-center">
-        <span class="block font-outfit text-3xl font-extrabold text-amber-400">2</span>
-        <span class="block font-inter text-xs text-slate-400 mt-1 uppercase tracking-wider">OS Libraries</span>
-      </div>
     </div>
 
     <!-- Search & Filters Container -->
@@ -338,11 +329,11 @@ function boldAuthor(authorsStr: string) {
           <div class="flex flex-col md:flex-row gap-6 items-start w-full">
             <!-- Publication Image -->
             {pub.image && (
-              <div class="w-full md:w-44 h-32 rounded-xl overflow-hidden border border-white/10 shrink-0">
+              <div class="w-full md:w-44 h-32 rounded-xl overflow-hidden border border-white/10 shrink-0 transition-all duration-500 hover:border-teal-500/40 cursor-pointer">
                 <img 
                   src={pub.image} 
                   alt={pub.title}
-                  class="w-full h-full object-cover"
+                  class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
               </div>
             )}
@@ -384,6 +375,17 @@ function boldAuthor(authorsStr: string) {
                   PDF
                 </a>
               )}
+              {pub.abstract && (
+                <button
+                  class="abstract-trigger-btn flex items-center justify-center gap-1.5 rounded-lg border border-teal-500/20 bg-teal-500/5 px-4 py-2 font-outfit text-xs font-semibold text-teal-400 hover:bg-teal-500/15 hover:border-teal-500/30 transition-all w-full sm:w-28 text-center cursor-pointer"
+                  data-target={`abstract-${index}`}
+                >
+                  <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+                  </svg>
+                  Abstract
+                </button>
+              )}
               {pub.codeUrl && (
                 <a
                   href={pub.codeUrl}
@@ -409,6 +411,14 @@ function boldAuthor(authorsStr: string) {
             </div>
           </div>
 
+          <!-- Abstract collapsible section -->
+          {pub.abstract && (
+            <div id={`abstract-${index}`} class="abstract-drawer hidden w-full p-5 rounded-xl border border-white/10 bg-slate-950/60 font-inter text-sm text-slate-300 relative mt-2 leading-relaxed animate-[fadeIn_0.2s_ease-out]">
+              <h4 class="font-outfit text-xs font-semibold uppercase tracking-wider text-teal-400 mb-2">Abstract</h4>
+              <p>{pub.abstract}</p>
+            </div>
+          )}
+
           <!-- BibTeX collapsible section -->
           {pub.bibtex && (
             <div id={`bibtex-${index}`} class="bibtex-drawer hidden w-full p-4 rounded-xl border border-white/10 bg-slate-950/80 font-mono text-[11px] text-slate-300 relative mt-2 animate-[fadeIn_0.2s_ease-out]">
@@ -426,6 +436,40 @@ function boldAuthor(authorsStr: string) {
           )}
         </div>
       ))}
+    </div>
+
+    <!-- Lightbox Modal (Hidden by Default) -->
+    <div
+      id="lightbox-modal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-950/95 backdrop-blur-md p-4 sm:p-10 select-none"
+    >
+      <!-- Close Button -->
+      <button
+        id="lightbox-close"
+        class="absolute top-6 right-6 z-50 text-slate-400 hover:text-white hover:scale-110 active:scale-95 transition-all cursor-pointer"
+        aria-label="Close lightbox"
+      >
+        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <!-- Image Area -->
+      <div class="flex flex-col items-center max-w-5xl w-full h-full justify-center gap-4">
+        <div class="relative max-h-[75vh] flex items-center justify-center">
+          <img
+            id="lightbox-img"
+            class="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl border border-white/5 transition-transform duration-300"
+            src=""
+            alt=""
+          />
+        </div>
+        <!-- Caption -->
+        <div class="text-center">
+          <span id="lightbox-category" class="text-xs font-semibold tracking-widest text-teal-400 uppercase"></span>
+          <h2 id="lightbox-caption" class="font-outfit text-xl font-bold text-white mt-1"></h2>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -487,6 +531,32 @@ function boldAuthor(authorsStr: string) {
           const drawer = document.getElementById(targetId);
           if (drawer) {
             drawer.classList.toggle('hidden');
+            // Close Abstract drawer if open
+            const abstractId = targetId.replace('bibtex-', 'abstract-');
+            const abstractDrawer = document.getElementById(abstractId);
+            if (abstractDrawer && !drawer.classList.contains('hidden')) {
+              abstractDrawer.classList.add('hidden');
+            }
+          }
+        }
+      });
+    });
+
+    // Toggle Abstract drawer
+    const abstractButtons = document.querySelectorAll('.abstract-trigger-btn');
+    abstractButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-target');
+        if (targetId) {
+          const drawer = document.getElementById(targetId);
+          if (drawer) {
+            drawer.classList.toggle('hidden');
+            // Close BibTeX drawer if open
+            const bibtexId = targetId.replace('abstract-', 'bibtex-');
+            const bibtexDrawer = document.getElementById(bibtexId);
+            if (bibtexDrawer && !drawer.classList.contains('hidden')) {
+              bibtexDrawer.classList.add('hidden');
+            }
           }
         }
       });
@@ -518,8 +588,72 @@ function boldAuthor(authorsStr: string) {
     });
   }
 
+  function setupPubLightbox() {
+    const modal = document.getElementById('lightbox-modal');
+    const modalImg = document.getElementById('lightbox-img') as HTMLImageElement;
+    const modalCaption = document.getElementById('lightbox-caption');
+    const modalCategory = document.getElementById('lightbox-category');
+    const closeBtn = document.getElementById('lightbox-close');
+
+    if (!modal || !modalImg) return;
+
+    const images = document.querySelectorAll('.pub-card img');
+    images.forEach((img) => {
+      (img as HTMLElement).style.cursor = 'pointer';
+      img.addEventListener('click', (e) => {
+        const targetImg = e.currentTarget as HTMLImageElement;
+        const src = targetImg.currentSrc || targetImg.src;
+        const alt = targetImg.alt || '';
+        
+        // Find category from card parent
+        const card = targetImg.closest('.pub-card');
+        const category = card ? card.getAttribute('data-category') : '';
+
+        modalImg.src = src;
+        modalImg.alt = alt;
+        if (modalCaption) modalCaption.textContent = alt;
+        if (modalCategory && category) {
+          modalCategory.textContent = category.toUpperCase();
+        }
+
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeLightbox() {
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeLightbox();
+    });
+
+    modalImg.addEventListener('click', closeLightbox);
+
+    const handleKeydown = (e: KeyboardEvent) => {
+      if (modal && !modal.classList.contains('hidden')) {
+        if (e.key === 'Escape') closeLightbox();
+      }
+    };
+    window.addEventListener('keydown', handleKeydown);
+
+    // Clean up event listeners on transitions
+    document.addEventListener('astro:before-swap', () => {
+      window.removeEventListener('keydown', handleKeydown);
+    });
+  }
+
   // Initial setup and transitions compatibility
   setupPubFilters();
-  document.addEventListener('astro:after-swap', setupPubFilters);
+  setupPubLightbox();
+  document.addEventListener('astro:after-swap', () => {
+    setupPubFilters();
+    setupPubLightbox();
+  });
 </script>
 

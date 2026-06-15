@@ -127,57 +127,191 @@ const timeline = [
   </Fragment>
 
   <!-- Hero Section -->
-  <section class="relative mx-auto max-w-7xl px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28">
+  <section class="relative mx-auto max-w-7xl px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28 overflow-visible">
+    <!-- Hero-specific glowing backdrops that transition with epsilon -->
+    <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-7xl pointer-events-none">
+      <!-- Blue/Indigo Glow (Exploitation) -->
+      <div id="glow-exploit" class="absolute top-1/4 left-1/4 w-[350px] h-[350px] sm:w-[500px] sm:h-[500px] rounded-full bg-indigo-600/10 blur-[130px] transition-opacity duration-500 opacity-50"></div>
+      <!-- Cyan/Gold Glow (Exploration) -->
+      <div id="glow-explore" class="absolute top-1/3 right-1/4 w-[350px] h-[350px] sm:w-[500px] sm:h-[500px] rounded-full bg-gradient-to-r from-teal-500/10 to-amber-500/5 blur-[130px] transition-opacity duration-500 opacity-0"></div>
+    </div>
+
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       
       <!-- Bio / Description (7 cols) -->
       <div class="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
-        <div class="inline-flex items-center gap-2 rounded-full border border-teal-500/20 bg-teal-500/5 px-3 py-1 text-xs font-semibold text-teal-400 backdrop-blur-sm mb-6 animate-pulse">
-          <span class="h-2 w-2 rounded-full bg-teal-400"></span>
-          Open to New Opportunities
-        </div>
         
         <h1 class="font-outfit text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
           Hi, I'm <span class="bg-gradient-to-r from-teal-400 via-indigo-400 to-purple-500 bg-clip-text text-transparent">Praneeth Devunuri</span>
         </h1>
-        
-        <p class="font-outfit text-xl sm:text-2xl font-medium text-slate-300 mt-4">
-          Senior AI Scientist @ Optym
-        </p>
-        
-        <p class="font-inter text-base text-slate-400 max-w-2xl mt-6 leading-relaxed">
-          I describe myself as the <span class="text-teal-400 font-mono">ε-guy</span>. In reinforcement learning, the epsilon value represents exploration vs exploitation. I embrace this policy by constantly learning and applying complex algorithmic models to automate and optimize the physical and digital worlds. Transitioned from PhD research in Connected and Autonomous Vehicles (UIUC) to driving next-generation AI and optimization systems at Optym.
-        </p>
 
-        <div class="flex flex-wrap gap-4 mt-8 justify-center lg:justify-start">
-          <a
-            href="/projects"
-            class="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-teal-500 to-indigo-600 px-6 py-3 font-outfit text-sm font-semibold text-white shadow-lg shadow-teal-500/15 hover:shadow-indigo-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
-          >
-            Explore Projects
-          </a>
-          <a
-            href="/publications"
-            class="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-6 py-3 font-outfit text-sm font-semibold text-slate-200 hover:bg-white/10 hover:text-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
-          >
-            View Publications
-          </a>
+        <!-- Epsilon-Greedy Slider Widget -->
+        <div class="w-full max-w-md my-6 p-4 rounded-2xl border border-white/5 bg-slate-900/30 backdrop-blur-md">
+          <div class="flex justify-between items-center mb-2">
+            <span class="font-outfit text-xs font-semibold uppercase tracking-wider text-slate-400">Policy: Epsilon-Greedy</span>
+            <span id="epsilon-val-display" class="font-mono text-sm font-bold text-teal-400">ε = 0.50</span>
+          </div>
+          
+          <div class="relative flex items-center group py-2">
+            <input 
+              type="range" 
+              min="0" 
+              max="1" 
+              step="0.05" 
+              value="0.5" 
+              id="epsilon-slider"
+              class="w-full h-2 rounded-lg bg-slate-800 appearance-none cursor-pointer accent-teal-400 focus:outline-none transition-all duration-300"
+            />
+          </div>
+          
+          <div class="flex justify-between text-[11px] font-mono text-slate-500 mt-2">
+            <button id="snap-exploit" class="hover:text-indigo-400 transition-colors cursor-pointer">Exploit (ε=0)</button>
+            <button id="snap-balanced" class="hover:text-teal-400 transition-colors cursor-pointer">Balanced (ε=0.5)</button>
+            <button id="snap-explore" class="hover:text-brand-cyan transition-colors cursor-pointer">Explore (ε=1)</button>
+          </div>
+        </div>
+
+        <!-- Sliding Bio Text & Action Buttons -->
+        <div class="grid grid-cols-1 w-full min-h-[260px] sm:min-h-[220px]">
+          <!-- Exploit state (ε = 0) -->
+          <div id="hero-exploit" class="col-start-1 row-start-1 transition-all duration-500 opacity-0 pointer-events-none transform translate-y-2">
+            <p class="font-outfit text-xl sm:text-2xl font-semibold text-indigo-400">
+              Researcher
+            </p>
+            <p class="font-inter text-base text-slate-400 max-w-2xl mt-4 leading-relaxed">
+              I focus on optimization algorithms, decision processes (MDPs), and agentic workflows to automate complex logistics and scheduling networks. Transitioned from Ph.D. research in Connected and Autonomous Vehicles (UIUC) to driving next-generation AI and optimization systems at Optym.
+            </p>
+            <div class="flex flex-wrap gap-4 mt-8 justify-center lg:justify-start">
+              <a
+                href="/publications"
+                class="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-indigo-500 to-blue-600 px-6 py-3 font-outfit text-sm font-semibold text-white shadow-lg shadow-indigo-500/15 hover:shadow-blue-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+              >
+                Explore Publications
+              </a>
+              <a
+                href="/projects"
+                class="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-6 py-3 font-outfit text-sm font-semibold text-slate-200 hover:bg-white/10 hover:text-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+              >
+                View Projects
+              </a>
+            </div>
+          </div>
+
+          <!-- Balanced state (ε = 0.5) -->
+          <div id="hero-balanced" class="col-start-1 row-start-1 transition-all duration-500 opacity-100 transform translate-y-0">
+            <p class="font-outfit text-xl sm:text-2xl font-semibold text-slate-200">
+              Senior AI Scientist @ Optym | <span class="text-teal-400 font-mono">ε-Guy</span>
+            </p>
+            <p class="font-inter text-base text-slate-400 max-w-2xl mt-4 leading-relaxed">
+              In reinforcement learning, the epsilon value represents exploration vs exploitation. I embrace this policy by constantly learning and applying complex algorithmic models to optimize networks while exploring the physical world through photography and outdoor trekking.
+            </p>
+            <div class="flex flex-wrap gap-4 mt-8 justify-center lg:justify-start">
+              <a
+                href="/publications"
+                class="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-teal-500 to-indigo-600 px-6 py-3 font-outfit text-sm font-semibold text-white shadow-lg shadow-teal-500/15 hover:shadow-indigo-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+              >
+                Explore Publications
+              </a>
+              <a
+                href="/projects"
+                class="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-6 py-3 font-outfit text-sm font-semibold text-slate-200 hover:bg-white/10 hover:text-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+              >
+                View Projects
+              </a>
+            </div>
+          </div>
+
+          <!-- Explore state (ε = 1) -->
+          <div id="hero-explore" class="col-start-1 row-start-1 transition-all duration-500 opacity-0 pointer-events-none transform translate-y-2">
+            <p class="font-outfit text-xl sm:text-2xl font-semibold text-brand-cyan">
+              Creative Explorer & Photographer
+            </p>
+            <p class="font-inter text-base text-slate-400 max-w-2xl mt-4 leading-relaxed">
+              Beyond the codebase, I maximize entropy. I capture landscapes via drone, create graphic designs, and embark on high-altitude treks. Exploring new environments helps me discover novel solutions to both digital and physical challenges.
+            </p>
+            <div class="flex flex-wrap gap-4 mt-8 justify-center lg:justify-start">
+              <a
+                href="/photography"
+                class="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-brand-cyan to-teal-500 px-6 py-3 font-outfit text-sm font-semibold text-slate-950 shadow-lg shadow-brand-cyan/15 hover:shadow-teal-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+              >
+                View Photography Gallery
+              </a>
+              <a
+                href="/activities"
+                class="inline-flex items-center justify-center rounded-xl border border-brand-cyan/20 bg-brand-cyan/5 px-6 py-3 font-outfit text-sm font-semibold text-slate-200 hover:bg-brand-cyan/10 hover:text-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+              >
+                See Hobbies & Leadership
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Profile Avatar (5 cols) -->
-      <div class="lg:col-span-5 flex justify-center">
+      <div class="lg:col-span-5 flex justify-center relative">
+        <!-- Floating Exploitation (Math/AI) Icons -->
+        <div id="float-exploit-1" class="absolute top-4 left-6 z-20 pointer-events-none transition-all duration-300 animate-float-1">
+          <div class="flex h-9 w-9 items-center justify-center rounded-xl border border-indigo-500/20 bg-slate-950/80 text-sm font-mono font-bold text-indigo-400 shadow-lg shadow-indigo-500/5 backdrop-blur-sm">
+            ε
+          </div>
+        </div>
+        <div id="float-exploit-2" class="absolute bottom-12 left-2 z-20 pointer-events-none transition-all duration-300 animate-float-2">
+          <div class="flex h-9 w-9 items-center justify-center rounded-xl border border-blue-500/20 bg-slate-950/80 text-sm font-mono font-bold text-blue-400 shadow-lg shadow-blue-500/5 backdrop-blur-sm">
+            f(x)
+          </div>
+        </div>
+        <div id="float-exploit-3" class="absolute top-8 right-8 z-20 pointer-events-none transition-all duration-300 animate-float-3">
+          <div class="flex h-9 w-9 items-center justify-center rounded-xl border border-purple-500/20 bg-slate-950/80 text-sm font-mono font-bold text-purple-400 shadow-lg shadow-purple-500/5 backdrop-blur-sm">
+            ∑
+          </div>
+        </div>
+
+        <!-- Floating Software Product building (Balanced) Icons -->
+        <div id="float-build-1" class="absolute top-2 left-6 z-20 pointer-events-none transition-all duration-300 animate-float-3 opacity-0">
+          <div class="flex h-9 w-9 items-center justify-center rounded-xl border border-teal-500/20 bg-slate-950/80 text-sm text-teal-400 shadow-lg shadow-teal-500/5 backdrop-blur-sm">
+            💻
+          </div>
+        </div>
+        <div id="float-build-2" class="absolute bottom-12 right-2 z-20 pointer-events-none transition-all duration-300 animate-float-1 opacity-0">
+          <div class="flex h-9 w-9 items-center justify-center rounded-xl border border-indigo-500/20 bg-slate-950/80 text-sm text-indigo-400 shadow-lg shadow-indigo-500/5 backdrop-blur-sm">
+            ⚙️
+          </div>
+        </div>
+        <div id="float-build-3" class="absolute top-8 right-8 z-20 pointer-events-none transition-all duration-300 animate-float-4 opacity-0">
+          <div class="flex h-9 w-9 items-center justify-center rounded-xl border border-amber-500/20 bg-slate-950/80 text-sm text-amber-400 shadow-lg shadow-amber-500/5 backdrop-blur-sm">
+            🚀
+          </div>
+        </div>
+
+        <!-- Floating Exploration (Hobby/Creative) Icons -->
+        <div id="float-explore-1" class="absolute top-0 right-6 z-20 pointer-events-none transition-all duration-300 animate-float-2 opacity-0">
+          <div class="flex h-9 w-9 items-center justify-center rounded-xl border border-brand-cyan/20 bg-slate-950/80 text-sm text-brand-cyan shadow-lg shadow-brand-cyan/5 backdrop-blur-sm">
+            📷
+          </div>
+        </div>
+        <div id="float-explore-2" class="absolute bottom-8 right-2 z-20 pointer-events-none transition-all duration-300 animate-float-1 opacity-0">
+          <div class="flex h-9 w-9 items-center justify-center rounded-xl border border-amber-500/20 bg-slate-950/80 text-sm text-amber-400 shadow-lg shadow-amber-500/5 backdrop-blur-sm">
+            🏔️
+          </div>
+        </div>
+        <div id="float-explore-3" class="absolute bottom-4 left-8 z-20 pointer-events-none transition-all duration-300 animate-float-4 opacity-0">
+          <div class="flex h-9 w-9 items-center justify-center rounded-xl border border-teal-500/20 bg-slate-950/80 text-sm text-teal-400 shadow-lg shadow-teal-500/5 backdrop-blur-sm">
+            🚁
+          </div>
+        </div>
+
         <div class="relative group">
           <!-- Outer glowing rings -->
-          <div class="absolute -inset-0.5 rounded-full bg-gradient-to-r from-teal-400 to-indigo-500 opacity-30 blur-xl group-hover:opacity-60 transition duration-500"></div>
-          <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-purple-500 to-teal-400 opacity-20 blur-2xl group-hover:opacity-40 transition duration-500"></div>
+          <div id="avatar-glow-1" class="absolute -inset-0.5 rounded-full bg-gradient-to-r from-teal-400 to-indigo-500 opacity-30 blur-xl group-hover:opacity-60 transition-all duration-500"></div>
+          <div id="avatar-glow-2" class="absolute -inset-1 rounded-full bg-gradient-to-r from-purple-500 to-teal-400 opacity-20 blur-2xl group-hover:opacity-40 transition-all duration-500"></div>
           
           <!-- Image container -->
           <div class="relative h-72 w-72 sm:h-80 sm:w-80 overflow-hidden rounded-full border-2 border-white/10 bg-slate-900 shadow-2xl">
             <img
+              id="avatar-image"
               src="/assets/pro_pic_new.jpg"
               alt="Praneeth Devunuri"
-              class="h-full w-full object-cover object-[center_25%] group-hover:scale-105 transition-transform duration-500"
+              class="h-full w-full object-cover object-[center_25%] group-hover:scale-105 transition-all duration-500"
             />
           </div>
         </div>
@@ -379,4 +513,322 @@ const timeline = [
       </div>
     </div>
   </section>
+
+  <!-- Contact Me Section -->
+  <section id="contact" class="border-t border-white/5 py-20 relative overflow-hidden">
+    <!-- Glow effect behind contact card -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-teal-500/5 blur-[100px] pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-indigo-500/5 blur-[80px] pointer-events-none"></div>
+
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12">
+        <h2 class="font-outfit text-3xl sm:text-4xl font-bold tracking-tight text-white">
+          Contact Me
+        </h2>
+        <p class="font-inter text-slate-400 mt-4 max-w-lg mx-auto">
+          Have a question, a project collaboration idea, or just want to say hello? Drop me an email and let's start a conversation.
+        </p>
+      </div>
+
+      <div class="relative group rounded-2xl border border-white/10 bg-slate-900/40 p-8 md:p-10 backdrop-blur-md hover:border-teal-500/30 transition-all duration-300 shadow-2xl">
+        <div class="flex flex-col items-center text-center">
+          <!-- Envelope Icon -->
+          <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-teal-500/10 border border-teal-500/20 text-teal-400 mb-6 shadow-inner">
+            <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+
+          <h3 class="font-outfit text-xl font-semibold text-slate-200 mb-2">Email Address</h3>
+          
+          <div class="flex flex-col sm:flex-row items-center gap-3 bg-slate-950/60 border border-white/5 rounded-xl px-5 py-3 w-full max-w-md mb-8 justify-between">
+            <span id="email-address" class="font-mono text-sm sm:text-base text-slate-300 break-all select-all selection:bg-teal-500/30 selection:text-teal-200">
+              devunurisaipraneeth@gmail.com
+            </span>
+            <button
+              id="copy-email-btn"
+              class="relative shrink-0 flex items-center justify-center gap-1.5 rounded-lg border border-white/10 hover:border-teal-400/50 bg-white/5 hover:bg-teal-500/10 px-3.5 py-1.5 font-outfit text-xs font-semibold text-slate-300 hover:text-teal-400 cursor-pointer active:scale-95 transition-all duration-300"
+              aria-label="Copy email address"
+            >
+              <svg id="copy-icon" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+              </svg>
+              <svg id="check-icon" class="hidden h-3.5 w-3.5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              <span id="copy-btn-text">Copy</span>
+            </button>
+          </div>
+
+          <a
+            href="mailto:devunurisaipraneeth@gmail.com"
+            class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-teal-500 to-indigo-600 px-8 py-3.5 font-outfit text-sm font-semibold text-white shadow-lg shadow-teal-500/15 hover:shadow-indigo-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+          >
+            <span>Send Email</span>
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client-side script for interactive copy functionality -->
+  <script>
+    function setupContactSection() {
+      const copyBtn = document.getElementById('copy-email-btn');
+      const emailEl = document.getElementById('email-address');
+      const copyIcon = document.getElementById('copy-icon');
+      const checkIcon = document.getElementById('check-icon');
+      const btnText = document.getElementById('copy-btn-text');
+
+      if (copyBtn && emailEl && copyIcon && checkIcon && btnText) {
+        copyBtn.addEventListener('click', async () => {
+          try {
+            const email = emailEl.textContent?.trim() || 'devunurisaipraneeth@gmail.com';
+            await navigator.clipboard.writeText(email);
+            
+            // Show check state
+            copyIcon.classList.add('hidden');
+            checkIcon.classList.remove('hidden');
+            btnText.textContent = 'Copied!';
+            copyBtn.classList.add('border-emerald-500/50', 'text-emerald-400', 'bg-emerald-500/10');
+            copyBtn.classList.remove('hover:border-teal-400/50', 'hover:text-teal-400', 'hover:bg-teal-500/10');
+
+            // Reset after 2 seconds
+            setTimeout(() => {
+              copyIcon.classList.remove('hidden');
+              checkIcon.classList.add('hidden');
+              btnText.textContent = 'Copy';
+              copyBtn.classList.remove('border-emerald-500/50', 'text-emerald-400', 'bg-emerald-500/10');
+              copyBtn.classList.add('hover:border-teal-400/50', 'hover:text-teal-400', 'hover:bg-teal-500/10');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy email address: ', err);
+          }
+        });
+      }
+    }
+
+    // Run on page load and on View Transitions
+    setupContactSection();
+    document.addEventListener('astro:after-swap', setupContactSection);
+  </script>
+
+  <!-- Client-side script for Epsilon-Greedy Slider Logic -->
+  <script>
+    function setupEpsilonSlider() {
+      const slider = document.getElementById('epsilon-slider') as HTMLInputElement | null;
+      const valDisplay = document.getElementById('epsilon-val-display');
+      
+      const snapExploit = document.getElementById('snap-exploit');
+      const snapBalanced = document.getElementById('snap-balanced');
+      const snapExplore = document.getElementById('snap-explore');
+
+      const glowExploit = document.getElementById('glow-exploit');
+      const glowExplore = document.getElementById('glow-explore');
+
+      const ring1 = document.getElementById('avatar-glow-1');
+      const ring2 = document.getElementById('avatar-glow-2');
+
+      const floatExploit = [
+        document.getElementById('float-exploit-1'),
+        document.getElementById('float-exploit-2'),
+        document.getElementById('float-exploit-3')
+      ];
+      const floatBuild = [
+        document.getElementById('float-build-1'),
+        document.getElementById('float-build-2'),
+        document.getElementById('float-build-3')
+      ];
+      const floatExplore = [
+        document.getElementById('float-explore-1'),
+        document.getElementById('float-explore-2'),
+        document.getElementById('float-explore-3')
+      ];
+
+      if (!slider) return;
+
+      function setElementState(id: string, opacity: number) {
+        const el = document.getElementById(id);
+        if (el) {
+          el.style.opacity = opacity.toString();
+          if (opacity > 0.1) {
+            el.style.pointerEvents = 'auto';
+            el.style.transform = 'translateY(0px)';
+          } else {
+            el.style.pointerEvents = 'none';
+            el.style.transform = 'translateY(8px)';
+          }
+        }
+      }
+
+      function updateEpsilon() {
+        if (!slider) return;
+        const val = parseFloat(slider.value);
+        if (valDisplay) {
+          valDisplay.textContent = `ε = ${val.toFixed(2)}`;
+        }
+
+        // Determine discrete active state
+        let activeState = 'balanced';
+        if (val < 0.25) {
+          activeState = 'exploit';
+        } else if (val > 0.75) {
+          activeState = 'explore';
+        }
+
+        // Apply opacities strictly to active text blocks to prevent overlapping
+        setElementState('hero-exploit', activeState === 'exploit' ? 1 : 0);
+        setElementState('hero-balanced', activeState === 'balanced' ? 1 : 0);
+        setElementState('hero-explore', activeState === 'explore' ? 1 : 0);
+
+        // Apply opacities to float icons based on state
+        const showExploitIcons = activeState === 'exploit';
+        floatExploit.forEach(el => {
+          if (el) {
+            el.style.opacity = showExploitIcons ? '1' : '0';
+            el.style.transform = showExploitIcons ? 'scale(1)' : 'scale(0.7)';
+          }
+        });
+
+        const showBuildIcons = activeState === 'balanced';
+        floatBuild.forEach(el => {
+          if (el) {
+            el.style.opacity = showBuildIcons ? '1' : '0';
+            el.style.transform = showBuildIcons ? 'scale(1)' : 'scale(0.7)';
+          }
+        });
+
+        const showExploreIcons = activeState === 'explore';
+        floatExplore.forEach(el => {
+          if (el) {
+            el.style.opacity = showExploreIcons ? '1' : '0';
+            el.style.transform = showExploreIcons ? 'scale(1)' : 'scale(0.7)';
+          }
+        });
+
+        // Glow effects
+        if (glowExploit) {
+          glowExploit.style.opacity = (activeState === 'exploit' || activeState === 'balanced') ? '0.5' : '0';
+        }
+        if (glowExplore) {
+          glowExplore.style.opacity = (activeState === 'explore') ? '0.5' : '0';
+        }
+
+        // Slider track styling
+        const percentage = val * 100;
+        slider.style.background = `linear-gradient(to right, #0DFFC6 0%, #6366F1 ${percentage}%, #1e293b ${percentage}%, #1e293b 100%)`;
+
+        // Ring animations/gradients
+        if (ring1 && ring2) {
+          if (activeState === 'exploit') {
+            ring1.style.background = 'linear-gradient(to right, #6366F1, #3B82F6)';
+            ring2.style.background = 'linear-gradient(to right, #3B82F6, #1D4ED8)';
+            ring1.style.animation = 'none';
+            ring2.style.animation = 'none';
+          } else if (activeState === 'explore') {
+            ring1.style.background = 'linear-gradient(to right, #0DFFC6, #D946EF, #F59E0B)';
+            ring2.style.background = 'linear-gradient(to right, #F59E0B, #0DFFC6, #D946EF)';
+            ring1.style.animation = 'spin-slow 6s linear infinite';
+            ring2.style.animation = 'spin-slow 8s linear infinite reverse';
+          } else {
+            ring1.style.background = 'linear-gradient(to right, #0DFFC6, #6366F1)';
+            ring2.style.background = 'linear-gradient(to right, #6366F1, #0DFFC6)';
+            ring1.style.animation = 'none';
+            ring2.style.animation = 'none';
+          }
+        }
+      }
+
+      slider.addEventListener('input', updateEpsilon);
+
+      // Snap buttons listeners
+      if (snapExploit) {
+        snapExploit.addEventListener('click', () => {
+          slider.value = '0';
+          updateEpsilon();
+        });
+      }
+      if (snapBalanced) {
+        snapBalanced.addEventListener('click', () => {
+          slider.value = '0.5';
+          updateEpsilon();
+        });
+      }
+      if (snapExplore) {
+        snapExplore.addEventListener('click', () => {
+          slider.value = '1';
+          updateEpsilon();
+        });
+      }
+
+      // Initial update
+      updateEpsilon();
+    }
+
+    setupEpsilonSlider();
+    document.addEventListener('astro:after-swap', setupEpsilonSlider);
+  </script>
+
+  <!-- CSS Styles for custom animations and elements -->
+  <style>
+    @keyframes float-up-down {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(3deg); }
+    }
+    @keyframes float-down-up {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(8px) rotate(-3deg); }
+    }
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    .animate-float-1 {
+      animation: float-up-down 4s ease-in-out infinite;
+    }
+    .animate-float-2 {
+      animation: float-down-up 4.5s ease-in-out infinite;
+    }
+    .animate-float-3 {
+      animation: float-up-down 5s ease-in-out infinite 0.5s;
+    }
+    .animate-float-4 {
+      animation: float-down-up 5.5s ease-in-out infinite 1s;
+    }
+    
+    /* Custom thumb styling for range input */
+    #epsilon-slider::-webkit-slider-thumb {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 9999px;
+      background: #0DFFC6;
+      border: 3px solid #020617;
+      box-shadow: 0 0 10px rgba(13, 255, 198, 0.8);
+      cursor: pointer;
+      transition: transform 0.15s ease, background-color 0.15s ease;
+    }
+    #epsilon-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 15px rgba(13, 255, 198, 1);
+    }
+    #epsilon-slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 9999px;
+      background: #0DFFC6;
+      border: 3px solid #020617;
+      box-shadow: 0 0 10px rgba(13, 255, 198, 0.8);
+      cursor: pointer;
+      transition: transform 0.15s ease, background-color 0.15s ease;
+    }
+    #epsilon-slider::-moz-range-thumb:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 15px rgba(13, 255, 198, 1);
+    }
+  </style>
 </Layout>

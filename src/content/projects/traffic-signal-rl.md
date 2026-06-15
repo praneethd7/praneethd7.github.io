@@ -4,6 +4,8 @@ category: Reinforcement Learning
 type: previous
 tags: [Reinforcement Learning, Deep Q-Learning, Traffic Control, Simulation, DQN]
 order: 6
+image: "/assets/traffic_signal_rl.png"
+description: "Trained an autonomous Deep Q-Learning (DQN) agent to optimize traffic signal timings, reducing average wait times and emissions."
 ---
 
 - Built an autonomous agent operating on the concept of envy-minimizing traffic signals to minimize user envy in a traffic grid.

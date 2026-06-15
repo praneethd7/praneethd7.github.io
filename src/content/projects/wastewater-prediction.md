@@ -4,6 +4,8 @@ category: Other
 type: previous
 tags: [R, Random Forest, Gradient Boosting, XGBoost, EDA]
 order: 8
+image: "/assets/wastewater_prediction.png"
+description: "Employed Random Forest and XGBoost regression models in R to predict wastewater flow and effluents with high accuracy."
 ---
 
 - Cleaned raw data, standardized units, and interpolated missing observations using the `mice` library in R.

@@ -5,6 +5,8 @@ category: Computer Vision
 type: previous
 tags: [Raspberry Pi, Image Processing, Automation, Hardware Prototyping]
 order: 15
+image: "/assets/glass_0.png"
+description: "Automated glass fragmentation testing using raspberry pi camera modules and image processing techniques to eliminate manual counting."
 ---
 
 - Automated the process of Glass Fragmentation Testing that involves tedious manual counting by using Image processing techniques.

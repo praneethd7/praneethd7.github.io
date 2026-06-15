@@ -5,6 +5,8 @@ type: current
 tags: [RAG, LLMs, Vector Databases, Python, LangChain]
 featured: true
 order: 1
+image: "/assets/agentic_rag_project.png"
+description: "An enterprise-grade Retrieval-Augmented Generation (RAG) system engineered for high-accuracy question answering over complex developer documentation."
 ---
 
 An enterprise-grade Retrieval-Augmented Generation (RAG) system engineered for high-accuracy question answering over complex developer documentation and multi-page PDFs.

@@ -4,6 +4,8 @@ category: Computer Vision
 type: course
 tags: [Computer Vision, Image Processing, OpenCV, Graph Algorithms]
 order: 17
+image: "/assets/maze.jpg"
+description: "Implemented morphological techniques and graph search algorithms using OpenCV to automatically solve maze puzzles."
 ---
 
 - Since childhood, I was interested in solving puzzles, especially the maze puzzles. It so struck me one day that I could solve this puzzle using skills I have.

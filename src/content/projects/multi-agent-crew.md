@@ -5,6 +5,8 @@ type: current
 tags: [Multi-Agent Systems, crewAI, Autogen, LLMs]
 featured: true
 order: 3
+image: "/assets/multi_agent_crew.png"
+description: "An autonomous agent workspace where a crew of specialized AI agents collaborate to plan, write, test, and document software."
 ---
 
 An autonomous agent workspace where a crew of specialized AI agents (Product Manager, Coder, QA Engineer, Tech Writer) collaborate to plan, write, test, and write documentation for small software features.

@@ -5,6 +5,8 @@ type: current
 tags: [PEFT, LoRA, HuggingFace, PyTorch, LLMs]
 featured: true
 order: 2
+image: "/assets/peft_code_llama.png"
+description: "Fine-tuned Code Llama (13B) with QLoRA/PEFT on domain-specific repository patterns to improve completion accuracy by 35%."
 ---
 
 A specialized code-generation assistant developed by fine-tuning Code Llama (13B) on domain-specific repository patterns, improving codebase-specific code completions by 35%.
