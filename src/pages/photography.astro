@@ -14,8 +14,6 @@ const resolvedImages = await Promise.all(
     let category = 'Landscape';
     if (filename.toLowerCase().includes('drone')) {
       category = 'Aerial';
-    } else if (filename.toLowerCase().includes('camp') || filename.toLowerCase().includes('trek')) {
-      category = 'Adventure';
     } else if (filename.toLowerCase().includes('cycle')) {
       category = 'Sports';
     } else if (filename.toLowerCase().startsWith('wildlife_')) {
@@ -40,7 +38,7 @@ const resolvedImages = await Promise.all(
   })
 );
 
-const categories = ['All', 'Aerial', 'Adventure', 'Landscape', 'Wildlife'];
+const categories = ['All', 'Aerial', 'Landscape', 'Wildlife'];
 ---
 
 <Layout title="Photography | Praneeth Devunuri" description="Praneeth Devunuri's photography showcase. Features professional high-resolution drone/aerial, landscape, and trekking photography with a responsive lightbox.">
