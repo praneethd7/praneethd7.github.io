@@ -12,9 +12,7 @@ const resolvedImages = await Promise.all(
     
     // Determine category based on filename
     let category = 'Landscape';
-    if (filename.toLowerCase().includes('drone')) {
-      category = 'Aerial';
-    } else if (filename.toLowerCase().includes('cycle')) {
+    if (filename.toLowerCase().includes('cycle')) {
       category = 'Sports';
     } else if (filename.toLowerCase().startsWith('wildlife_')) {
       category = 'Wildlife';
@@ -38,16 +36,16 @@ const resolvedImages = await Promise.all(
   })
 );
 
-const categories = ['All', 'Aerial', 'Landscape', 'Wildlife'];
+const categories = ['All', 'Landscape', 'Wildlife'];
 ---
 
-<Layout title="Photography | Praneeth Devunuri" description="Praneeth Devunuri's photography showcase. Features professional high-resolution drone/aerial, landscape, and trekking photography with a responsive lightbox.">
+<Layout title="Photography | Praneeth Devunuri" description="Praneeth Devunuri's photography showcase. Features professional high-resolution landscape and trekking photography with a responsive lightbox.">
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "ImageGallery",
       "name": "Praneeth Devunuri's Photography Gallery",
-      "description": "Landscape, Aerial, Adventure, and Sports photography by Praneeth Devunuri.",
+      "description": "Landscape, Adventure, and Sports photography by Praneeth Devunuri.",
       "creator": {
         "@id": "https://praneethd7.github.io/#person"
       },
@@ -68,7 +66,7 @@ const categories = ['All', 'Aerial', 'Landscape', 'Wildlife'];
         Photography Gallery
       </h1>
       <p class="font-inter text-slate-400 mt-4 leading-relaxed">
-        Capturing landscapes, outdoor adventures, and aerial viewpoints.
+        Capturing landscapes and outdoor adventures.
       </p>
     </div>
 
