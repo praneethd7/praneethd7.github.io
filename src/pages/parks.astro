@@ -1,0 +1,648 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import fs from 'node:fs';
+import path from 'node:path';
+import { nationalParks } from '../data/parks';
+
+// Dynamically import all images from src/assets/photography/
+const images = import.meta.glob<{ default: ImageMetadata }>('../assets/photography/*.{jpeg,jpg,png,gif,webp,AVIF,WebP}');
+
+const resolvedParks = await Promise.all(
+  nationalParks.map(async (park) => {
+    if (park.photoUrl) {
+      const filename = park.photoUrl.split('/').pop();
+      const globKey = `../assets/photography/${filename}`;
+      if (images[globKey]) {
+        try {
+          const module = await images[globKey]();
+          return { ...park, resolvedImage: module.default };
+        } catch (e) {
+          console.error(`Failed to load image: ${globKey}`, e);
+        }
+      }
+    }
+    return { ...park, resolvedImage: null };
+  })
+);
+
+// Load SVG Map from assets
+const svgPath = path.resolve('./src/assets/us-map.svg');
+let svgContent = '';
+try {
+  const rawSvg = fs.readFileSync(svgPath, 'utf-8');
+  // Inject responsive viewBox and class instead of hardcoded width/height
+  svgContent = rawSvg
+    .replace('<svg xmlns="http://www.w3.org/2000/svg" width="959" height="593">', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 959 593" class="w-full h-full opacity-85 select-none pointer-events-auto">');
+} catch (e) {
+  console.error('Failed to read US map SVG file', e);
+}
+
+// Calculate travel stats
+const visitedCount = nationalParks.filter(p => p.visited).length;
+const totalCount = nationalParks.length;
+const percentVisited = ((visitedCount / totalCount) * 100).toFixed(1);
+
+// Unique visited states list (deduplicated)
+const visitedStates = Array.from(
+  new Set(nationalParks.filter(p => p.visited).flatMap(p => p.state))
+);
+const visitedStatesCount = visitedStates.length;
+
+const regions = ['All', 'West', 'Midwest', 'South', 'Northeast'];
+---
+
+<Layout title="National Parks Exploration | Praneeth Devunuri" description="Track and explore Praneeth Devunuri's visits to US National Parks, featuring an interactive map, exploration stats, and integration with high-resolution photography.">
+  <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    
+    <!-- Header/Hero Section -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-gold/10 px-3 py-1 text-xs font-semibold text-brand-gold mb-4">
+        <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        Adventure Logs
+      </span>
+      <h1 class="font-outfit text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
+        National Parks Exploration
+      </h1>
+      <p class="font-inter text-slate-400 mt-4 leading-relaxed">
+        A visual showcase and personal tracker of my journeys across the United States' protected wilderness landscapes. Keeping memories of the heights scaled and paths crossed.
+      </p>
+    </div>
+
+    <!-- Stats Dashboard Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
+      <div class="relative overflow-hidden rounded-2xl border border-white/5 bg-slate-900/60 p-6 backdrop-blur-sm transition-all duration-300 hover:border-brand-gold/20">
+        <div class="absolute -right-4 -bottom-4 text-brand-gold/5 font-bold font-outfit text-8xl pointer-events-none select-none">
+          {visitedCount}
+        </div>
+        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Parks Explored</p>
+        <h3 class="font-outfit text-4xl font-extrabold text-white mt-2">
+          {visitedCount} <span class="text-lg font-medium text-slate-400">/ {totalCount}</span>
+        </h3>
+        <p class="text-xs text-slate-400 mt-3 flex items-center gap-1">
+          <span class="h-1.5 w-1.5 rounded-full bg-brand-gold animate-pulse"></span>
+          Actively exploring the US
+        </p>
+      </div>
+
+      <div class="relative overflow-hidden rounded-2xl border border-white/5 bg-slate-900/60 p-6 backdrop-blur-sm transition-all duration-300 hover:border-brand-indigo/20">
+        <div class="absolute -right-4 -bottom-4 text-brand-indigo/5 font-bold font-outfit text-8xl pointer-events-none select-none">
+          {percentVisited}%
+        </div>
+        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Completion Rate</p>
+        <h3 class="font-outfit text-4xl font-extrabold text-brand-gold mt-2">
+          {percentVisited}%
+        </h3>
+        <!-- Progress Bar -->
+        <div class="mt-4 w-full h-1.5 rounded-full bg-slate-800 overflow-hidden">
+          <div class="h-full bg-gradient-to-r from-brand-gold to-brand-indigo rounded-full" style={`width: ${percentVisited}%`}></div>
+        </div>
+      </div>
+
+      <div class="relative overflow-hidden rounded-2xl border border-white/5 bg-slate-900/60 p-6 backdrop-blur-sm transition-all duration-300 hover:border-brand-gold/20">
+        <div class="absolute -right-4 -bottom-4 text-brand-gold/5 font-bold font-outfit text-8xl pointer-events-none select-none">
+          {visitedStatesCount}
+        </div>
+        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">States Visited</p>
+        <h3 class="font-outfit text-4xl font-extrabold text-white mt-2">
+          {visitedStatesCount} <span class="text-lg font-medium text-slate-400">/ 50</span>
+        </h3>
+        <p class="text-xs text-slate-400 mt-3">
+          Including: {visitedStates.slice(0, 5).join(', ')}{visitedStates.length > 5 ? ' & more' : ''}
+        </p>
+      </div>
+    </div>
+
+    <!-- Map Visualization Container -->
+    <div class="relative rounded-3xl border border-white/10 bg-slate-950/70 p-6 mb-16 shadow-2xl backdrop-blur-md">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 border-b border-white/5 pb-4">
+        <div>
+          <h2 class="font-outfit text-xl font-bold text-white">Interactive Travels Map</h2>
+          <p class="text-xs text-slate-400">Hover over markers to view visited parks. Click to see details.</p>
+        </div>
+        <div class="flex items-center gap-4 text-xs flex-wrap">
+          <span class="flex items-center gap-1.5 text-slate-300">
+            <span class="h-2.5 w-2.5 rounded bg-brand-gold/20 border border-brand-gold/50"></span>
+            Visited States
+          </span>
+          <span class="flex items-center gap-1.5 text-slate-300">
+            <span class="h-2.5 w-2.5 rounded bg-slate-950 border border-white/10"></span>
+            Unvisited States
+          </span>
+          <span class="flex items-center gap-1.5 text-slate-300">
+            <span class="h-3 w-3 rounded-full bg-brand-gold ring-2 ring-slate-950 shadow shadow-brand-gold/50"></span>
+            Visited Park
+          </span>
+          <span class="flex items-center gap-1.5 text-slate-300">
+            <span class="h-2 w-2 rounded-full bg-slate-500/50 ring-1 ring-slate-400/30"></span>
+            Unvisited Park
+          </span>
+        </div>
+      </div>
+
+      <!-- The Map Container -->
+      <div class="relative w-full aspect-[959/593] bg-slate-950 rounded-xl border border-white/5 max-w-5xl mx-auto">
+        <!-- SVG Map Code injected -->
+        <div class="w-full h-full us-map-svg" set:html={svgContent} />
+
+        <!-- Overlay markers for visited and unvisited national parks -->
+        {resolvedParks.map((park) => {
+          const isTopEdge = park.coords.y < 160;
+          const isLeftEdge = park.coords.x < 150;
+          const isRightEdge = park.coords.x > 800;
+
+          // Compute tooltip position & animation transform origin dynamically to prevent cropping at boundaries
+          let tooltipClasses = "pointer-events-none absolute z-20 flex flex-col w-56 overflow-hidden rounded-xl border border-brand-gold/30 bg-slate-950 text-white shadow-2xl transition-all duration-350 scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100";
+          let unvisitedTooltipClasses = "pointer-events-none absolute z-20 flex flex-col w-40 p-3 rounded-lg border border-white/10 bg-slate-950 text-white shadow-xl transition-all duration-350 scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 text-left";
+
+          if (isTopEdge) {
+            tooltipClasses += " top-full mt-3";
+            unvisitedTooltipClasses += " top-full mt-3";
+          } else {
+            tooltipClasses += " bottom-full mb-3";
+            unvisitedTooltipClasses += " bottom-full mb-3";
+          }
+
+          if (isLeftEdge) {
+            tooltipClasses += " left-0 translate-x-0";
+            tooltipClasses += isTopEdge ? " origin-top-left" : " origin-bottom-left";
+            unvisitedTooltipClasses += " left-0 translate-x-0";
+            unvisitedTooltipClasses += isTopEdge ? " origin-top-left" : " origin-bottom-left";
+          } else if (isRightEdge) {
+            tooltipClasses += " right-0 translate-x-0";
+            tooltipClasses += isTopEdge ? " origin-top-right" : " origin-bottom-right";
+            unvisitedTooltipClasses += " right-0 translate-x-0";
+            unvisitedTooltipClasses += isTopEdge ? " origin-top-right" : " origin-bottom-right";
+          } else {
+            tooltipClasses += " left-1/2 -translate-x-1/2";
+            tooltipClasses += isTopEdge ? " origin-top" : " origin-bottom";
+            unvisitedTooltipClasses += " left-1/2 -translate-x-1/2";
+            unvisitedTooltipClasses += isTopEdge ? " origin-top" : " origin-bottom";
+          }
+
+          return (
+            <button
+              class="park-marker-pin absolute z-10 group -translate-x-1/2 -translate-y-1/2 flex items-center justify-center cursor-pointer focus:outline-none"
+              style={`left: ${(park.coords.x / 959) * 100}%; top: ${(park.coords.y / 593) * 100}%;`}
+              data-park-id={park.id}
+              data-visited={park.visited ? 'true' : 'false'}
+              aria-label={`View ${park.name}`}
+            >
+              {park.visited ? (
+                <>
+                  <!-- Visited Outer Glow -->
+                  <span class="absolute h-6 w-6 rounded-full bg-brand-gold/10 scale-100 group-hover:scale-[1.5] transition-all duration-300 border border-brand-gold/25 group-hover:bg-brand-gold/20"></span>
+                  
+                  <!-- Visited Pin Center -->
+                  <span class="h-3 w-3 rounded-full bg-brand-gold ring-2 ring-slate-950 shadow-lg shadow-brand-gold/50 group-hover:bg-white group-hover:scale-125 transition-all duration-300"></span>
+
+                  <!-- Visited Tooltip with Photo -->
+                  <span class={tooltipClasses}>
+                    {park.resolvedImage ? (
+                      <Image
+                        src={park.resolvedImage}
+                        alt={park.photoCaption || park.name}
+                        width={224}
+                        class="w-full h-28 object-cover border-b border-white/5"
+                      />
+                    ) : (
+                      <div class="w-full h-24 bg-gradient-to-br from-slate-900 to-slate-950 flex flex-col items-center justify-center border-b border-white/5 text-slate-700">
+                        <svg class="h-8 w-8 text-brand-gold/20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M3 21l8-14 8 14M9 21l4-7 4 7" />
+                        </svg>
+                      </div>
+                    )}
+                    <span class="p-3 text-left">
+                      <span class="font-outfit font-bold text-xs block leading-tight">{park.name}</span>
+                      <span class="flex items-center justify-between text-[9px] text-slate-400 mt-2 font-semibold">
+                        <span>{park.state.join(', ')}</span>
+                        <span class="text-brand-gold font-mono uppercase tracking-wider">Visited {park.visitYear}</span>
+                      </span>
+                    </span>
+                  </span>
+                </>
+              ) : (
+                <>
+                  <!-- Unvisited Pin Center -->
+                  <span class="h-2 w-2 rounded-full bg-slate-500/50 ring-1 ring-slate-400/30 group-hover:bg-slate-300 group-hover:scale-125 transition-all duration-300 shadow shadow-slate-950/50"></span>
+
+                  <!-- Unvisited Tooltip -->
+                  <span class={unvisitedTooltipClasses}>
+                    <span class="font-outfit font-bold text-[10px] block leading-tight text-slate-300">{park.name}</span>
+                    <span class="flex items-center justify-between text-[9px] text-slate-500 mt-1.5 font-semibold">
+                      <span>{park.state.join(', ')}</span>
+                      <span class="uppercase tracking-wider">Unvisited</span>
+                    </span>
+                  </span>
+                </>
+              )}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+
+    <!-- Filter and Grid Section -->
+    <div class="mb-12">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-white/10 pb-6 mb-8">
+        <!-- Tab Filters -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button class="filter-tab-btn px-4 py-1.5 rounded-lg text-xs font-semibold font-outfit transition-all duration-300 bg-brand-gold text-slate-950 shadow-md shadow-brand-gold/15 active" data-filter="all">All Parks</button>
+          <button class="filter-tab-btn px-4 py-1.5 rounded-lg text-xs font-semibold font-outfit transition-all duration-300 bg-white/5 text-slate-400 hover:bg-white/10 hover:text-slate-200" data-filter="visited">Visited ({visitedCount})</button>
+          <button class="filter-tab-btn px-4 py-1.5 rounded-lg text-xs font-semibold font-outfit transition-all duration-300 bg-white/5 text-slate-400 hover:bg-white/10 hover:text-slate-200" data-filter="unvisited">Unvisited ({totalCount - visitedCount})</button>
+        </div>
+
+        <!-- Region Filters -->
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-slate-500 font-medium font-inter mr-1">Region:</span>
+          <select id="region-filter" class="bg-slate-900 border border-white/10 rounded-lg text-xs font-medium text-slate-300 px-3 py-1.5 focus:border-brand-cyan focus:outline-none cursor-pointer">
+            <option value="all">All Regions</option>
+            <option value="West">West</option>
+            <option value="Midwest">Midwest</option>
+            <option value="South">South</option>
+            <option value="Northeast">Northeast</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Parks Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="parks-grid">
+        {resolvedParks.map((park) => (
+          <div
+            class={`park-card group rounded-2xl border transition-all duration-500 overflow-hidden cursor-pointer flex flex-col justify-between ${
+              park.visited
+                ? 'bg-slate-900/40 border-white/10 hover:border-brand-gold/40 hover:shadow-xl hover:shadow-brand-gold/2'
+                : 'bg-slate-950/40 border-white/5 opacity-60 hover:opacity-80'
+            }`}
+            data-visited={park.visited ? 'true' : 'false'}
+            data-region={park.region}
+            data-park-id={park.id}
+          >
+            <!-- Card Image or Icon Header -->
+            <div class="relative aspect-video w-full overflow-hidden bg-slate-950 flex items-center justify-center border-b border-white/5">
+              {park.visited && park.resolvedImage ? (
+                <Image
+                  src={park.resolvedImage}
+                  alt={park.photoCaption || park.name}
+                  width={400}
+                  class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+                />
+              ) : (
+                <!-- Custom Scenic Vector Placeholder -->
+                <div class="absolute inset-0 bg-gradient-to-br from-slate-900 to-slate-950 flex flex-col items-center justify-center text-slate-700">
+                  {park.visited ? (
+                    // Mountains/Trek graphic for visited without photos
+                    <div class="flex flex-col items-center gap-1.5">
+                      <svg class="h-8 w-8 text-brand-cyan/30" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M3 21l8-14 8 14M9 21l4-7 4 7" />
+                      </svg>
+                      <span class="text-[10px] uppercase font-bold tracking-widest text-slate-500">Adventure Explored</span>
+                    </div>
+                  ) : (
+                    // Lock icon for unvisited
+                    <div class="flex flex-col items-center gap-1.5">
+                      <svg class="h-6 w-6 text-slate-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                      </svg>
+                      <span class="text-[10px] uppercase font-bold tracking-widest text-slate-800">Unexplored</span>
+                    </div>
+                  )}
+                </div>
+              )}
+
+               <!-- Visited/Lock Badges -->
+              {park.visited ? (
+                <span class="absolute top-3 right-3 bg-brand-gold text-slate-950 font-outfit font-extrabold text-[10px] px-2.5 py-0.5 rounded-full shadow-md tracking-wider uppercase">
+                  {park.visitYear}
+                </span>
+              ) : (
+                <span class="absolute top-3 right-3 bg-slate-900/90 border border-white/5 text-slate-400 font-outfit font-bold text-[10px] px-2 py-0.5 rounded-full tracking-wider uppercase">
+                  Locked
+                </span>
+              )}
+            </div>
+
+            <!-- Card Body -->
+            <div class="p-5 flex-grow flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] font-semibold text-slate-500 tracking-wider uppercase">{park.region} Region</span>
+                <h4 class="font-outfit text-base font-bold text-white mt-1 group-hover:text-brand-gold transition-colors duration-300">{park.name}</h4>
+                <p class="text-xs text-slate-400 mt-2 line-clamp-2 leading-relaxed">{park.description}</p>
+              </div>
+
+              <!-- Card Footer -->
+              <div class="mt-4 flex items-center justify-between border-t border-white/5 pt-3">
+                <span class="text-[11px] font-medium text-slate-400 flex items-center gap-1">
+                  <svg class="h-3.5 w-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  </svg>
+                  {park.state.join(', ')}
+                </span>
+                
+                {park.visited && (
+                  <span class="text-xs font-semibold text-brand-gold group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5">
+                    Details
+                    <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Park Detail Modal (Hidden by Default) -->
+    <div
+      id="park-detail-modal"
+      class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-950/95 backdrop-blur-md p-4 sm:p-10 select-none"
+    >
+      <div class="absolute inset-0 cursor-zoom-out" id="modal-backdrop"></div>
+      
+      <!-- Close Button -->
+      <button
+        id="modal-close"
+        class="absolute top-6 right-6 z-50 text-slate-400 hover:text-white hover:scale-110 active:scale-95 transition-all p-2 rounded-full bg-white/5 cursor-pointer"
+        aria-label="Close modal"
+      >
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <!-- Content Box -->
+      <div class="relative max-w-4xl w-full bg-slate-900 border border-white/10 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row z-10 select-text max-h-[85vh] md:max-h-none overflow-y-auto md:overflow-visible">
+        
+        <!-- Left Side: Image -->
+        <div class="w-full md:w-1/2 aspect-video md:aspect-auto md:min-h-[450px] relative bg-slate-950 flex items-center justify-center border-b md:border-b-0 md:border-r border-white/5">
+          <img
+            id="modal-img"
+            class="w-full h-full object-cover hidden"
+            src=""
+            alt=""
+          />
+          <!-- Fallback Graphic -->
+          <div id="modal-img-fallback" class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex flex-col items-center justify-center text-slate-700">
+            <svg class="h-16 w-16 text-brand-gold/20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M3 21l8-14 8 14M9 21l4-7 4 7" />
+            </svg>
+            <span class="text-xs uppercase font-extrabold tracking-widest text-slate-500 mt-3">Adventure Awaits</span>
+          </div>
+
+          <!-- Photo Caption overlay if photo exists -->
+          <div id="modal-img-caption" class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/90 to-transparent p-4 text-xs text-slate-300 hidden"></div>
+        </div>
+
+        <!-- Right Side: Details -->
+        <div class="w-full md:w-1/2 p-6 sm:p-8 flex flex-col justify-between gap-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between gap-4">
+              <span id="modal-region" class="text-[10px] font-semibold text-brand-gold tracking-widest uppercase"></span>
+              <span id="modal-badge" class="bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-[10px] font-bold px-2.5 py-0.5 rounded-full tracking-wider uppercase"></span>
+            </div>
+            
+            <h3 id="modal-name" class="font-outfit text-2xl sm:text-3xl font-extrabold text-white leading-tight"></h3>
+            
+            <div class="flex items-center gap-4 text-xs font-semibold text-slate-400">
+              <span class="flex items-center gap-1">
+                <svg class="h-4 w-4 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                </svg>
+                <span id="modal-state"></span>
+              </span>
+            </div>
+
+            <hr class="border-white/5" />
+
+            <p id="modal-desc" class="text-slate-300 text-sm leading-relaxed"></p>
+          </div>
+
+          <div class="flex items-center justify-between pt-4 border-t border-white/5">
+            <span class="text-xs text-slate-500">US National Parks Checklist</span>
+            <!-- Visited Check icon -->
+            <div class="flex items-center gap-1.5 text-xs font-bold text-brand-gold bg-brand-gold/10 border border-brand-gold/20 rounded-xl px-3 py-1.5">
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              Adventure Logged
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</Layout>
+
+<style is:global>
+  /* SVG USA Map custom styles */
+  .state path {
+    fill: #080c14 !important; /* dark slate background */
+    stroke: rgba(255, 255, 255, 0.08) !important; /* soft white border */
+    stroke-width: 1.2 !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .state path:hover {
+    fill: #111827 !important; /* slate-900 on hover */
+    stroke: rgba(255, 255, 255, 0.2) !important;
+    cursor: pointer !important;
+  }
+
+  /* Specific styling for states visited */
+  .state path.me, .state path.wy, .state path.mt, .state path.id, 
+  .state path.az, .state path.wa, .state path.fl, .state path.ut, 
+  .state path.ky, .state path.co, .state path.nm, .state path.tx, 
+  .state path.or, .state path.oh, .state path.mo, .state path.tn, 
+  .state path.nc, .state path.va {
+    fill: rgba(251, 191, 36, 0.04) !important; /* very soft gold fill */
+    stroke: rgba(251, 191, 36, 0.15) !important; /* soft gold border */
+  }
+
+  /* Visited state hover styling */
+  .state path.me:hover, .state path.wy:hover, .state path.mt:hover, .state path.id:hover, 
+  .state path.az:hover, .state path.wa:hover, .state path.fl:hover, .state path.ut:hover, 
+  .state path.ky:hover, .state path.co:hover, .state path.nm:hover, .state path.tx:hover, 
+  .state path.or:hover, .state path.oh:hover, .state path.mo:hover, .state path.tn:hover, 
+  .state path.nc:hover, .state path.va:hover {
+    fill: rgba(251, 191, 36, 0.1) !important;
+    stroke: rgba(251, 191, 36, 0.7) !important;
+  }
+</style>
+
+<script define:vars={{ nationalParks }}>
+  // Filter Logic
+  function setupFilters() {
+    const tabButtons = document.querySelectorAll('.filter-tab-btn');
+    const regionSelect = document.getElementById('region-filter');
+    const cards = document.querySelectorAll('.park-card');
+
+    let activeFilter = 'all'; // all, visited, unvisited
+    let activeRegion = 'all'; // all, West, Midwest, South, Northeast
+
+    function updateGrid() {
+      cards.forEach((card) => {
+        const isVisited = card.getAttribute('data-visited') === 'true';
+        const region = card.getAttribute('data-region');
+        
+        let show = true;
+
+        // Apply Tab Filter
+        if (activeFilter === 'visited' && !isVisited) show = false;
+        if (activeFilter === 'unvisited' && isVisited) show = false;
+
+        // Apply Region Filter
+        if (activeRegion !== 'all' && region !== activeRegion) show = false;
+
+        if (show) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    tabButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach((b) => {
+          b.classList.remove('bg-brand-gold', 'text-slate-950', 'shadow-md', 'shadow-brand-gold/15');
+          b.classList.add('bg-white/5', 'text-slate-400', 'hover:bg-white/10', 'hover:text-slate-200');
+        });
+        btn.classList.remove('bg-white/5', 'text-slate-400', 'hover:bg-white/10', 'hover:text-slate-200');
+        btn.classList.add('bg-brand-gold', 'text-slate-950', 'shadow-md', 'shadow-brand-gold/15');
+
+        activeFilter = btn.getAttribute('data-filter') || 'all';
+        updateGrid();
+      });
+    });
+
+    if (regionSelect) {
+      regionSelect.addEventListener('change', (e) => {
+        activeRegion = e.target.value;
+        updateGrid();
+      });
+    }
+  }
+
+  // Modal / Lightbox Logic
+  function setupModal() {
+    const cards = document.querySelectorAll('.park-card');
+    const markers = document.querySelectorAll('.park-marker-pin');
+    
+    const modal = document.getElementById('park-detail-modal');
+    const modalBackdrop = document.getElementById('modal-backdrop');
+    const modalClose = document.getElementById('modal-close');
+    
+    const mImg = document.getElementById('modal-img');
+    const mImgFallback = document.getElementById('modal-img-fallback');
+    const mImgCaption = document.getElementById('modal-img-caption');
+    const mRegion = document.getElementById('modal-region');
+    const mBadge = document.getElementById('modal-badge');
+    const mName = document.getElementById('modal-name');
+    const mState = document.getElementById('modal-state');
+    const mDesc = document.getElementById('modal-desc');
+
+    function openModalForPark(parkId) {
+      const park = nationalParks.find(p => p.id === parkId);
+      if (!park || !modal) return;
+
+      mName.textContent = park.name;
+      mRegion.textContent = `${park.region} Region`;
+      mState.textContent = park.state.join(', ');
+      mDesc.textContent = park.description;
+
+      if (park.visited) {
+        mBadge.textContent = `Visited ${park.visitYear}`;
+        mBadge.className = "bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-[10px] font-bold px-2.5 py-0.5 rounded-full tracking-wider uppercase";
+        
+        // Handle photo if available
+        if (park.photoUrl) {
+          mImg.src = park.photoUrl;
+          mImg.alt = park.photoCaption || park.name;
+          mImg.classList.remove('hidden');
+          mImgFallback.classList.add('hidden');
+          
+          if (mImgCaption) {
+            mImgCaption.textContent = park.photoCaption || '';
+            mImgCaption.classList.remove('hidden');
+          }
+        } else {
+          mImg.classList.add('hidden');
+          mImgFallback.classList.remove('hidden');
+          if (mImgCaption) mImgCaption.classList.add('hidden');
+        }
+      } else {
+        mBadge.textContent = "Unvisited";
+        mBadge.className = "bg-slate-800 border border-white/5 text-slate-400 text-[10px] font-bold px-2.5 py-0.5 rounded-full tracking-wider uppercase";
+        mImg.classList.add('hidden');
+        mImgFallback.classList.remove('hidden');
+        if (mImgCaption) mImgCaption.classList.add('hidden');
+      }
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const isVisited = card.getAttribute('data-visited') === 'true';
+        if (isVisited) {
+          const id = card.getAttribute('data-park-id');
+          if (id) openModalForPark(id);
+        }
+      });
+    });
+
+    markers.forEach((marker) => {
+      marker.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = marker.getAttribute('data-park-id');
+        if (id) openModalForPark(id);
+      });
+    });
+
+    if (modalClose) modalClose.addEventListener('click', closeModal);
+    if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    }
+
+    // Keyboard bindings
+    const handleKeyDown = (e) => {
+      if (modal && !modal.classList.contains('hidden')) {
+        if (e.key === 'Escape') closeModal();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
+    // Clean up event listener
+    document.addEventListener('astro:before-swap', () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    });
+  }
+
+  // Initial runs
+  setupFilters();
+  setupModal();
+
+  // Astro page transitions support
+  document.addEventListener('astro:after-swap', () => {
+    setupFilters();
+    setupModal();
+  });
+</script>

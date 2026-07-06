@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matrimony Biodata - Dr. Praneeth Devunuri</title>
+  <!-- Google Fonts for Premium Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Design Tokens & CSS Reset */
+    :root {
+      --primary: #1A2E40;        /* Deep Premium Blue */
+      --primary-light: #2A4560;
+      --accent: #C5A880;         /* Warm Champagne Gold */
+      --accent-light: #F4EFEA;   /* Soft Gold Tint */
+      --text-main: #2D3748;      /* Slate Dark */
+      --text-muted: #64748B;     /* Slate Muted */
+      --bg-page: #F8FAFC;        /* Crisp Soft Grey */
+      --bg-card: #FFFFFF;
+      --border: #E2E8F0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-page);
+      line-height: 1.6;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      padding: 40px 20px;
+    }
+
+    /* Page Container */
+    .biodata-container {
+      max-width: 850px;
+      margin: 0 auto;
+      background-color: var(--bg-card);
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      display: flex;
+    }
+
+    /* Left Column (Sidebar) */
+    .sidebar {
+      width: 35%;
+      background-color: var(--primary);
+      color: #FFFFFF;
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+    }
+
+    /* Profile Photo Container */
+    .photo-container {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 12px;
+      border: 2px solid var(--accent);
+      background-color: #2D3E50;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .photo-placeholder {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      color: var(--accent);
+      text-align: center;
+      padding: 20px;
+      font-style: italic;
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none; /* User can place 'photo.jpg' to show it */
+    }
+
+    /* Sidebar Section Heading */
+    .sidebar-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--accent);
+      border-bottom: 1px solid rgba(197, 168, 128, 0.3);
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+      letter-spacing: 0.5px;
+    }
+
+    .sidebar-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .info-row {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .info-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 500;
+    }
+
+    .info-value {
+      font-size: 14px;
+      font-weight: 400;
+      color: #FFFFFF;
+    }
+
+    /* Right Column (Main Content) */
+    .main-content {
+      width: 65%;
+      padding: 50px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+    }
+
+    /* Main Profile Header */
+    .header {
+      border-bottom: 2px solid var(--accent-light);
+      padding-bottom: 20px;
+    }
+
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .header .subtitle {
+      font-size: 16px;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* Main Section Style */
+    .section {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: var(--primary);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::after {
+      content: "";
+      flex-grow: 1;
+      height: 1px;
+      background-color: var(--border);
+    }
+
+    .bio-text {
+      font-size: 14.5px;
+      color: var(--text-main);
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    /* Timeline or List Styles */
+    .education-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .edu-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .edu-degree {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--primary-light);
+    }
+
+    .edu-inst {
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+
+    /* Family Cards Grid */
+    .family-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .family-card {
+      background-color: var(--bg-page);
+      border-left: 3px solid var(--accent);
+      padding: 12px 15px;
+      border-radius: 4px;
+    }
+
+    .family-role {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .family-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .family-desc {
+      font-size: 12.5px;
+      color: var(--text-main);
+      margin-top: 2px;
+    }
+
+    /* Partner Preferences Styling */
+    .preference-card {
+      background-color: var(--accent-light);
+      border: 1px dashed var(--accent);
+      padding: 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      color: var(--primary);
+      line-height: 1.5;
+    }
+
+    /* Hobbies & Interests */
+    .hobbies-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hobby-tag {
+      background-color: var(--bg-page);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--primary-light);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* PDF Generation Optimization Styles */
+    @media print {
+      body {
+        background-color: #FFFFFF;
+        padding: 0;
+        margin: 0;
+      }
+      .biodata-container {
+        border: none;
+        box-shadow: none;
+        max-width: 100%;
+        width: 100%;
+        border-radius: 0;
+      }
+      .sidebar {
+        background-color: #1A2E40 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .preference-card {
+        background-color: #F4EFEA !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .family-card, .hobby-tag {
+        background-color: #F8FAFC !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .page-break {
+        page-break-before: always;
+        margin-top: 0 !important;
+      }
+      .gallery-container {
+        border: none;
+        box-shadow: none;
+        max-width: 100%;
+        width: 100%;
+        border-radius: 0;
+        padding: 20px 0 0 0;
+      }
+      .gallery-item {
+        box-shadow: none;
+      }
+    }
+
+    /* Gallery Styles */
+    .gallery-container {
+      max-width: 850px;
+      margin: 30px auto 0 auto;
+      background-color: var(--bg-card);
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border);
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+    
+    .gallery-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: var(--primary);
+      text-align: center;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .gallery-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 2px;
+      background-color: var(--accent);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .gallery-item {
+      aspect-ratio: 4/5;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+      transition: transform 0.2s;
+    }
+    
+    .gallery-item:hover {
+      transform: scale(1.02);
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="biodata-container">
+    
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+      
+      <!-- Photo Holder (User can name their photo 'photo.jpg' to render here automatically) -->
+      <div class="photo-container">
+        <!-- If they have photo.jpg in the workspace folder, this will display it -->
+        <img id="profileImage" src="photo.jpg" alt="Dr. Praneeth Devunuri" class="profile-photo" onerror="showPlaceholder()">
+        <div id="imagePlaceholder" class="photo-placeholder">
+          Place your photograph<br>as "photo.jpg"<br>in this folder
+        </div>
+      </div>
+
+      <!-- Personal Info Group -->
+      <div class="sidebar-group">
+        <h3 class="sidebar-title">Personal Details</h3>
+        
+        <div class="info-row">
+          <span class="info-label">Age & DOB</span>
+          <span class="info-value">29 Years | 07 March 1997</span>
+        </div>
+        
+        <div class="info-row">
+          <span class="info-label">Time & Place of Birth</span>
+          <span class="info-value">6:03 AM | Hyderabad, India</span>
+        </div>
+
+        <div class="info-row">
+          <span class="info-label">Height</span>
+          <span class="info-value">5' 11"</span>
+        </div>
+
+        <div class="info-row">
+          <span class="info-label">Marital Status</span>
+          <span class="info-value">Unmarried</span>
+        </div>
+
+        <div class="info-row">
+          <span class="info-label">Visa Status</span>
+          <span class="info-value">H1B (I-140 processing)</span>
+        </div>
+
+        <div class="info-row">
+          <span class="info-label">Current Location</span>
+          <span class="info-value">Dallas, Texas, USA</span>
+        </div>
+      </div>
+
+      <!-- Astrological Info Group -->
+      <div class="sidebar-group">
+        <h3 class="sidebar-title">Astrological Info</h3>
+        
+        <div class="info-row">
+          <span class="info-label">Caste</span>
+          <span class="info-value">Arya Vysya</span>
+        </div>
+
+        <div class="info-row">
+          <span class="info-label">Gothram</span>
+          <span class="info-value">Guntakula, Vipirisetla</span>
+        </div>
+
+        <div class="info-row">
+          <span class="info-label">Rasi</span>
+          <span class="info-value">Makara</span>
+        </div>
+
+        <div class="info-row">
+          <span class="info-label">Nakshatram</span>
+          <span class="info-value">Dhanishta (1st Padam)</span>
+        </div>
+      </div>
+
+      <!-- Contact Info Group -->
+      <div class="sidebar-group">
+        <h3 class="sidebar-title">Contact</h3>
+        
+        <div class="info-row">
+          <span class="info-label">Phone</span>
+          <span class="info-value">+91-8008882280 (Mother)</span>
+        </div>
+        
+        <div class="info-row">
+          <span class="info-label">Address</span>
+          <span class="info-value">Hyderabad</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- RIGHT MAIN CONTENT -->
+    <main class="main-content">
+      
+      <!-- Profile Header -->
+      <div class="header">
+        <h1>Dr. Praneeth Devunuri</h1>
+        <div class="subtitle">Senior AI Scientist</div>
+      </div>
+
+      <!-- About Me Section -->
+      <section class="section">
+        <h2 class="section-title">About Me</h2>
+        <p class="bio-text">
+          Hello! I am Praneeth. I would describe myself as a blend of academic curiosity, a passion for technology, and a deep-rooted love for family. Having completed my B.Tech at IIT Madras, followed by an M.S. at Texas A&M, and a Ph.D. from UIUC, I currently reside in Dallas, Texas, where I work as a Senior AI Scientist.
+        </p>
+        <p class="bio-text">
+          While my professional life is dedicated to cutting-edge technology, in my personal life, I am simple, easygoing, and down-to-earth. I was raised in Hyderabad by a warm, close-knit family of professionals, which has taught me to value both progressive thinking and traditional family values.
+        </p>
+      </section>
+
+      <!-- Education Section -->
+      <section class="section">
+        <h2 class="section-title">Education & Career</h2>
+        <div class="education-list">
+          <div class="edu-item">
+            <span class="edu-degree">Ph.D. in Computer Science</span>
+            <span class="edu-inst">University of Illinois Urbana-Champaign (UIUC), USA</span>
+          </div>
+          <div class="edu-item">
+            <span class="edu-degree">M.S. in Computer Science / Engineering</span>
+            <span class="edu-inst">Texas A&M University, USA</span>
+          </div>
+          <div class="edu-item">
+            <span class="edu-degree">B.Tech</span>
+            <span class="edu-inst">IIT Madras, India</span>
+          </div>
+          <div class="edu-item" style="margin-top: 5px;">
+            <span class="edu-degree">Senior AI Scientist</span>
+            <span class="edu-inst">Based in Dallas, Texas | Annual Compensation: $250k+ (Total Comp)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hobbies & Interests Section -->
+      <section class="section">
+        <h2 class="section-title">Interests & Hobbies</h2>
+        <div class="hobbies-grid">
+          <div class="hobby-tag">🏞️ Nature & National Parks (Visited 25+)</div>
+          <div class="hobby-tag">🏋️‍♂️ Gym & Cycling</div>
+          <div class="hobby-tag">🏸 Badminton</div>
+          <div class="hobby-tag">🎸 Guitar & Singing</div>
+          <div class="hobby-tag">📸 Photography</div>
+          <div class="hobby-tag">🍳 Cooking & Food Exploration</div>
+          <div class="hobby-tag">💻 Coding Side Projects</div>
+          <div class="hobby-tag">📚 Science & History</div>
+        </div>
+      </section>
+
+      <!-- Family Background Section -->
+      <section class="section">
+        <h2 class="section-title">Family Details</h2>
+        <div class="family-grid">
+          
+          <div class="family-card">
+            <div class="family-role">Father</div>
+            <div class="family-name">Dr. Satyanarayana Devunuri</div>
+            <div class="family-desc">Retired Vice President, R&D (Scientist) | Active Consultant</div>
+          </div>
+
+          <div class="family-card">
+            <div class="family-role">Mother</div>
+            <div class="family-name">Nagalakshmi</div>
+            <div class="family-desc">Retired Deputy Executive Engineer</div>
+          </div>
+
+          <div class="family-card">
+            <div class="family-role">Elder Sister</div>
+            <div class="family-name">Doctor</div>
+            <div class="family-desc">Gynaecologist</div>
+          </div>
+
+          <div class="family-card">
+            <div class="family-role">Brother-in-law</div>
+            <div class="family-name">Doctor</div>
+            <div class="family-desc">Anesthesia & Critical Care</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Partner Preference Section -->
+      <section class="section">
+        <h2 class="section-title">Partner Preference</h2>
+        <div class="preference-card">
+          I am seeking a partner who is well-educated, intellectually compatible, and shares similar family-oriented values. Ideally, someone currently residing in or open to moving to the USA, who is ambitious about her own aspirations but also values building a warm, supportive, and happy home together.
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- PAGE 2: PHOTO GALLERY (PRINTS ON NEXT PAGE) -->
+  <div class="gallery-container page-break">
+    <h2 class="gallery-title">Photographs</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="photo1.jpg" alt="Dr. Praneeth Devunuri - Photo 1" class="gallery-img">
+      </div>
+      <div class="gallery-item">
+        <img src="photo2.jpg" alt="Dr. Praneeth Devunuri - Photo 2" class="gallery-img">
+      </div>
+      <div class="gallery-item">
+        <img src="photo3.jpg" alt="Dr. Praneeth Devunuri - Photo 3" class="gallery-img">
+      </div>
+      <div class="gallery-item">
+        <img src="photo4.jpg" alt="Dr. Praneeth Devunuri - Photo 4" class="gallery-img">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JS to automatically handle image loading and placeholder toggling
+    function showPlaceholder() {
+      document.getElementById('profileImage').style.display = 'none';
+      document.getElementById('imagePlaceholder').style.display = 'flex';
+    }
+
+    // Try loading profile picture on startup
+    window.addEventListener('DOMContentLoaded', () => {
+      const img = document.getElementById('profileImage');
+      
+      // Create a test image to see if photo.jpg exists
+      const testImg = new Image();
+      testImg.src = 'photo.jpg';
+      testImg.onload = () => {
+        img.src = 'photo.jpg';
+        img.style.display = 'block';
+        document.getElementById('imagePlaceholder').style.display = 'none';
+      };
+      testImg.onerror = () => {
+        showPlaceholder();
+      };
+    });
+  </script>
+
+</body>
+</html>
