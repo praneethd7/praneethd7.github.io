@@ -156,6 +156,8 @@ export const nationalParks: NationalPark[] = [
     visited: true,
     coords: { x: 105, y: 140 },
     visitYear: 2022,
+    photoUrl: "/assets/crater_lake.jpeg",
+    photoCaption: "The deep blue waters of Crater Lake",
     description: "Famous for its deep blue water and water clarity, the lake was formed by the collapse of the volcano Mount Mazama."
   },
   {
@@ -178,6 +180,8 @@ export const nationalParks: NationalPark[] = [
     visited: true,
     coords: { x: 740, y: 245 },
     visitYear: 2023,
+    photoUrl: "/assets/cuyahoga_valley.jpeg",
+    photoCaption: "Historic canal trails in Cuyahoga Valley",
     description: "Protects the winding Cuyahoga River between Cleveland and Akron, featuring historic canal trails and waterfalls."
   },
   {
@@ -188,6 +192,8 @@ export const nationalParks: NationalPark[] = [
     visited: true,
     coords: { x: 585, y: 275 },
     visitYear: 2023,
+    photoUrl: "/assets/gateway_arch.jpeg",
+    photoCaption: "The iconic Gateway Arch in St. Louis",
     description: "A monument symbolizing the westward expansion of the United States, located in St. Louis."
   },
   {
