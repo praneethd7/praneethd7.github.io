@@ -8,12 +8,14 @@ export interface NationalPark {
   visitYear?: number;
   photoUrl?: string;
   photoCaption?: string;
+  npsUrl: string;
   description: string;
 }
 
 export const nationalParks: NationalPark[] = [
   {
     id: "acadia",
+    npsUrl: "https://www.nps.gov/acad/index.htm",
     name: "Acadia National Park",
     state: ["ME"],
     region: "Northeast",
@@ -26,6 +28,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "yellowstone",
+    npsUrl: "https://www.nps.gov/yell/index.htm",
     name: "Yellowstone National Park",
     state: ["WY", "MT", "ID"],
     region: "West",
@@ -38,6 +41,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "grand-canyon",
+    npsUrl: "https://www.nps.gov/grca/index.htm",
     name: "Grand Canyon National Park",
     state: ["AZ"],
     region: "West",
@@ -50,30 +54,33 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "north-cascades",
+    npsUrl: "https://www.nps.gov/noca/index.htm",
     name: "North Cascades National Park",
     state: ["WA"],
     region: "West",
     visited: true,
     coords: { x: 145, y: 70 },
-    visitYear: 2022,
+    visitYear: 2025,
     photoUrl: "/assets/diablo_lake.jpeg",
     photoCaption: "The turquoise waters of Diablo Lake, North Cascades",
     description: "A wilderness of forested valleys, cascading waterfalls, and over 300 glaciers, earning it the nickname the 'American Alps'."
   },
   {
     id: "everglades",
+    npsUrl: "https://www.nps.gov/ever/index.htm",
     name: "Everglades National Park",
     state: ["FL"],
     region: "South",
     visited: true,
     coords: { x: 810, y: 535 },
-    visitYear: 2024,
+    visitYear: 2026,
     photoUrl: "/assets/wildlife_alligators.webp",
     photoCaption: "Alligators basking in the Everglades wetlands",
     description: "The largest subtropical wilderness in the United States, protecting an unparalleled ecosystem of sawgrass marshes, mangrove forests, and diverse wildlife."
   },
   {
     id: "zion",
+    npsUrl: "https://www.nps.gov/zion/index.htm",
     name: "Zion National Park",
     state: ["UT"],
     region: "West",
@@ -86,6 +93,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "mammoth-cave",
+    npsUrl: "https://www.nps.gov/maca/index.htm",
     name: "Mammoth Cave National Park",
     state: ["KY"],
     region: "South",
@@ -96,6 +104,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "great-sand-dunes",
+    npsUrl: "https://www.nps.gov/grsa/index.htm",
     name: "Great Sand Dunes National Park",
     state: ["CO"],
     region: "West",
@@ -108,6 +117,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "rocky-mountain",
+    npsUrl: "https://www.nps.gov/romo/index.htm",
     name: "Rocky Mountain National Park",
     state: ["CO"],
     region: "West",
@@ -120,26 +130,33 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "white-sands",
+    npsUrl: "https://www.nps.gov/whsa/index.htm",
     name: "White Sands National Park",
     state: ["NM"],
     region: "West",
     visited: true,
     coords: { x: 310, y: 370 },
-    visitYear: 2021,
+    visitYear: 2025,
+    photoUrl: "/assets/white_sands.jpg",
+    photoCaption: "Stunning gypsum dunes glistening at White Sands",
     description: "Protects the world's largest gypsum sand dune field, creating a stunning landscape of glistening white sands."
   },
   {
     id: "carlsbad-caverns",
+    npsUrl: "https://www.nps.gov/cave/index.htm",
     name: "Carlsbad Caverns National Park",
     state: ["NM"],
     region: "West",
     visited: true,
     coords: { x: 335, y: 395 },
-    visitYear: 2021,
+    visitYear: 2025,
+    photoUrl: "/assets/carlsbad_caverns.jpg",
+    photoCaption: "Elaborate limestone formations inside Carlsbad Caverns",
     description: "Features more than 119 limestone caves, including the massive 'Big Room', decorated with elaborate stalactites and stalagmites."
   },
   {
     id: "big-bend",
+    npsUrl: "https://www.nps.gov/bibe/index.htm",
     name: "Big Bend National Park",
     state: ["TX"],
     region: "South",
@@ -150,6 +167,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "crater-lake",
+    npsUrl: "https://www.nps.gov/crla/index.htm",
     name: "Crater Lake National Park",
     state: ["OR"],
     region: "West",
@@ -162,18 +180,20 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "olympic",
+    npsUrl: "https://www.nps.gov/olym/index.htm",
     name: "Olympic National Park",
     state: ["WA"],
     region: "West",
     visited: true,
     coords: { x: 95, y: 70 },
-    visitYear: 2022,
+    visitYear: 2025,
     photoUrl: "/assets/olympic_hoh_rainforest.jpg",
     photoCaption: "Hanging moss in the Hoh Rain Forest, Olympic",
     description: "Features diverse ecosystems including glacier-capped mountains, temperate rainforests, and rugged Pacific ocean shorelines."
   },
   {
     id: "cuyahoga-valley",
+    npsUrl: "https://www.nps.gov/cuva/index.htm",
     name: "Cuyahoga Valley National Park",
     state: ["OH"],
     region: "Midwest",
@@ -186,6 +206,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "gateway-arch",
+    npsUrl: "https://www.nps.gov/jeff/index.htm",
     name: "Gateway Arch National Park",
     state: ["MO"],
     region: "Midwest",
@@ -198,27 +219,34 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "great-smoky-mountains",
+    npsUrl: "https://www.nps.gov/grsm/index.htm",
     name: "Great Smoky Mountains National Park",
     state: ["TN", "NC"],
     region: "South",
     visited: true,
     coords: { x: 720, y: 340 },
     visitYear: 2023,
+    photoUrl: "/assets/great_smoky_mountains.jpeg",
+    photoCaption: "Sunset silhouette of evergreens over blue-misted ridges at Clingmans Dome (Kuwohi)",
     description: "America's most visited national park, renowned for its blue-misted ridge lines and rich biodiversity."
   },
   {
     id: "shenandoah",
+    npsUrl: "https://www.nps.gov/shen/index.htm",
     name: "Shenandoah National Park",
     state: ["VA"],
     region: "South",
     visited: true,
     coords: { x: 775, y: 270 },
     visitYear: 2023,
+    photoUrl: "/assets/shenandoah.jpeg",
+    photoCaption: "Scenic rocky overlook of the lush valleys along Skyline Drive in Shenandoah",
     description: "Protects a long, narrow strip of the Blue Ridge Mountains, traversed by the scenic Skyline Drive."
   },
   // Unvisited Parks
   {
     id: "arches",
+    npsUrl: "https://www.nps.gov/arch/index.htm",
     name: "Arches National Park",
     state: ["UT"],
     region: "West",
@@ -228,6 +256,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "badlands",
+    npsUrl: "https://www.nps.gov/badl/index.htm",
     name: "Badlands National Park",
     state: ["SD"],
     region: "Midwest",
@@ -237,6 +266,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "biscayne",
+    npsUrl: "https://www.nps.gov/bisc/index.htm",
     name: "Biscayne National Park",
     state: ["FL"],
     region: "South",
@@ -246,6 +276,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "black-canyon",
+    npsUrl: "https://www.nps.gov/blca/index.htm",
     name: "Black Canyon of the Gunnison National Park",
     state: ["CO"],
     region: "West",
@@ -255,6 +286,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "bryce-canyon",
+    npsUrl: "https://www.nps.gov/brca/index.htm",
     name: "Bryce Canyon National Park",
     state: ["UT"],
     region: "West",
@@ -264,6 +296,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "canyonlands",
+    npsUrl: "https://www.nps.gov/cany/index.htm",
     name: "Canyonlands National Park",
     state: ["UT"],
     region: "West",
@@ -273,6 +306,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "capitol-reef",
+    npsUrl: "https://www.nps.gov/care/index.htm",
     name: "Capitol Reef National Park",
     state: ["UT"],
     region: "West",
@@ -282,6 +316,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "channel-islands",
+    npsUrl: "https://www.nps.gov/chis/index.htm",
     name: "Channel Islands National Park",
     state: ["CA"],
     region: "West",
@@ -291,6 +326,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "congaree",
+    npsUrl: "https://www.nps.gov/cong/index.htm",
     name: "Congaree National Park",
     state: ["SC"],
     region: "South",
@@ -300,6 +336,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "death-valley",
+    npsUrl: "https://www.nps.gov/deva/index.htm",
     name: "Death Valley National Park",
     state: ["CA", "NV"],
     region: "West",
@@ -309,6 +346,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "denali",
+    npsUrl: "https://www.nps.gov/dena/index.htm",
     name: "Denali National Park",
     state: ["AK"],
     region: "West",
@@ -318,6 +356,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "dry-tortugas",
+    npsUrl: "https://www.nps.gov/drto/index.htm",
     name: "Dry Tortugas National Park",
     state: ["FL"],
     region: "South",
@@ -327,6 +366,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "gates-of-the-arctic",
+    npsUrl: "https://www.nps.gov/gaar/index.htm",
     name: "Gates of the Arctic National Park",
     state: ["AK"],
     region: "West",
@@ -336,6 +376,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "glacier",
+    npsUrl: "https://www.nps.gov/glac/index.htm",
     name: "Glacier National Park",
     state: ["MT"],
     region: "West",
@@ -345,6 +386,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "glacier-bay",
+    npsUrl: "https://www.nps.gov/glba/index.htm",
     name: "Glacier Bay National Park",
     state: ["AK"],
     region: "West",
@@ -354,6 +396,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "grand-teton",
+    npsUrl: "https://www.nps.gov/grte/index.htm",
     name: "Grand Teton National Park",
     state: ["WY"],
     region: "West",
@@ -363,6 +406,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "great-basin",
+    npsUrl: "https://www.nps.gov/grba/index.htm",
     name: "Great Basin National Park",
     state: ["NV"],
     region: "West",
@@ -372,6 +416,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "guadalupe-mountains",
+    npsUrl: "https://www.nps.gov/gumo/index.htm",
     name: "Guadalupe Mountains National Park",
     state: ["TX"],
     region: "South",
@@ -381,6 +426,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "haleakala",
+    npsUrl: "https://www.nps.gov/hale/index.htm",
     name: "Haleakalā National Park",
     state: ["HI"],
     region: "West",
@@ -390,6 +436,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "hawaii-volcanoes",
+    npsUrl: "https://www.nps.gov/havo/index.htm",
     name: "Hawaiʻi Volcanoes National Park",
     state: ["HI"],
     region: "West",
@@ -399,6 +446,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "hot-springs",
+    npsUrl: "https://www.nps.gov/hosp/index.htm",
     name: "Hot Springs National Park",
     state: ["AR"],
     region: "South",
@@ -408,6 +456,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "indiana-dunes",
+    npsUrl: "https://www.nps.gov/indu/index.htm",
     name: "Indiana Dunes National Park",
     state: ["IN"],
     region: "Midwest",
@@ -417,6 +466,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "isle-royale",
+    npsUrl: "https://www.nps.gov/isro/index.htm",
     name: "Isle Royale National Park",
     state: ["MI"],
     region: "Midwest",
@@ -426,6 +476,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "joshua-tree",
+    npsUrl: "https://www.nps.gov/jotr/index.htm",
     name: "Joshua Tree National Park",
     state: ["CA"],
     region: "West",
@@ -435,6 +486,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "katmai",
+    npsUrl: "https://www.nps.gov/katm/index.htm",
     name: "Katmai National Park",
     state: ["AK"],
     region: "West",
@@ -444,6 +496,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "kenai-fjords",
+    npsUrl: "https://www.nps.gov/kefj/index.htm",
     name: "Kenai Fjords National Park",
     state: ["AK"],
     region: "West",
@@ -453,6 +506,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "kings-canyon",
+    npsUrl: "https://www.nps.gov/kica/index.htm",
     name: "Kings Canyon National Park",
     state: ["CA"],
     region: "West",
@@ -462,6 +516,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "kobuk-valley",
+    npsUrl: "https://www.nps.gov/kova/index.htm",
     name: "Kobuk Valley National Park",
     state: ["AK"],
     region: "West",
@@ -471,6 +526,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "lake-clark",
+    npsUrl: "https://www.nps.gov/lacl/index.htm",
     name: "Lake Clark National Park",
     state: ["AK"],
     region: "West",
@@ -480,6 +536,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "lassen-volcanic",
+    npsUrl: "https://www.nps.gov/lavo/index.htm",
     name: "Lassen Volcanic National Park",
     state: ["CA"],
     region: "West",
@@ -489,6 +546,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "mesa-verde",
+    npsUrl: "https://www.nps.gov/meve/index.htm",
     name: "Mesa Verde National Park",
     state: ["CO"],
     region: "West",
@@ -498,6 +556,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "mount-rainier",
+    npsUrl: "https://www.nps.gov/mora/index.htm",
     name: "Mount Rainier National Park",
     state: ["WA"],
     region: "West",
@@ -507,6 +566,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "new-river-gorge",
+    npsUrl: "https://www.nps.gov/neri/index.htm",
     name: "New River Gorge National Park",
     state: ["WV"],
     region: "South",
@@ -516,6 +576,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "petrified-forest",
+    npsUrl: "https://www.nps.gov/pefo/index.htm",
     name: "Petrified Forest National Park",
     state: ["AZ"],
     region: "West",
@@ -525,6 +586,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "pinnacles",
+    npsUrl: "https://www.nps.gov/pinn/index.htm",
     name: "Pinnacles National Park",
     state: ["CA"],
     region: "West",
@@ -534,6 +596,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "redwood",
+    npsUrl: "https://www.nps.gov/redw/index.htm",
     name: "Redwood National Park",
     state: ["CA"],
     region: "West",
@@ -543,6 +606,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "saguaro",
+    npsUrl: "https://www.nps.gov/sagu/index.htm",
     name: "Saguaro National Park",
     state: ["AZ"],
     region: "West",
@@ -552,6 +616,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "sequoia",
+    npsUrl: "https://www.nps.gov/sequ/index.htm",
     name: "Sequoia National Park",
     state: ["CA"],
     region: "West",
@@ -561,6 +626,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "theodore-roosevelt",
+    npsUrl: "https://www.nps.gov/thro/index.htm",
     name: "Theodore Roosevelt National Park",
     state: ["ND"],
     region: "Midwest",
@@ -570,6 +636,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "virgin-islands",
+    npsUrl: "https://www.nps.gov/viis/index.htm",
     name: "Virgin Islands National Park",
     state: ["VI"],
     region: "South",
@@ -579,6 +646,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "voyageurs",
+    npsUrl: "https://www.nps.gov/voya/index.htm",
     name: "Voyageurs National Park",
     state: ["MN"],
     region: "Midwest",
@@ -588,6 +656,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "wind-cave",
+    npsUrl: "https://www.nps.gov/wica/index.htm",
     name: "Wind Cave National Park",
     state: ["SD"],
     region: "Midwest",
@@ -597,6 +666,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "wrangell-st-elias",
+    npsUrl: "https://www.nps.gov/wrst/index.htm",
     name: "Wrangell-St. Elias National Park",
     state: ["AK"],
     region: "West",
@@ -606,6 +676,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "yosemite",
+    npsUrl: "https://www.nps.gov/yose/index.htm",
     name: "Yosemite National Park",
     state: ["CA"],
     region: "West",
@@ -615,6 +686,7 @@ export const nationalParks: NationalPark[] = [
   },
   {
     id: "american-samoa",
+    npsUrl: "https://www.nps.gov/npsa/index.htm",
     name: "National Park of American Samoa",
     state: ["AS"],
     region: "West",
