@@ -224,7 +224,7 @@ const regions = ['All', 'West', 'Midwest', 'South', 'Northeast'];
                       <span class="font-outfit font-bold text-xs block leading-tight">{park.name}</span>
                       <span class="flex items-center justify-between text-[9px] text-slate-400 mt-2 font-semibold">
                         <span>{park.state.join(', ')}</span>
-                        <span class="text-brand-gold font-mono uppercase tracking-wider">Visited {park.visitYear}</span>
+                        <span class="text-brand-gold font-mono uppercase tracking-wider">{park.visitYear ? `Visited ${park.visitYear}` : 'Visited'}</span>
                       </span>
                     </span>
                   </span>
@@ -321,7 +321,7 @@ const regions = ['All', 'West', 'Midwest', 'South', 'Northeast'];
                <!-- Visited/Lock Badges -->
               {park.visited ? (
                 <span class="absolute top-3 right-3 bg-brand-gold text-slate-950 font-outfit font-extrabold text-[10px] px-2.5 py-0.5 rounded-full shadow-md tracking-wider uppercase">
-                  {park.visitYear}
+                  {park.visitYear || 'Visited'}
                 </span>
               ) : (
                 <span class="absolute top-3 right-3 bg-slate-900/90 border border-white/5 text-slate-400 font-outfit font-bold text-[10px] px-2 py-0.5 rounded-full tracking-wider uppercase">
@@ -476,7 +476,7 @@ const regions = ['All', 'West', 'Midwest', 'South', 'Northeast'];
   .state path.az, .state path.wa, .state path.fl, .state path.ut, 
   .state path.ky, .state path.co, .state path.nm, .state path.tx, 
   .state path.or, .state path.oh, .state path.mo, .state path.tn, 
-  .state path.nc, .state path.va {
+  .state path.nc, .state path.va, .state path.ca, .state path.sc, .state path.wv {
     fill: rgba(251, 191, 36, 0.04) !important; /* very soft gold fill */
     stroke: rgba(251, 191, 36, 0.15) !important; /* soft gold border */
   }
@@ -486,7 +486,7 @@ const regions = ['All', 'West', 'Midwest', 'South', 'Northeast'];
   .state path.az:hover, .state path.wa:hover, .state path.fl:hover, .state path.ut:hover, 
   .state path.ky:hover, .state path.co:hover, .state path.nm:hover, .state path.tx:hover, 
   .state path.or:hover, .state path.oh:hover, .state path.mo:hover, .state path.tn:hover, 
-  .state path.nc:hover, .state path.va:hover {
+  .state path.nc:hover, .state path.va:hover, .state path.ca:hover, .state path.sc:hover, .state path.wv:hover {
     fill: rgba(251, 191, 36, 0.1) !important;
     stroke: rgba(251, 191, 36, 0.7) !important;
   }
@@ -576,7 +576,7 @@ const regions = ['All', 'West', 'Midwest', 'South', 'Northeast'];
       if (mLink) mLink.href = park.npsUrl || '#';
 
       if (park.visited) {
-        mBadge.textContent = `Visited ${park.visitYear}`;
+        mBadge.textContent = park.visitYear ? `Visited ${park.visitYear}` : 'Visited';
         mBadge.className = "bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-[10px] font-bold px-2.5 py-0.5 rounded-full tracking-wider uppercase";
         
         // Handle photo if available

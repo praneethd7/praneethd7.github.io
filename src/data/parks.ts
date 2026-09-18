@@ -20,7 +20,7 @@ export const nationalParks: NationalPark[] = [
     state: ["ME"],
     region: "Northeast",
     visited: true,
-    coords: { x: 915, y: 105 },
+    coords: { x: 911, y: 101 },
     visitYear: 2023,
     photoUrl: "/assets/echo_lake_autumn.jpeg",
     photoCaption: "Echo Lake in autumn foliage, Acadia",
@@ -33,7 +33,7 @@ export const nationalParks: NationalPark[] = [
     state: ["WY", "MT", "ID"],
     region: "West",
     visited: true,
-    coords: { x: 260, y: 160 },
+    coords: { x: 251, y: 146 },
     visitYear: 2022,
     photoUrl: "/assets/yellowstone_mammoth_hot_springs.jpeg",
     photoCaption: "Travertine terraces at Mammoth Hot Springs",
@@ -46,7 +46,7 @@ export const nationalParks: NationalPark[] = [
     state: ["AZ"],
     region: "West",
     visited: true,
-    coords: { x: 180, y: 310 },
+    coords: { x: 198, y: 325 },
     visitYear: 2021,
     photoUrl: "/assets/grand_canyon_clouds.jpeg",
     photoCaption: "Sunrise clouds drifting through the Grand Canyon",
@@ -59,7 +59,7 @@ export const nationalParks: NationalPark[] = [
     state: ["WA"],
     region: "West",
     visited: true,
-    coords: { x: 145, y: 70 },
+    coords: { x: 110, y: 21 },
     visitYear: 2025,
     photoUrl: "/assets/diablo_lake.jpeg",
     photoCaption: "The turquoise waters of Diablo Lake, North Cascades",
@@ -72,7 +72,7 @@ export const nationalParks: NationalPark[] = [
     state: ["FL"],
     region: "South",
     visited: true,
-    coords: { x: 810, y: 535 },
+    coords: { x: 784, y: 561 },
     visitYear: 2026,
     photoUrl: "/assets/wildlife_alligators.webp",
     photoCaption: "Alligators basking in the Everglades wetlands",
@@ -85,7 +85,7 @@ export const nationalParks: NationalPark[] = [
     state: ["UT"],
     region: "West",
     visited: true,
-    coords: { x: 185, y: 280 },
+    coords: { x: 186, y: 296 },
     visitYear: 2021,
     photoUrl: "/assets/zion_canyon.jpg",
     photoCaption: "Towering red rock cliffs of Zion Canyon",
@@ -98,7 +98,7 @@ export const nationalParks: NationalPark[] = [
     state: ["KY"],
     region: "South",
     visited: true,
-    coords: { x: 670, y: 300 },
+    coords: { x: 653, y: 314 },
     visitYear: 2023,
     description: "Protects the world's longest known cave system, with vast chambers, deep shafts, and fascinating limestone labyrinths."
   },
@@ -109,7 +109,7 @@ export const nationalParks: NationalPark[] = [
     state: ["CO"],
     region: "West",
     visited: true,
-    coords: { x: 330, y: 275 },
+    coords: { x: 315, y: 302 },
     visitYear: 2022,
     photoUrl: "/assets/great_sand_dunes.jpg",
     photoCaption: "Glistening sand dunes of Great Sand Dunes",
@@ -122,7 +122,7 @@ export const nationalParks: NationalPark[] = [
     state: ["CO"],
     region: "West",
     visited: true,
-    coords: { x: 320, y: 220 },
+    coords: { x: 319, y: 246 },
     visitYear: 2022,
     photoUrl: "/assets/rocky_mountain_lake.jpg",
     photoCaption: "Pristine alpine lake reflections in Rocky Mountain",
@@ -135,7 +135,7 @@ export const nationalParks: NationalPark[] = [
     state: ["NM"],
     region: "West",
     visited: true,
-    coords: { x: 310, y: 370 },
+    coords: { x: 291, y: 411 },
     visitYear: 2025,
     photoUrl: "/assets/white_sands.jpg",
     photoCaption: "Stunning gypsum dunes glistening at White Sands",
@@ -148,7 +148,7 @@ export const nationalParks: NationalPark[] = [
     state: ["NM"],
     region: "West",
     visited: true,
-    coords: { x: 335, y: 395 },
+    coords: { x: 325, y: 428 },
     visitYear: 2025,
     photoUrl: "/assets/carlsbad_caverns.jpg",
     photoCaption: "Elaborate limestone formations inside Carlsbad Caverns",
@@ -161,8 +161,10 @@ export const nationalParks: NationalPark[] = [
     state: ["TX"],
     region: "South",
     visited: true,
-    coords: { x: 390, y: 470 },
-    visitYear: 2019,
+    coords: { x: 342, y: 497 },
+    visitYear: 2018,
+    photoUrl: "/assets/big_bend.jpg",
+    photoCaption: "Casa Grande Peak rising above the Chisos Mountains in Big Bend National Park",
     description: "A vast desert expanse situated in the bend of the Rio Grande, encompassing the Chisos Mountains and deep canyons."
   },
   {
@@ -172,7 +174,7 @@ export const nationalParks: NationalPark[] = [
     state: ["OR"],
     region: "West",
     visited: true,
-    coords: { x: 105, y: 140 },
+    coords: { x: 64, y: 142 },
     visitYear: 2022,
     photoUrl: "/assets/crater_lake.jpeg",
     photoCaption: "The deep blue waters of Crater Lake",
@@ -185,7 +187,7 @@ export const nationalParks: NationalPark[] = [
     state: ["WA"],
     region: "West",
     visited: true,
-    coords: { x: 95, y: 70 },
+    coords: { x: 71, y: 32 },
     visitYear: 2025,
     photoUrl: "/assets/olympic_hoh_rainforest.jpg",
     photoCaption: "Hanging moss in the Hoh Rain Forest, Olympic",
@@ -198,7 +200,7 @@ export const nationalParks: NationalPark[] = [
     state: ["OH"],
     region: "Midwest",
     visited: true,
-    coords: { x: 740, y: 245 },
+    coords: { x: 717, y: 214 },
     visitYear: 2023,
     photoUrl: "/assets/cuyahoga_valley.jpeg",
     photoCaption: "Historic canal trails in Cuyahoga Valley",
@@ -211,7 +213,7 @@ export const nationalParks: NationalPark[] = [
     state: ["MO"],
     region: "Midwest",
     visited: true,
-    coords: { x: 585, y: 275 },
+    coords: { x: 578, y: 288 },
     visitYear: 2023,
     photoUrl: "/assets/gateway_arch.jpeg",
     photoCaption: "The iconic Gateway Arch in St. Louis",
@@ -224,8 +226,8 @@ export const nationalParks: NationalPark[] = [
     state: ["TN", "NC"],
     region: "South",
     visited: true,
-    coords: { x: 720, y: 340 },
-    visitYear: 2023,
+    coords: { x: 703, y: 343 },
+    visitYear: 2025,
     photoUrl: "/assets/great_smoky_mountains.jpeg",
     photoCaption: "Sunset silhouette of evergreens over blue-misted ridges at Clingmans Dome (Kuwohi)",
     description: "America's most visited national park, renowned for its blue-misted ridge lines and rich biodiversity."
@@ -237,11 +239,81 @@ export const nationalParks: NationalPark[] = [
     state: ["VA"],
     region: "South",
     visited: true,
-    coords: { x: 775, y: 270 },
+    coords: { x: 776, y: 271 },
     visitYear: 2023,
     photoUrl: "/assets/shenandoah.jpeg",
     photoCaption: "Scenic rocky overlook of the lush valleys along Skyline Drive in Shenandoah",
     description: "Protects a long, narrow strip of the Blue Ridge Mountains, traversed by the scenic Skyline Drive."
+  },
+  {
+    id: "congaree",
+    npsUrl: "https://www.nps.gov/cong/index.htm",
+    name: "Congaree National Park",
+    state: ["SC"],
+    region: "South",
+    visited: true,
+    coords: { x: 757, y: 376 },
+    visitYear: 2026,
+    photoUrl: "/assets/congaree_boardwalk.jpg",
+    photoCaption: "Elevated boardwalk trail through old-growth forest canopy in Congaree",
+    description: "Preserves the largest intact expanse of old-growth bottomland hardwood forest in the southeastern United States."
+  },
+  {
+    id: "kings-canyon",
+    npsUrl: "https://www.nps.gov/kica/index.htm",
+    name: "Kings Canyon National Park",
+    state: ["CA"],
+    region: "West",
+    visited: true,
+    coords: { x: 90, y: 286 },
+    visitYear: 2026,
+    description: "Home to giant sequoia groves (including the General Grant tree) and a deep glaciated canyon."
+  },
+  {
+    id: "pinnacles",
+    npsUrl: "https://www.nps.gov/pinn/index.htm",
+    name: "Pinnacles National Park",
+    state: ["CA"],
+    region: "West",
+    visited: true,
+    coords: { x: 43, y: 283 },
+    visitYear: 2026,
+    description: "Protects the remains of an ancient volcano, featuring caves, rock formations, and nesting California condors."
+  },
+  {
+    id: "sequoia",
+    npsUrl: "https://www.nps.gov/sequ/index.htm",
+    name: "Sequoia National Park",
+    state: ["CA"],
+    region: "West",
+    visited: true,
+    coords: { x: 88, y: 294 },
+    visitYear: 2026,
+    description: "Home to the giant sequoias, including the General Sherman tree, the largest living tree on Earth by volume."
+  },
+  {
+    id: "yosemite",
+    npsUrl: "https://www.nps.gov/yose/index.htm",
+    name: "Yosemite National Park",
+    state: ["CA"],
+    region: "West",
+    visited: true,
+    coords: { x: 78, y: 261 },
+    visitYear: 2026,
+    description: "Renowned for its granite monoliths, waterfalls, giant sequoia groves, and diverse wildlife."
+  },
+  {
+    id: "new-river-gorge",
+    npsUrl: "https://www.nps.gov/neri/index.htm",
+    name: "New River Gorge National Park",
+    state: ["WV"],
+    region: "South",
+    visited: true,
+    coords: { x: 737, y: 286 },
+    visitYear: 2022,
+    photoUrl: "/assets/new_river_gorge.jpg",
+    photoCaption: "The iconic New River Gorge Bridge soaring over the river canyon, West Virginia",
+    description: "Protects a deep river canyon famous for whitewater rafting, rock climbing, and the massive steel arch bridge."
   },
   // Unvisited Parks
   {
@@ -251,7 +323,7 @@ export const nationalParks: NationalPark[] = [
     state: ["UT"],
     region: "West",
     visited: false,
-    coords: { x: 215, y: 255 },
+    coords: { x: 250, y: 273 },
     description: "Protects over 2,000 natural sandstone arches, including the famous Delicate Arch."
   },
   {
@@ -261,7 +333,7 @@ export const nationalParks: NationalPark[] = [
     state: ["SD"],
     region: "Midwest",
     visited: false,
-    coords: { x: 385, y: 180 },
+    coords: { x: 380, y: 172 },
     description: "A expanse of layered rock formations, steep canyons, and towering spires, mixed with one of the largest grass prairies."
   },
   {
@@ -271,7 +343,7 @@ export const nationalParks: NationalPark[] = [
     state: ["FL"],
     region: "South",
     visited: false,
-    coords: { x: 820, y: 550 },
+    coords: { x: 792, y: 550 },
     description: "Protects aquamarine waters, emerald islands, and fish-filled coral reefs. Ninety-five percent of the park is water."
   },
   {
@@ -281,7 +353,7 @@ export const nationalParks: NationalPark[] = [
     state: ["CO"],
     region: "West",
     visited: false,
-    coords: { x: 290, y: 260 },
+    coords: { x: 281, y: 281 },
     description: "Protects some of the steepest cliffs, oldest rock, and craggiest spires in North America, carved by the Gunnison River."
   },
   {
@@ -291,7 +363,7 @@ export const nationalParks: NationalPark[] = [
     state: ["UT"],
     region: "West",
     visited: false,
-    coords: { x: 195, y: 270 },
+    coords: { x: 202, y: 292 },
     description: "Famous for its giant natural amphitheaters filled with red, orange, and white hoodoos."
   },
   {
@@ -301,7 +373,7 @@ export const nationalParks: NationalPark[] = [
     state: ["UT"],
     region: "West",
     visited: false,
-    coords: { x: 210, y: 265 },
+    coords: { x: 244, y: 282 },
     description: "A colorful landscape of canyons, mesas, and arches carved by the Colorado River and Green River."
   },
   {
@@ -311,7 +383,7 @@ export const nationalParks: NationalPark[] = [
     state: ["UT"],
     region: "West",
     visited: false,
-    coords: { x: 200, y: 260 },
+    coords: { x: 220, y: 277 },
     description: "Protects a massive warp in the earth's crust, featuring canyons, cliffs, domes, and bridges."
   },
   {
@@ -321,18 +393,8 @@ export const nationalParks: NationalPark[] = [
     state: ["CA"],
     region: "West",
     visited: false,
-    coords: { x: 80, y: 395 },
+    coords: { x: 54, y: 343 },
     description: "Encompasses five remarkable islands off the coast of Southern California, with unique wildlife and sea caves."
-  },
-  {
-    id: "congaree",
-    npsUrl: "https://www.nps.gov/cong/index.htm",
-    name: "Congaree National Park",
-    state: ["SC"],
-    region: "South",
-    visited: false,
-    coords: { x: 770, y: 370 },
-    description: "Preserves the largest intact expanse of old-growth bottomland hardwood forest in the southeastern United States."
   },
   {
     id: "death-valley",
@@ -341,7 +403,7 @@ export const nationalParks: NationalPark[] = [
     state: ["CA", "NV"],
     region: "West",
     visited: false,
-    coords: { x: 120, y: 310 },
+    coords: { x: 116, y: 300 },
     description: "The hottest, driest, and lowest national park in North America, featuring salt flats, sand dunes, and badlands."
   },
   {
@@ -361,7 +423,7 @@ export const nationalParks: NationalPark[] = [
     state: ["FL"],
     region: "South",
     visited: false,
-    coords: { x: 780, y: 560 },
+    coords: { x: 747, y: 581 },
     description: "A remote park in the Gulf of Mexico, accessible only by boat or seaplane, featuring Fort Jefferson and vibrant coral reefs."
   },
   {
@@ -381,7 +443,7 @@ export const nationalParks: NationalPark[] = [
     state: ["MT"],
     region: "West",
     visited: false,
-    coords: { x: 250, y: 60 },
+    coords: { x: 218, y: 45 },
     description: "Features spectacular carved peaks, valleys, and glaciers, traversed by the famous Going-to-the-Sun Road."
   },
   {
@@ -391,7 +453,7 @@ export const nationalParks: NationalPark[] = [
     state: ["AK"],
     region: "West",
     visited: false,
-    coords: { x: 180, y: 535 },
+    coords: { x: 160, y: 535 },
     description: "A massive marine park in Alaska, featuring tidewater glaciers, fjords, and marine wildlife."
   },
   {
@@ -401,7 +463,7 @@ export const nationalParks: NationalPark[] = [
     state: ["WY"],
     region: "West",
     visited: false,
-    coords: { x: 260, y: 180 },
+    coords: { x: 248, y: 160 },
     description: "Encompasses the dramatic Teton Range, rising abruptly over Jackson Hole, with pristine alpine lakes."
   },
   {
@@ -411,7 +473,7 @@ export const nationalParks: NationalPark[] = [
     state: ["NV"],
     region: "West",
     visited: false,
-    coords: { x: 155, y: 250 },
+    coords: { x: 171, y: 255 },
     description: "Protects Wheeler Peak, bristlecone pine groves (the oldest trees on Earth), and Lehman Caves."
   },
   {
@@ -421,7 +483,7 @@ export const nationalParks: NationalPark[] = [
     state: ["TX"],
     region: "South",
     visited: false,
-    coords: { x: 335, y: 410 },
+    coords: { x: 317, y: 433 },
     description: "Features the highest peak in Texas, Guadalupe Peak, and a pristine fossilized Permian reef."
   },
   {
@@ -431,7 +493,7 @@ export const nationalParks: NationalPark[] = [
     state: ["HI"],
     region: "West",
     visited: false,
-    coords: { x: 230, y: 550 },
+    coords: { x: 310, y: 542 },
     description: "Protects the massive Haleakalā shield volcano on Maui, featuring a desert-like crater and coastal rainforest."
   },
   {
@@ -441,7 +503,7 @@ export const nationalParks: NationalPark[] = [
     state: ["HI"],
     region: "West",
     visited: false,
-    coords: { x: 240, y: 565 },
+    coords: { x: 328, y: 568 },
     description: "Protects two of the world's most active volcanoes, Kīlauea and Mauna Loa, on the Big Island."
   },
   {
@@ -451,7 +513,7 @@ export const nationalParks: NationalPark[] = [
     state: ["AR"],
     region: "South",
     visited: false,
-    coords: { x: 555, y: 360 },
+    coords: { x: 534, y: 381 },
     description: "An urban park protecting historic bathhouses built around natural thermal springs in Arkansas."
   },
   {
@@ -461,7 +523,7 @@ export const nationalParks: NationalPark[] = [
     state: ["IN"],
     region: "Midwest",
     visited: false,
-    coords: { x: 645, y: 220 },
+    coords: { x: 627, y: 217 },
     description: "Protects the sandy shores, high dunes, marshes, and forests along the southern coast of Lake Michigan."
   },
   {
@@ -471,7 +533,7 @@ export const nationalParks: NationalPark[] = [
     state: ["MI"],
     region: "Midwest",
     visited: false,
-    coords: { x: 600, y: 110 },
+    coords: { x: 586, y: 80 },
     description: "A remote, isolated island wilderness in Lake Michigan/Superior, famous for its moose and wolf studies."
   },
   {
@@ -481,7 +543,7 @@ export const nationalParks: NationalPark[] = [
     state: ["CA"],
     region: "West",
     visited: false,
-    coords: { x: 105, y: 395 },
+    coords: { x: 122, y: 361 },
     description: "Features bizarre Joshua trees, giant boulders, and a rugged desert landscape bridging the Mojave and Colorado deserts."
   },
   {
@@ -505,23 +567,13 @@ export const nationalParks: NationalPark[] = [
     description: "Protects the massive Harding Icefield, glaciers calving into the sea, and coastal fjords in Alaska."
   },
   {
-    id: "kings-canyon",
-    npsUrl: "https://www.nps.gov/kica/index.htm",
-    name: "Kings Canyon National Park",
-    state: ["CA"],
-    region: "West",
-    visited: false,
-    coords: { x: 80, y: 315 },
-    description: "Home to giant sequoia groves (including the General Grant tree) and a deep glaciated canyon."
-  },
-  {
     id: "kobuk-valley",
     npsUrl: "https://www.nps.gov/kova/index.htm",
     name: "Kobuk Valley National Park",
     state: ["AK"],
     region: "West",
     visited: false,
-    coords: { x: 65, y: 470 },
+    coords: { x: 80, y: 475 },
     description: "Protects active sand dunes in the Arctic, crossed by caribou migration routes."
   },
   {
@@ -541,7 +593,7 @@ export const nationalParks: NationalPark[] = [
     state: ["CA"],
     region: "West",
     visited: false,
-    coords: { x: 80, y: 180 },
+    coords: { x: 62, y: 196 },
     description: "Features boiling mud pots, steaming sulfur vents, and Lassen Peak, the world's largest plug dome volcano."
   },
   {
@@ -551,7 +603,7 @@ export const nationalParks: NationalPark[] = [
     state: ["CO"],
     region: "West",
     visited: false,
-    coords: { x: 280, y: 280 },
+    coords: { x: 265, y: 309 },
     description: "Protects over 5,000 archaeological sites, including some of the best-preserved Ancestral Puebloan cliff dwellings."
   },
   {
@@ -561,18 +613,8 @@ export const nationalParks: NationalPark[] = [
     state: ["WA"],
     region: "West",
     visited: false,
-    coords: { x: 120, y: 85 },
+    coords: { x: 93, y: 59 },
     description: "Centers around the towering glacier-capped Mount Rainier, an active stratovolcano."
-  },
-  {
-    id: "new-river-gorge",
-    npsUrl: "https://www.nps.gov/neri/index.htm",
-    name: "New River Gorge National Park",
-    state: ["WV"],
-    region: "South",
-    visited: false,
-    coords: { x: 745, y: 295 },
-    description: "Protects a deep river canyon famous for whitewater rafting, rock climbing, and the massive steel arch bridge."
   },
   {
     id: "petrified-forest",
@@ -581,18 +623,8 @@ export const nationalParks: NationalPark[] = [
     state: ["AZ"],
     region: "West",
     visited: false,
-    coords: { x: 210, y: 330 },
+    coords: { x: 234, y: 357 },
     description: "Features large deposits of petrified wood, badlands, and archaeological sites in the Painted Desert."
-  },
-  {
-    id: "pinnacles",
-    npsUrl: "https://www.nps.gov/pinn/index.htm",
-    name: "Pinnacles National Park",
-    state: ["CA"],
-    region: "West",
-    visited: false,
-    coords: { x: 65, y: 295 },
-    description: "Protects the remains of an ancient volcano, featuring caves, rock formations, and nesting California condors."
   },
   {
     id: "redwood",
@@ -601,7 +633,7 @@ export const nationalParks: NationalPark[] = [
     state: ["CA"],
     region: "West",
     visited: false,
-    coords: { x: 60, y: 135 },
+    coords: { x: 33, y: 172 },
     description: "Home to the tallest trees on Earth, the coast redwoods, as well as rivers and rugged coastline."
   },
   {
@@ -611,18 +643,8 @@ export const nationalParks: NationalPark[] = [
     state: ["AZ"],
     region: "West",
     visited: false,
-    coords: { x: 190, y: 375 },
+    coords: { x: 212, y: 415 },
     description: "Protects vast forests of the giant saguaro cactus, the symbol of the American West."
-  },
-  {
-    id: "sequoia",
-    npsUrl: "https://www.nps.gov/sequ/index.htm",
-    name: "Sequoia National Park",
-    state: ["CA"],
-    region: "West",
-    visited: false,
-    coords: { x: 80, y: 325 },
-    description: "Home to the giant sequoias, including the General Sherman tree, the largest living tree on Earth by volume."
   },
   {
     id: "theodore-roosevelt",
@@ -631,7 +653,7 @@ export const nationalParks: NationalPark[] = [
     state: ["ND"],
     region: "Midwest",
     visited: false,
-    coords: { x: 380, y: 110 },
+    coords: { x: 366, y: 103 },
     description: "Where the Great Plains meet the Badlands. Home to bison, wild horses, and scenic drives."
   },
   {
@@ -651,7 +673,7 @@ export const nationalParks: NationalPark[] = [
     state: ["MN"],
     region: "Midwest",
     visited: false,
-    coords: { x: 520, y: 95 },
+    coords: { x: 527, y: 73 },
     description: "A water-based park on the Canadian border, famous for boating, canoeing, fishing, and northern lights."
   },
   {
@@ -661,7 +683,7 @@ export const nationalParks: NationalPark[] = [
     state: ["SD"],
     region: "Midwest",
     visited: false,
-    coords: { x: 375, y: 195 },
+    coords: { x: 361, y: 178 },
     description: "Famous for its unique calcite 'boxwork' formations and above-ground bison prairies."
   },
   {
@@ -673,16 +695,6 @@ export const nationalParks: NationalPark[] = [
     visited: false,
     coords: { x: 155, y: 505 },
     description: "America's largest national park by area, containing massive volcanoes, glaciers, and historic mining towns."
-  },
-  {
-    id: "yosemite",
-    npsUrl: "https://www.nps.gov/yose/index.htm",
-    name: "Yosemite National Park",
-    state: ["CA"],
-    region: "West",
-    visited: false,
-    coords: { x: 78, y: 300 },
-    description: "Renowned for its granite monoliths, waterfalls, giant sequoia groves, and diverse wildlife."
   },
   {
     id: "american-samoa",
